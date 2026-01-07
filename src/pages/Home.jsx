@@ -255,7 +255,7 @@ const Home = () => {
                   style={{ transform: 'rotate(0deg)' }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1571167250798-7854eb672a4d?w=800"
+                    src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800&q=80"
                     alt="Sweets"
                     className="w-full h-full object-cover"
                   />
