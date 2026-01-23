@@ -70,7 +70,7 @@ export const menuData = {
       description: 'Marinated chicken slow-roasted on a vertical spit, served with tahini and garlic sauce',
       modelUrl: '/models/menu-items/tacchino-sandwich.glb',
       scale: 4,
-      position: [0, -1.1, 0],
+      position: [0, -0.9, 0],
     },
     {
       name: 'Beef Shawarma',
