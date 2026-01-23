@@ -69,21 +69,21 @@ export const menuData = {
       price: '55 RON',
       description: 'Marinated chicken slow-roasted on a vertical spit, served with tahini and garlic sauce',
       modelUrl: '/models/menu-items/tacchino-sandwich.glb',
-      scale: 8,
+      scale: 6,
     },
     {
       name: 'Beef Shawarma',
       price: '60 RON',
       description: 'Tender beef marinated in spices, served with tahini and pickles',
       modelUrl: '/models/menu-items/PULLED PORK SANDWICH.glb',
-      scale: 8,
+      scale: 6,
     },
     {
       name: 'Mixed Grill Platter',
       price: '95 RON',
       description: 'Lamb kebabs, chicken skewers, and kofta served with rice and grilled vegetables',
       modelUrl: '/models/menu-items/limba-de-vita-cu-masline.glb',
-      scale: 9,
+      scale: 7,
     },
     {
       name: 'Lamb Kebab',
@@ -120,6 +120,7 @@ export const menuData = {
       description: 'Layers of phyllo pastry with pistachios and honey syrup',
       modelUrl: '/models/menu-items/fagottini-ai-formaggio-e-pere.glb',
       scale: 10,
+      position: [0, -2.5, 0],
     },
     {
       name: 'Kashta',

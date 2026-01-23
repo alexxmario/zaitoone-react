@@ -22,14 +22,6 @@ function Model({ url, scale = 1, position = [0, 0, 0], autoRotate = false }) {
   );
 }
 
-function Loader() {
-  return (
-    <div className="flex items-center justify-center h-full">
-      <div className="text-gold-400 text-lg animate-pulse">Loading 3D Model...</div>
-    </div>
-  );
-}
-
 const Model3DViewer = ({
   modelUrl,
   scale = 1,
@@ -47,7 +39,7 @@ const Model3DViewer = ({
         gl={{ alpha: true, antialias: true }}
         style={{ background: 'transparent' }}
       >
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
           <pointLight position={[-10, -10, -10]} intensity={0.5} />

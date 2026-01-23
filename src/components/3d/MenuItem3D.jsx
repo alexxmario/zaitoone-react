@@ -7,6 +7,7 @@ const MenuItem3D = ({
   modelUrl,
   imageUrl,
   scale = 1,
+  position = [0, -1.5, 0],
   autoRotate = true,
 }) => {
   return (
@@ -16,7 +17,7 @@ const MenuItem3D = ({
           <Model3DViewer
             modelUrl={modelUrl}
             scale={scale}
-            position={[0, -1.5, 0]}
+            position={position}
             autoRotate={autoRotate}
             enableZoom={false}
             enablePan={false}

@@ -17,6 +17,7 @@ const MenuCard = ({ item, use3D = false }) => {
           price={item.price}
           modelUrl={item.modelUrl}
           scale={item.scale || 1}
+          position={item.position}
           autoRotate={true}
         />
       </div>
