@@ -70,7 +70,7 @@ export const menuData = {
       description: 'Marinated chicken slow-roasted on a vertical spit, served with tahini and garlic sauce',
       modelUrl: '/models/menu-items/tacchino-sandwich.glb',
       scale: 4,
-      position: [0, -0.5, 0],
+      position: [0, -1, 0],
     },
     {
       name: 'Beef Shawarma',
@@ -78,7 +78,7 @@ export const menuData = {
       description: 'Tender beef marinated in spices, served with tahini and pickles',
       modelUrl: '/models/menu-items/PULLED PORK SANDWICH.glb',
       scale: 4,
-      position: [0, -0.5, 0],
+      position: [0, -1, 0],
     },
     {
       name: 'Mixed Grill Platter',
@@ -86,7 +86,7 @@ export const menuData = {
       description: 'Lamb kebabs, chicken skewers, and kofta served with rice and grilled vegetables',
       modelUrl: '/models/menu-items/limba-de-vita-cu-masline.glb',
       scale: 5,
-      position: [0, -0.5, 0],
+      position: [0, -1, 0],
     },
     {
       name: 'Lamb Kebab',
