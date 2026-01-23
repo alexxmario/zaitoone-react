@@ -122,7 +122,7 @@ export const menuData = {
       price: '28 RON',
       description: 'Layers of phyllo pastry with pistachios and honey syrup',
       modelUrl: '/models/menu-items/fagottini-ai-formaggio-e-pere.glb',
-      scale: 10,
+      scale: 5,
       position: [0, -2.5, 0],
     },
     {
