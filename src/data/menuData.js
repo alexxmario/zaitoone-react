@@ -86,7 +86,7 @@ export const menuData = {
       description: 'Lamb kebabs, chicken skewers, and kofta served with rice and grilled vegetables',
       modelUrl: '/models/menu-items/limba-de-vita-cu-masline.glb',
       scale: 5,
-      position: [0, -0.6, 0],
+      position: [0, -0.8, 0],
     },
     {
       name: 'Lamb Kebab',
