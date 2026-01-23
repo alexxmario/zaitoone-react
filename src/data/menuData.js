@@ -123,7 +123,7 @@ export const menuData = {
       description: 'Layers of phyllo pastry with pistachios and honey syrup',
       modelUrl: '/models/menu-items/fagottini-ai-formaggio-e-pere.glb',
       scale: 5,
-      position: [0, -0.8, 0],
+      position: [0, -1, 0],
     },
     {
       name: 'Kashta',
