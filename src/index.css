@@ -160,6 +160,17 @@
     margin: 0 auto 2rem;
     filter: drop-shadow(0 0 60px rgba(212, 158, 61, 0.5));
     overflow: visible;
+    opacity: 1;
+    animation: fadeIn 1s ease-in forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -231,7 +242,7 @@
   }
 
   .loading-progress-fill {
-    animation: loading-progress 5s ease-out forwards, shimmer 1.5s ease-in-out infinite !important;
+    animation: loading-progress 6s ease-out forwards, shimmer 1.5s ease-in-out infinite !important;
   }
 
   @keyframes shimmer {

@@ -5,7 +5,7 @@ const LoadingScreen = ({ onComplete }) => {
   const [isSplitting, setIsSplitting] = useState(false);
 
   useEffect(() => {
-    // Wait for 5 seconds, then start the split animation
+    // Wait for 6 seconds to allow 3D model to load and display, then start the split animation
     const timer = setTimeout(() => {
       setIsSplitting(true);
 
@@ -13,7 +13,7 @@ const LoadingScreen = ({ onComplete }) => {
       setTimeout(() => {
         if (onComplete) onComplete();
       }, 1500);
-    }, 5000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
