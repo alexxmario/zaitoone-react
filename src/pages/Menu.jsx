@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, X } from 'lucide-react';
 import ParticleSystem from '../components/ParticleSystem';
@@ -80,7 +80,6 @@ const MenuCard = ({ item, use3D = false }) => {
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(0);
-  const categoryRefs = useRef([]);
 
   useEffect(() => {
     const cleanup = initRevealOnScroll();
