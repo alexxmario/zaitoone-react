@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import ParticleSystem from '../components/ParticleSystem';
 import GradientOrbs from '../components/GradientOrbs';
 import MenuItem3D from '../components/3d/MenuItem3D';
@@ -78,15 +78,96 @@ const MenuCard = ({ item, use3D = false }) => {
 };
 
 const Menu = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(0);
+  const categoryRefs = useRef([]);
+
   useEffect(() => {
     const cleanup = initRevealOnScroll();
     return cleanup;
   }, []);
 
+  const scrollToCategory = (index) => {
+    const element = document.getElementById(`category-${categories[index].id}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setActiveCategory(index);
+    setMenuOpen(false);
+  };
+
+  const cycleCategory = (direction) => {
+    const newIndex = direction === 'next'
+      ? (activeCategory + 1) % categories.length
+      : (activeCategory - 1 + categories.length) % categories.length;
+    scrollToCategory(newIndex);
+  };
+
   return (
     <div className="min-h-screen">
       <ParticleSystem />
       <GradientOrbs />
+
+      {/* Floating Category Menu Button */}
+      <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50">
+        {/* Menu Toggle Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className={`w-12 h-12 rounded-full bg-stone-900/90 border border-gold-500/30 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:border-gold-500/60 hover:bg-stone-800/90 ${menuOpen ? 'bg-gold-500/20' : ''}`}
+        >
+          {menuOpen ? (
+            <X className="w-5 h-5 text-gold-400" />
+          ) : (
+            <div className="flex flex-col gap-1">
+              <span className="w-4 h-0.5 bg-gold-400 rounded-full" />
+              <span className="w-4 h-0.5 bg-gold-400 rounded-full" />
+              <span className="w-4 h-0.5 bg-gold-400 rounded-full" />
+            </div>
+          )}
+        </button>
+
+        {/* Category Panel */}
+        <div
+          className={`absolute left-0 top-16 transition-all duration-300 ${
+            menuOpen
+              ? 'opacity-100 translate-x-0 pointer-events-auto'
+              : 'opacity-0 -translate-x-4 pointer-events-none'
+          }`}
+        >
+          <div className="bg-stone-900/95 border border-gold-500/20 backdrop-blur-md rounded-xl p-3 min-w-[180px]">
+            <p className="text-gold-500/60 text-xs uppercase tracking-wider px-3 py-2">Categories</p>
+            {categories.map((category, index) => (
+              <button
+                key={category.id}
+                onClick={() => scrollToCategory(index)}
+                className={`w-full text-left px-3 py-2 rounded-lg transition-all text-sm ${
+                  activeCategory === index
+                    ? 'bg-gold-500/20 text-gold-400'
+                    : 'text-stone-300 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                {category.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Cycle Arrows */}
+          <div className="flex justify-center gap-2 mt-3">
+            <button
+              onClick={() => cycleCategory('prev')}
+              className="w-8 h-8 rounded-full bg-stone-900/90 border border-gold-500/20 flex items-center justify-center text-gold-400 hover:bg-stone-800/90 transition-all"
+            >
+              <span className="text-sm">&#8593;</span>
+            </button>
+            <button
+              onClick={() => cycleCategory('next')}
+              className="w-8 h-8 rounded-full bg-stone-900/90 border border-gold-500/20 flex items-center justify-center text-gold-400 hover:bg-stone-800/90 transition-all"
+            >
+              <span className="text-sm">&#8595;</span>
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-stone-900/50 to-stone-950">
@@ -127,7 +208,7 @@ const Menu = () => {
       <section className="py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {categories.map((category) => (
-            <div key={category.id} className="mb-24">
+            <div key={category.id} id={`category-${category.id}`} className="mb-24 scroll-mt-24">
               <div className="mb-12 text-center reveal">
                 <span className="text-gold-500 font-script text-2xl opacity-80 mb-2 block">
                   {category.label}
