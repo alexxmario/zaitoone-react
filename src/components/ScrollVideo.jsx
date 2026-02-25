@@ -45,35 +45,39 @@ const ScrollVideo = ({
 
   // Preload first batch + black intro frames, then signal loaded
   useEffect(() => {
-    let cancelled = false;
+    const cancelledRef = { current: false };
+    const loadedRef = { current: 0 };
     const firstBatchEnd = Math.min(BATCH_SIZE, TOTAL_FRAMES) - 1;
-    let loaded = 0;
     const needed = firstBatchEnd + 1;
 
-    for (let i = 0; i <= firstBatchEnd; i++) {
-      loadingRef.current.add(i);
+    const loadImage = (index) => {
+      loadingRef.current.add(index);
       const img = new Image();
       img.onload = () => {
-        if (cancelled) return;
-        imagesRef.current[i] = img;
-        loadingRef.current.delete(i);
-        loaded++;
-        if (loaded >= needed) setIsLoaded(true);
+        if (cancelledRef.current) return;
+        imagesRef.current[index] = img;
+        loadingRef.current.delete(index);
+        loadedRef.current++;
+        if (loadedRef.current >= needed) setIsLoaded(true);
       };
       img.onerror = () => {
-        if (cancelled) return;
-        loadingRef.current.delete(i);
-        loaded++;
-        if (loaded >= needed) setIsLoaded(true);
+        if (cancelledRef.current) return;
+        loadingRef.current.delete(index);
+        loadedRef.current++;
+        if (loadedRef.current >= needed) setIsLoaded(true);
       };
-      img.src = getFrameSrc(i);
+      img.src = getFrameSrc(index);
+    };
+
+    for (let i = 0; i <= firstBatchEnd; i++) {
+      loadImage(i);
     }
 
     const fallback = setTimeout(() => {
-      if (!cancelled && loaded > 0) setIsLoaded(true);
+      if (!cancelledRef.current && loadedRef.current > 0) setIsLoaded(true);
     }, 3000);
 
-    return () => { cancelled = true; clearTimeout(fallback); };
+    return () => { cancelledRef.current = true; clearTimeout(fallback); };
   }, []);
 
   // Draw a frame on the canvas (with nearest-loaded fallback)
