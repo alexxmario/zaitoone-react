@@ -21,10 +21,10 @@ const ScrollVideo = ({
   const overlayRef = useRef(null);
   const topBarRef = useRef(null);
   const bottomBarRef = useRef(null);
+  const introRef = useRef(null);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [introVisible, setIntroVisible] = useState(true);
-  const [introFading, setIntroFading] = useState(false);
 
   // Load a range of frames
   const loadFrameRange = useCallback((start, end) => {
@@ -109,12 +109,6 @@ const ScrollVideo = ({
     ctx.drawImage(img, drawX, drawY, drawW, drawH);
   }, []);
 
-  // Auto-fade the black intro
-  useEffect(() => {
-    if (!isLoaded) return;
-    const t = setTimeout(() => setIntroFading(true), 1500);
-    return () => clearTimeout(t);
-  }, [isLoaded]);
 
   // Resize canvas
   useEffect(() => {
@@ -136,7 +130,7 @@ const ScrollVideo = ({
     if (!container || !isLoaded) return;
 
     let rafId;
-    let introFadedByScroll = false;
+    let introHidden = false;
 
     const update = () => {
       const scrollY = window.scrollY;
@@ -160,17 +154,29 @@ const ScrollVideo = ({
         loadFrameRange(batchStart, batchEnd);
       }
 
-      // Intro fade on scroll past black frames (one-time setState is fine)
-      if (!introFadedByScroll && targetFrame >= BLACK_INTRO_FRAMES) {
-        introFadedByScroll = true;
-        setIntroFading(true);
+      // Smooth intro fade based on scroll — starts fading earlier and more gradually
+      if (introRef.current && !introHidden) {
+        // Start fading at frame 5, fully transparent by frame 35 (30 frame fade)
+        const fadeStart = 5;
+        const fadeDuration = 30;
+        const introOpacity = targetFrame <= fadeStart
+          ? 1
+          : Math.max(0, 1 - (targetFrame - fadeStart) / fadeDuration);
+
+        introRef.current.style.opacity = introOpacity;
+
+        // Hide element after fully faded to save rendering
+        if (introOpacity <= 0 && !introHidden) {
+          introHidden = true;
+          setIntroVisible(false);
+        }
       }
 
-      // Overlay opacity — direct DOM write
+      // Overlay opacity — direct DOM write (fade text slightly faster)
       if (overlayRef.current) {
         const opacity = targetFrame <= BLACK_INTRO_FRAMES
           ? 1
-          : Math.max(0, 1 - (targetFrame - BLACK_INTRO_FRAMES) / 15);
+          : Math.max(0, 1 - (targetFrame - BLACK_INTRO_FRAMES) / 20);
         overlayRef.current.style.opacity = opacity;
       }
 
@@ -227,12 +233,12 @@ const ScrollVideo = ({
 
         {introVisible && (
           <div
-            className="absolute inset-0 bg-black pointer-events-none z-10"
+            ref={introRef}
+            className="absolute inset-0 pointer-events-none z-10"
             style={{
-              opacity: introFading ? 0 : 1,
-              transition: 'opacity 1.2s ease-out',
+              opacity: 1,
+              background: 'linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(10, 9, 8) 100%)',
             }}
-            onTransitionEnd={() => { if (introFading) setIntroVisible(false); }}
           />
         )}
 
