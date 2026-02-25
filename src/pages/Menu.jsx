@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, X } from 'lucide-react';
 import ParticleSystem from '../components/ParticleSystem';
 import GradientOrbs from '../components/GradientOrbs';
-import MenuItem3D from '../components/3d/MenuItem3D';
 import { initRevealOnScroll } from '../utils/animations';
 import { menuData, categories } from '../data/menuData';
 
@@ -12,7 +11,7 @@ const MenuCard = ({ item }) => {
   const has3D = item.modelUrl;
 
   const cardContent = (
-    <div className={`glass-card glow-border rounded-xl overflow-hidden transition-all reveal ${hasLink ? 'group hover:bg-white/[0.03] cursor-pointer' : 'hover:bg-white/[0.02]'}`}>
+    <div className={`glass-card glow-border rounded-xl overflow-hidden transition-all reveal relative ${hasLink ? 'group hover:bg-white/[0.03] cursor-pointer' : 'hover:bg-white/[0.02]'}`}>
       {/* 3D Badge for items with models */}
       {has3D && hasLink && (
         <div className="absolute top-4 left-4 z-10 bg-gold-500/90 text-stone-950 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
@@ -20,20 +19,8 @@ const MenuCard = ({ item }) => {
         </div>
       )}
 
-      {/* 3D Model or Image */}
-      {has3D ? (
-        <div className="relative h-80 bg-gradient-to-b from-stone-900 to-stone-950">
-          <MenuItem3D
-            name={item.name}
-            description={item.description}
-            price={item.price}
-            modelUrl={item.modelUrl}
-            scale={item.scale || 1}
-            position={item.position}
-            autoRotate={true}
-          />
-        </div>
-      ) : item.image ? (
+      {/* Always show image */}
+      {item.image && (
         <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
           <img
             src={item.image}
@@ -42,7 +29,7 @@ const MenuCard = ({ item }) => {
             loading="lazy"
           />
         </div>
-      ) : null}
+      )}
 
       {/* Content */}
       <div className="p-6">
@@ -67,7 +54,7 @@ const MenuCard = ({ item }) => {
 
   if (hasLink) {
     return (
-      <Link to={`/menu/${item.slug}`} className="block relative">
+      <Link to={`/menu/${item.slug}`} className="block">
         {cardContent}
       </Link>
     );
