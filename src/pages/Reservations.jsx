@@ -140,8 +140,15 @@ const Reservations = () => {
                       >
                         +40 737 299 900
                       </a>
+                      <br />
+                      <a
+                        href="tel:+40731000000"
+                        className="text-stone-400 hover:text-gold-400 transition-colors text-lg"
+                      >
+                        +40 731 000 000
+                      </a>
                       <p className="text-stone-500 text-sm mt-1">
-                        Call us for reservations or inquiries
+                        rezervari@zaitoone.ro
                       </p>
                     </div>
                   </div>
@@ -155,9 +162,10 @@ const Reservations = () => {
                     <div>
                       <h4 className="text-white font-semibold mb-2 text-lg">Opening Hours</h4>
                       <p className="text-stone-400">
-                        Daily: 12:00 PM - 11:00 PM
+                        Luni-Joi: 12:00 - 23:00<br />
+                        Vineri-Sâmbătă: 12:00 - 00:00<br />
+                        Duminică: 12:00 - 22:00
                       </p>
-                      <p className="text-stone-500 text-sm mt-1">Kitchen closes at 10:30 PM</p>
                     </div>
                   </div>
                 </div>

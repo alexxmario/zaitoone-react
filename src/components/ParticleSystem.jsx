@@ -13,6 +13,8 @@ const ParticleSystem = () => {
 
     const particles = [];
     const particleCount = 15;
+    let rafId;
+    let visible = !document.hidden;
 
     class Particle {
       constructor() {
@@ -27,7 +29,6 @@ const ParticleSystem = () => {
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-
         if (this.x > canvas.width) this.x = 0;
         if (this.x < 0) this.x = canvas.width;
         if (this.y > canvas.height) this.y = 0;
@@ -47,24 +48,36 @@ const ParticleSystem = () => {
     }
 
     function animate() {
+      if (!visible) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(particle => {
         particle.update();
         particle.draw();
       });
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     }
 
     animate();
+
+    const onVisibility = () => {
+      visible = !document.hidden;
+      if (visible) {
+        cancelAnimationFrame(rafId);
+        animate();
+      }
+    };
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
+    document.addEventListener('visibilitychange', onVisibility);
     window.addEventListener('resize', handleResize);
 
     return () => {
+      cancelAnimationFrame(rafId);
+      document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('resize', handleResize);
     };
   }, []);

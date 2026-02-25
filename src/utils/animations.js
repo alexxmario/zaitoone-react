@@ -23,31 +23,34 @@ export const initRevealOnScroll = () => {
 // Parallax Scroll Effect
 export const initParallaxScroll = () => {
   const parallaxBg = document.querySelector('.parallax-bg');
+  let rafId;
 
   const handleScroll = () => {
-    if (parallaxBg) {
-      const scrolled = window.scrollY;
-      parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      if (parallaxBg) {
+        parallaxBg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+      }
+    });
   };
 
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   return () => {
     window.removeEventListener('scroll', handleScroll);
+    cancelAnimationFrame(rafId);
   };
 };
 
 // Scroll-based Rotation for Circular Images
 export const initScrollRotation = () => {
   const spinImages = document.querySelectorAll('[data-scroll-rotate] .spin-image');
-  let scrollTimeout;
+  let rafId;
 
   const updateSpinRotation = () => {
     spinImages.forEach((img) => {
       const rect = img.getBoundingClientRect();
       const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-
       if (isInView) {
         const rotation = (window.scrollY * 0.15) % 360;
         img.style.transform = `rotate(${rotation}deg)`;
@@ -56,25 +59,23 @@ export const initScrollRotation = () => {
   };
 
   const handleScroll = () => {
-    if (!scrollTimeout) {
-      scrollTimeout = setTimeout(() => {
-        updateSpinRotation();
-        scrollTimeout = null;
-      }, 10);
-    }
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(updateSpinRotation);
   };
 
-  window.addEventListener('scroll', handleScroll);
-  updateSpinRotation(); // Initial call
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  updateSpinRotation();
 
   return () => {
     window.removeEventListener('scroll', handleScroll);
+    cancelAnimationFrame(rafId);
   };
 };
 
 // 3D Tilt Effect on Cards
 export const initTiltCards = () => {
   const tiltCards = document.querySelectorAll('.tilt-card');
+  const handlers = new Map();
 
   tiltCards.forEach((card) => {
     const handleMouseMove = (e) => {
@@ -85,7 +86,6 @@ export const initTiltCards = () => {
       const centerY = rect.height / 2;
       const rotateX = (y - centerY) / 20;
       const rotateY = (centerX - x) / 20;
-
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
     };
 
@@ -93,23 +93,27 @@ export const initTiltCards = () => {
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
     };
 
+    handlers.set(card, { handleMouseMove, handleMouseLeave });
     card.addEventListener('mousemove', handleMouseMove);
     card.addEventListener('mouseleave', handleMouseLeave);
   });
 
   return () => {
     tiltCards.forEach((card) => {
-      card.removeEventListener('mousemove', () => {});
-      card.removeEventListener('mouseleave', () => {});
+      const h = handlers.get(card);
+      if (h) {
+        card.removeEventListener('mousemove', h.handleMouseMove);
+        card.removeEventListener('mouseleave', h.handleMouseLeave);
+      }
     });
+    handlers.clear();
   };
 };
 
 // Animated Counter
 export const animateCounter = (element, target, duration = 2000) => {
-  const start = 0;
   const increment = target / (duration / 16);
-  let current = start;
+  let current = 0;
 
   const updateCounter = () => {
     current += increment;

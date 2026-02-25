@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-import LoadingScreen from './components/LoadingScreen';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
+import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Reservations from './pages/Reservations';
 
@@ -20,30 +21,31 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
+function AppContent() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <CustomCursor />
-
-      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
 
       <div className="min-h-screen bg-stone-950 text-stone-200">
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:slug" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/reservations" element={<Reservations />} />
         </Routes>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

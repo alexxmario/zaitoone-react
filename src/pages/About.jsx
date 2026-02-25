@@ -61,20 +61,20 @@ const About = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="reveal text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-              A Taste of Lebanon in Bucharest
+              Gusturi libaneze atemporale în București
             </h2>
             <div className="w-20 h-[1px] bg-gold-500 mx-auto mb-8" />
             <p className="text-stone-400 text-lg leading-relaxed mb-6">
-              Nestled in the exclusive area of Lake Herastrau, Zaitoone is more than just a
-              restaurant—it's a culinary journey to the heart of Lebanon. We bring you the
-              authentic flavors, aromas, and traditions of Lebanese cuisine, crafted with passion
-              and served with Mediterranean warmth.
+              Din 2014 pe Bulevardul Nicolae Caramfil, aproape de lacul Floreasca, Zaitoone este
+              mai mult decât un restaurant — este o călătorie culinară în inima Libanului. Vă aducem
+              aromele, gusturile și tradițiile autentice ale bucătăriei libaneze, pregătite cu pasiune
+              și servite cu căldura mediteraneană.
             </p>
             <p className="text-stone-400 text-lg leading-relaxed">
-              Our name, "Zaitoone" (meaning "olive" in Arabic), reflects our commitment to using
-              the finest ingredients and traditional recipes passed down through generations. Every
-              dish tells a story of Lebanese heritage, prepared with love and respect for culinary
-              traditions that have delighted palates for centuries.
+              Numele nostru, „Zaitoone" (care înseamnă „măslină" în arabă), reflectă angajamentul
+              nostru de a folosi cele mai fine ingrediente și rețete tradiționale transmise din generație
+              în generație. Fiecare preparat spune o poveste a moștenirii libaneze, pregătit cu dragoste
+              și respect pentru tradițiile culinare.
             </p>
           </div>
         </div>
@@ -184,8 +184,8 @@ const About = () => {
             <div className="reveal">
               <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">Visit Us</h2>
               <p className="text-stone-400 text-lg mb-8 leading-relaxed">
-                Located in the exclusive Lake Herastrau area, Zaitoone offers an elegant dining
-                experience in one of Bucharest's most beautiful locations.
+                Situată în zona exclusivistă a lacului Floreasca, Zaitoone oferă o experiență culinară
+                elegantă într-una dintre cele mai frumoase locații din București.
               </p>
 
               <div className="space-y-6">
@@ -213,6 +213,13 @@ const About = () => {
                     >
                       +40 737 299 900
                     </a>
+                    <br />
+                    <a
+                      href="tel:+40731000000"
+                      className="text-stone-400 hover:text-gold-400 transition-colors"
+                    >
+                      +40 731 000 000
+                    </a>
                   </div>
                 </div>
 
@@ -223,7 +230,9 @@ const About = () => {
                   <div>
                     <h4 className="text-white font-semibold mb-1">Hours</h4>
                     <p className="text-stone-400">
-                      Daily<br />12:00 PM - 11:00 PM
+                      Luni-Joi: 12:00 - 23:00<br />
+                      Vineri-Sâmbătă: 12:00 - 00:00<br />
+                      Duminică: 12:00 - 22:00
                     </p>
                   </div>
                 </div>

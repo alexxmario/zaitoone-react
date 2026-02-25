@@ -8,6 +8,36 @@ import { initRevealOnScroll } from '../utils/animations';
 import { menuData, categories } from '../data/menuData';
 
 const MenuCard = ({ item, use3D = false }) => {
+  if (use3D && item.modelUrl && item.slug) {
+    return (
+      <div className="reveal">
+        <Link to={`/menu/${item.slug}`} className="block group">
+          <div className="glass-card glow-border rounded-2xl overflow-hidden group-hover:bg-white/[0.05] transition-all relative">
+            {/* View 3D Badge */}
+            <div className="absolute top-4 left-4 z-10 bg-gold-500/90 text-stone-950 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+              View in 3D
+            </div>
+
+            <div className="relative h-80 bg-gradient-to-b from-stone-900 to-stone-950">
+              <MenuItem3D
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                modelUrl={item.modelUrl}
+                scale={item.scale || 1}
+                position={item.position}
+                autoRotate={true}
+              />
+            </div>
+
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/5 transition-colors pointer-events-none" />
+          </div>
+        </Link>
+      </div>
+    );
+  }
+
   if (use3D && item.modelUrl) {
     return (
       <div className="reveal">
@@ -25,12 +55,24 @@ const MenuCard = ({ item, use3D = false }) => {
   }
 
   return (
-    <div className="glass-card glow-border p-6 rounded-xl hover:bg-white/[0.02] transition-all reveal">
-      <div className="flex justify-between items-start mb-3">
-        <h3 className="font-serif text-xl text-white">{item.name}</h3>
-        <span className="text-gold-400 font-medium">{item.price}</span>
+    <div className="glass-card glow-border rounded-xl overflow-hidden hover:bg-white/[0.02] transition-all reveal">
+      {item.image && (
+        <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="font-serif text-xl text-white">{item.name}</h3>
+          <span className="text-gold-400 font-medium whitespace-nowrap ml-4">{item.price}</span>
+        </div>
+        <p className="text-stone-400 text-sm leading-relaxed">{item.description}</p>
       </div>
-      <p className="text-stone-400 text-sm leading-relaxed">{item.description}</p>
     </div>
   );
 };
@@ -97,7 +139,7 @@ const Menu = () => {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {menuData[category.id]?.map((item, index) => (
-                  <MenuCard key={index} item={item} use3D={true} />
+                  <MenuCard key={index} item={item} use3D={false} />
                 ))}
               </div>
             </div>

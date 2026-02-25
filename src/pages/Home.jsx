@@ -1,17 +1,60 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
-import { ChefHat, Award, Sparkles, ArrowRight } from 'lucide-react';
-import ParticleSystem from '../components/ParticleSystem';
-import GradientOrbs from '../components/GradientOrbs';
-import { initRevealOnScroll, initScrollRotation, animateCounter } from '../utils/animations';
+import { ArrowRight } from 'lucide-react';
+import ScrollVideo from '../components/ScrollVideo';
+import { initRevealOnScroll, animateCounter } from '../utils/animations';
+
+const ScrollModel3D = lazy(() => import('../components/3d/ScrollModel3D'));
+const Floating3DGallery = lazy(() => import('../components/3d/Floating3DGallery'));
+
+const signatureDishes = [
+  {
+    name: 'Creveți Zaitoone',
+    category: 'Fructe de mare',
+    image: 'https://framerusercontent.com/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+    description: 'Creveți aromați cu sos special de rodie'
+  },
+  {
+    name: 'Falafel',
+    category: 'Mezze',
+    image: 'https://framerusercontent.com/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+    description: 'Chifteluțe de năut cu ceapă, coriandru, usturoi'
+  },
+  {
+    name: 'Shawarma de vită',
+    category: 'Signature',
+    image: 'https://framerusercontent.com/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+    description: 'Mușchi de vită marinat în sos special'
+  },
+  {
+    name: 'Grătar mixt',
+    category: 'Grătar',
+    image: 'https://framerusercontent.com/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+    description: 'Vită, pui, kafta, cotlet de miel'
+  },
+  {
+    name: 'Künefe la frigare',
+    category: 'Deserturi',
+    image: 'https://framerusercontent.com/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+    description: 'Fidea caramelizată, brânză dulce, miere, fistic'
+  },
+  {
+    name: 'Tabbouleh',
+    category: 'Salate',
+    image: 'https://framerusercontent.com/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+    description: 'Pătrunjel, ceapă, quinoa, lămâie, ulei de măsline'
+  }
+];
 
 const Home = () => {
   const statsRef = useRef(null);
   const hasAnimated = useRef(false);
+  const horizontalRef = useRef(null);
+  const horizontalSectionRef = useRef(null);
+  const indicatorsRef = useRef([]);
 
   useEffect(() => {
     const cleanupReveal = initRevealOnScroll();
-    const cleanupRotation = initScrollRotation();
 
     // Animated counters for stats
     const statsObserver = new IntersectionObserver(
@@ -30,388 +73,452 @@ const Home = () => {
       { threshold: 0.5 }
     );
 
+    // Stagger animation observer
+    const staggerObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
     const currentStatsRef = statsRef.current;
+    const staggerElements = document.querySelectorAll('.fade-up-stagger');
 
     if (currentStatsRef) {
       statsObserver.observe(currentStatsRef);
     }
 
+    staggerElements.forEach((el) => staggerObserver.observe(el));
+
+    // Scroll-driven horizontal gallery
+    let rafId;
+    const handleGalleryScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const section = horizontalSectionRef.current;
+        const track = horizontalRef.current;
+        if (!section || !track) return;
+
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = section.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrollableDistance = sectionHeight - viewportHeight;
+
+        // progress: 0 when sticky starts, 1 when sticky ends
+        const progress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
+
+        // Total width to translate = track scroll width - viewport width
+        const maxTranslate = track.scrollWidth - window.innerWidth;
+        track.style.transform = `translateX(-${progress * maxTranslate}px)`;
+
+        // Update active slide indicator via DOM
+        const itemWidth = 500;
+        const newActive = Math.min(
+          Math.round((progress * maxTranslate) / (itemWidth + 24)),
+          signatureDishes.length - 1
+        );
+        indicatorsRef.current.forEach((el, i) => {
+          if (!el) return;
+          if (i === newActive) {
+            el.style.width = '3rem';
+            el.className = 'h-px transition-all duration-300 bg-gold-400';
+          } else {
+            el.style.width = '2rem';
+            el.className = 'h-px transition-all duration-300 bg-stone-700';
+          }
+        });
+      });
+    };
+
+    window.addEventListener('scroll', handleGalleryScroll, { passive: true });
+
     return () => {
       cleanupReveal();
-      cleanupRotation();
       if (currentStatsRef) {
         statsObserver.unobserve(currentStatsRef);
       }
+      staggerElements.forEach((el) => staggerObserver.unobserve(el));
+      window.removeEventListener('scroll', handleGalleryScroll);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <ParticleSystem />
-      <GradientOrbs />
+    <div className="min-h-screen atmospheric-bg">
+      {/* Film Grain Overlay */}
+      <div className="film-grain" />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
-        <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1544148103-0773bf10d330?w=1920&q=80')",
-            }}
-          >
-            <div className="absolute inset-0 bg-stone-500/40" />
-            <div className="absolute inset-0 backdrop-grayscale backdrop-brightness-50" />
-          </div>
-        </div>
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 1: Cinematic Video Hero
+      ═══════════════════════════════════════════════════════════════════ */}
+      <ScrollVideo
+        enableLetterbox={true}
+        letterboxHeight={12}
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 pb-20">
-          <div className="reveal space-y-8">
-            <div className="inline-block px-6 py-3 rounded-full border border-gold-500/30 bg-gold-500/10 backdrop-blur-sm">
-              <p className="text-gold-400 text-sm font-medium tracking-wider uppercase">
-                Award-Winning Lebanese Cuisine
-              </p>
-            </div>
+        overlayContent={
+          <div className="text-center px-4 z-10">
+            {/* Elegant pre-title */}
+            <p className="text-stone-400 text-xs tracking-[0.4em] uppercase mb-8 opacity-70">
+              Award-Winning Lebanese Cuisine
+            </p>
 
-            <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-gold-400 mb-6 text-shadow">
+            {/* Main title */}
+            <h1 className="font-script text-editorial-xl text-gold-400 mb-6">
               Zaitoone
             </h1>
 
-            <p className="font-serif text-3xl md:text-5xl text-white max-w-4xl mx-auto leading-tight text-shadow">
-              Authentic Lebanese Flavors in the Heart of Bucharest
+            {/* Subtle divider */}
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent mx-auto mb-6" />
+
+            {/* Tagline */}
+            <p className="font-serif text-xl md:text-2xl text-white/90 tracking-wide">
+              Bucharest
             </p>
-
-            <p className="text-stone-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Experience the rich traditions of Lebanese cuisine with our award-winning dishes,
-              crafted from premium ingredients and served with Mediterranean hospitality.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              <Link
-                to="/menu"
-                className="liquid-button group px-8 py-4 bg-gold-500 hover:bg-gold-600 text-stone-950 font-semibold rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-gold-500/50"
-              >
-                <span>Explore Menu</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                to="/reservations"
-                className="px-8 py-4 border-2 border-gold-500 text-gold-400 hover:bg-gold-500/10 font-semibold rounded-full transition-all duration-300"
-              >
-                Reserve a Table
-              </Link>
-            </div>
           </div>
+        }
+        scrollMultiplier={1}
+      />
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-gold-500/30 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-gold-500 rounded-full mt-2 animate-pulse" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Section - Mezze */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center" data-scroll-rotate>
-            {/* Image */}
-            <div className="reveal relative group">
-              <div className="absolute -inset-8 bg-gradient-to-br from-gold-500/20 to-gold-600/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                <div className="absolute inset-0 rounded-full border-2 border-gold-500/20 animate-pulse" />
-                <div className="absolute inset-4 rounded-full border border-gold-500/10" />
-                <div
-                  className="absolute inset-8 rounded-full overflow-hidden shadow-2xl shadow-gold-500/20 spin-image"
-                  style={{ transform: 'rotate(0deg)' }}
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800"
-                    alt="Mezze"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500/20 to-transparent" />
-                </div>
-                <div className="absolute top-0 right-0 bg-gold-500 text-stone-950 px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg animate-float">
-                  Traditional
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="reveal space-y-6">
-              <div className="inline-block">
-                <p className="font-script text-5xl text-gold-400 mb-2">Mezze</p>
-                <div className="h-1 w-24 bg-gradient-to-r from-gold-500 to-transparent" />
-              </div>
-              <h3 className="font-serif text-4xl text-white leading-tight">
-                Begin Your Journey with Authentic Starters
-              </h3>
-              <p className="text-stone-400 text-lg leading-relaxed">
-                Our mezze selection features traditional Lebanese appetizers, from creamy hummus
-                and smoky moutabal to crispy falafel and savory sambousik. Each dish is prepared
-                using time-honored recipes passed down through generations.
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 2: Welcome Manifesto
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            {/* Left: Large Editorial Headline */}
+            <div className="lg:col-span-7 reveal">
+              <p className="font-script text-gold-400 text-3xl md:text-4xl mb-6">
+                Povestea noastră
               </p>
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="glass-card p-4 rounded-xl">
-                  <p className="text-gold-400 font-semibold">Hummus</p>
-                  <p className="text-stone-500 text-sm">Classic chickpea purée</p>
-                </div>
-                <div className="glass-card p-4 rounded-xl">
-                  <p className="text-gold-400 font-semibold">Falafel</p>
-                  <p className="text-stone-500 text-sm">Crispy herb patties</p>
-                </div>
-              </div>
-              <Link
-                to="/menu"
-                className="inline-flex items-center space-x-2 text-gold-400 hover:text-gold-300 transition-colors group"
-              >
-                <span className="font-medium">View Full Mezze Menu</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <h2 className="font-serif text-editorial-lg text-white leading-none">
+                Rădăcini
+                <br />
+                <span className="text-gold-400">libaneze,</span>
+                <br />
+                eleganță
+                <br />
+                contemporană
+              </h2>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Categories Section - Grilled */}
-      <section className="relative py-32 overflow-hidden bg-gradient-to-b from-transparent to-gold-500/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center" data-scroll-rotate>
-            {/* Content */}
-            <div className="reveal space-y-6 md:order-1">
-              <div className="inline-block">
-                <p className="font-script text-5xl text-gold-400 mb-2">From the Grill</p>
-                <div className="h-1 w-24 bg-gradient-to-r from-gold-500 to-transparent" />
-              </div>
-              <h3 className="font-serif text-4xl text-white leading-tight">
-                Master-Grilled Perfection
-              </h3>
-              <p className="text-stone-400 text-lg leading-relaxed">
-                Experience the art of Lebanese grilling with our signature shawarma, succulent
-                kebabs, and mixed grill platters. Each piece is marinated in aromatic spices and
-                grilled to perfection over open flames.
+            {/* Right: Body Text */}
+            <div className="lg:col-span-5 lg:pt-24 reveal">
+              <div className="line-draw mb-8" />
+              <p className="text-stone-400 text-lg leading-relaxed mb-6">
+                Din 2014 pe Bulevardul Nicolae Caramfil, aproape de lacul Floreasca.
+                Rețete de familie, mezze și grătar pe jar, ospitalitate autentică libaneză
+                în inima Bucureștiului.
               </p>
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="glass-card p-4 rounded-xl">
-                  <p className="text-gold-400 font-semibold">Shawarma</p>
-                  <p className="text-stone-500 text-sm">Marinated & spit-roasted</p>
-                </div>
-                <div className="glass-card p-4 rounded-xl">
-                  <p className="text-gold-400 font-semibold">Mixed Grill</p>
-                  <p className="text-stone-500 text-sm">Assorted grilled meats</p>
-                </div>
-              </div>
-              <Link
-                to="/menu"
-                className="inline-flex items-center space-x-2 text-gold-400 hover:text-gold-300 transition-colors group"
-              >
-                <span className="font-medium">Explore Grilled Specialties</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            {/* Image */}
-            <div className="reveal relative group md:order-2">
-              <div className="absolute -inset-8 bg-gradient-to-br from-gold-500/20 to-gold-600/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                <div className="absolute inset-0 rounded-full border-2 border-gold-500/20 animate-pulse" />
-                <div className="absolute inset-4 rounded-full border border-gold-500/10" />
-                <div
-                  className="absolute inset-8 rounded-full overflow-hidden shadow-2xl shadow-gold-500/20 spin-image"
-                  style={{ transform: 'rotate(0deg)' }}
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800"
-                    alt="Grilled"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500/20 to-transparent" />
-                </div>
-                <div className="absolute top-0 left-0 bg-gold-500 text-stone-950 px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg animate-float">
-                  Signature
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Section - Sweets */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center" data-scroll-rotate>
-            {/* Image */}
-            <div className="reveal relative group">
-              <div className="absolute -inset-8 bg-gradient-to-br from-gold-500/20 to-gold-600/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                <div className="absolute inset-0 rounded-full border-2 border-gold-500/20 animate-pulse" />
-                <div className="absolute inset-4 rounded-full border border-gold-500/10" />
-                <div
-                  className="absolute inset-8 rounded-full overflow-hidden shadow-2xl shadow-gold-500/20 spin-image"
-                  style={{ transform: 'rotate(0deg)' }}
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800&q=80"
-                    alt="Sweets"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500/20 to-transparent" />
-                </div>
-                <div className="absolute top-0 right-0 bg-gold-500 text-stone-950 px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg animate-float">
-                  Artisan
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="reveal space-y-6">
-              <div className="inline-block">
-                <p className="font-script text-5xl text-gold-400 mb-2">Sweets</p>
-                <div className="h-1 w-24 bg-gradient-to-r from-gold-500 to-transparent" />
-              </div>
-              <h3 className="font-serif text-4xl text-white leading-tight">
-                Divine Lebanese Desserts
-              </h3>
-              <p className="text-stone-400 text-lg leading-relaxed">
-                Complete your meal with our exquisite selection of traditional Lebanese sweets.
-                From honey-soaked baklava to creamy knefeh, each dessert is a masterpiece of
-                delicate flavors and textures.
+              <p className="text-stone-500 text-base leading-relaxed mb-8">
+                Fiecare ingredient spune o poveste. Fiecare masă este o călătorie
+                spre țărmurile însorite ale Mediteranei.
               </p>
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="glass-card p-4 rounded-xl">
-                  <p className="text-gold-400 font-semibold">Baklava</p>
-                  <p className="text-stone-500 text-sm">Layered phyllo & nuts</p>
-                </div>
-                <div className="glass-card p-4 rounded-xl">
-                  <p className="text-gold-400 font-semibold">Knefeh</p>
-                  <p className="text-stone-500 text-sm">Cheese pastry dessert</p>
-                </div>
-              </div>
               <Link
-                to="/menu"
-                className="inline-flex items-center space-x-2 text-gold-400 hover:text-gold-300 transition-colors group"
+                to="/about"
+                className="gold-underline text-gold-400 text-sm tracking-widest uppercase"
               >
-                <span className="font-medium">Discover Sweet Delights</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Descoperă povestea noastră
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section ref={statsRef} className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-gold-500/5 to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="reveal text-center">
-              <div className="font-serif text-5xl md:text-6xl text-gold-400 mb-2">
-                <span className="counter" data-target="3">
-                  0
-                </span>
-                x
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 3: 3D Sandwich Showcase (Scroll-Controlled)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <Suspense fallback={<div className="h-screen bg-stone-950" />}>
+        <ScrollModel3D
+          modelUrl="/models/menu-items/tacchino-sandwich.glb"
+          enableLetterbox={true}
+          letterboxHeight={10}
+        />
+      </Suspense>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 4: Floating 3D Parallax Gallery
+      ═══════════════════════════════════════════════════════════════════ */}
+      <Suspense fallback={<div className="h-screen bg-stone-950" />}>
+        <Floating3DGallery />
+      </Suspense>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 5: Signature Dishes Showcase
+      ═══════════════════════════════════════════════════════════════════ */}
+      <div ref={horizontalSectionRef} className="relative" style={{ height: '300vh' }}>
+        <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
+          {/* Section Header */}
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 w-full reveal">
+            <div className="flex justify-between items-end">
+              <div>
+                <p className="font-script text-gold-400 text-2xl mb-3">Signature</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-white">
+                  Curated Selections
+                </h2>
               </div>
-              <p className="text-stone-400 uppercase tracking-wider text-sm">Horeca Awards</p>
+              <Link
+                to="/menu"
+                className="hidden md:flex items-center gap-2 text-gold-400 text-sm tracking-widest uppercase gold-underline"
+              >
+                Full Menu
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <div className="reveal text-center">
-              <div className="font-serif text-5xl md:text-6xl text-gold-400 mb-2">
-                <span className="counter" data-target="100">
-                  0
-                </span>
-                %
+          </div>
+
+          {/* Horizontal Track */}
+          <div
+            ref={horizontalRef}
+            className="flex gap-6 px-6 lg:px-8 pb-8 will-change-transform"
+            style={{ transform: 'translateX(0px)' }}
+          >
+            {signatureDishes.map((dish) => (
+              <div
+                key={dish.name}
+                className="dish-card group flex-shrink-0"
+                style={{ width: '70vw', maxWidth: '500px' }}
+              >
+                {/* Image Container */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-stone-900 mb-6">
+                  <img
+                    src={dish.image}
+                    alt={dish.name}
+                    className="dish-card-image w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="text-gold-400/80 text-xs tracking-[0.2em] uppercase">
+                      {dish.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Text Content */}
+                <div className="px-1">
+                  <h3 className="font-serif text-2xl text-white mb-2 group-hover:text-gold-400 transition-colors">
+                    {dish.name}
+                  </h3>
+                  <p className="text-stone-500 text-sm">
+                    {dish.description}
+                  </p>
+                </div>
               </div>
-              <p className="text-stone-400 uppercase tracking-wider text-sm">Halal Certified</p>
+            ))}
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center gap-2 mt-4">
+            {signatureDishes.map((_, index) => (
+              <div
+                key={index}
+                ref={el => indicatorsRef.current[index] = el}
+                className={`h-px transition-all duration-300 ${
+                  index === 0 ? 'bg-gold-400' : 'bg-stone-700'
+                }`}
+                style={{ width: index === 0 ? '3rem' : '2rem' }}
+              />
+            ))}
+          </div>
+
+          {/* Mobile Menu Link */}
+          <div className="md:hidden text-center mt-6">
+            <Link
+              to="/menu"
+              className="inline-flex items-center gap-2 text-gold-400 text-sm tracking-widest uppercase"
+            >
+              View Full Menu
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 5: Experience / Stats
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        {/* Full-width atmospheric image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80"
+            alt="Restaurant atmosphere"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/95 to-stone-950" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Left: Statement */}
+            <div className="reveal">
+              <p className="font-script text-gold-400 text-3xl mb-6">
+                Experiența
+              </p>
+              <h2 className="font-serif text-editorial-lg text-white mb-8">
+                Un deceniu de
+                <br />
+                <span className="text-gold-400">excelență</span>
+              </h2>
+              <p className="text-stone-400 text-lg leading-relaxed">
+                Triplă câștigătoare a Premiilor Horeca, recunoscută pentru excelență culinară
+                și ospitalitate autentică mediteraneană.
+              </p>
             </div>
-            <div className="reveal text-center">
-              <div className="font-serif text-5xl md:text-6xl text-gold-400 mb-2">
-                <span className="counter" data-target="50">
-                  0
-                </span>
-                +
+
+            {/* Right: Refined Stats */}
+            <div ref={statsRef} className="fade-up-stagger">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-12">
+                <div className="text-center lg:text-left">
+                  <div className="font-serif text-5xl md:text-6xl text-white mb-2">
+                    <span className="counter" data-target="3">0</span>
+                    <span className="text-gold-400">×</span>
+                  </div>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
+                    Premii Horeca
+                  </p>
+                </div>
+
+                <div className="text-center lg:text-left">
+                  <div className="font-serif text-5xl md:text-6xl text-white mb-2">
+                    <span className="counter" data-target="10">0</span>
+                    <span className="text-gold-400">+</span>
+                  </div>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
+                    Ani de excelență
+                  </p>
+                </div>
+
+                <div className="text-center lg:text-left">
+                  <div className="font-serif text-5xl md:text-6xl text-white mb-2">
+                    <span className="counter" data-target="150">0</span>
+                    <span className="text-gold-400">+</span>
+                  </div>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
+                    Preparate autentice
+                  </p>
+                </div>
+
+                <div className="text-center lg:text-left">
+                  <div className="font-serif text-5xl md:text-6xl text-white mb-2">
+                    <span className="counter" data-target="100">0</span>
+                    <span className="text-gold-400">%</span>
+                  </div>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
+                    Halal Certified
+                  </p>
+                </div>
               </div>
-              <p className="text-stone-400 uppercase tracking-wider text-sm">Menu Items</p>
-            </div>
-            <div className="reveal text-center">
-              <div className="font-serif text-5xl md:text-6xl text-gold-400 mb-2">
-                <span className="counter" data-target="10">
-                  0
-                </span>
-                +
-              </div>
-              <p className="text-stone-400 uppercase tracking-wider text-sm">Years Experience</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 6: Values / Philosophy
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
           <div className="text-center mb-16 reveal">
-            <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
-              Why Choose Zaitoone
+            <p className="font-script text-gold-400 text-2xl mb-3">Filosofie</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-white">
+              Principiile noastre
             </h2>
-            <p className="text-stone-400 text-lg max-w-2xl mx-auto">
-              Experience authentic Lebanese cuisine with award-winning quality
-            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="reveal glass-card glow-border p-8 rounded-2xl text-center group hover:bg-white/[0.05] transition-all">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gold-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Sparkles className="w-8 h-8 text-gold-400" />
-              </div>
-              <h3 className="font-serif text-2xl text-white mb-3">100% Halal</h3>
-              <p className="text-stone-400 leading-relaxed">
-                All our ingredients are certified Halal, ensuring authentic and ethical Lebanese
-                cuisine
+          {/* Value Cards - Elegant, minimal */}
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5">
+            <div className="value-card reveal text-center md:text-left">
+              <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">01</p>
+              <h3 className="font-serif text-2xl text-white mb-4">Autenticitate</h3>
+              <p className="text-stone-500 leading-relaxed">
+                Rețete tradiționale libaneze transmise din generație în generație,
+                preparate cu aceeași dedicare ca și strămoșii noștri.
               </p>
             </div>
 
-            <div className="reveal glass-card glow-border p-8 rounded-2xl text-center group hover:bg-white/[0.05] transition-all">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gold-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Award className="w-8 h-8 text-gold-400" />
-              </div>
-              <h3 className="font-serif text-2xl text-white mb-3">Award-Winning</h3>
-              <p className="text-stone-400 leading-relaxed">
-                Recognized by Horeca Awards for three consecutive years (2022, 2023, 2024)
+            <div className="value-card reveal text-center md:text-left">
+              <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">02</p>
+              <h3 className="font-serif text-2xl text-white mb-4">Calitate</h3>
+              <p className="text-stone-500 leading-relaxed">
+                Ingrediente premium selectate cu grijă. 100% certificat Halal,
+                asigurând cele mai înalte standarde în fiecare preparat.
               </p>
             </div>
 
-            <div className="reveal glass-card glow-border p-8 rounded-2xl text-center group hover:bg-white/[0.05] transition-all">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gold-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <ChefHat className="w-8 h-8 text-gold-400" />
-              </div>
-              <h3 className="font-serif text-2xl text-white mb-3">Authentic Recipes</h3>
-              <p className="text-stone-400 leading-relaxed">
-                Traditional Lebanese recipes using premium ingredients and time-honored techniques
+            <div className="value-card reveal text-center md:text-left">
+              <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">03</p>
+              <h3 className="font-serif text-2xl text-white mb-4">Ospitalitate</h3>
+              <p className="text-stone-500 leading-relaxed">
+                Căldura mediteraneană întâlnește serviciul rafinat. Fiecare oaspete
+                este tratat ca un membru al familiei, fiecare vizită o sărbătoare.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-gold-500/10 to-transparent" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-          <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-            Ready to Experience Authentic Lebanese Cuisine?
-          </h2>
-          <p className="text-stone-400 text-lg mb-8">
-            Reserve your table today and embark on a culinary journey to Lebanon
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 8: Reservation CTA
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        {/* Subtle pattern background */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(212, 158, 61, 0.1) 2px,
+                rgba(212, 158, 61, 0.1) 4px
+              )`
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center reveal">
+          <p className="font-script text-gold-400 text-3xl mb-6">
+            Alătură-te
           </p>
+
+          <h2 className="font-serif text-editorial-lg text-white mb-8">
+            Rezervă-ți
+            <br />
+            <span className="text-gold-400">experiența</span>
+          </h2>
+
+          <p className="text-stone-400 text-lg max-w-xl mx-auto mb-12">
+            Pornește într-o călătorie culinară prin Liban.
+            Masa ta te așteaptă.
+          </p>
+
           <Link
             to="/reservations"
-            className="liquid-button inline-flex items-center space-x-2 px-8 py-4 bg-gold-500 hover:bg-gold-600 text-stone-950 font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-gold-500/50"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gold-500 text-stone-950 font-serif text-lg tracking-wide hover:bg-gold-400 transition-colors duration-300"
           >
-            <span>Make a Reservation</span>
+            Fă o rezervare
             <ArrowRight className="w-5 h-5" />
           </Link>
+
+          {/* Contact info */}
+          <div className="mt-16 pt-8 border-t border-white/5">
+            <p className="text-stone-600 text-sm tracking-wider">
+              Sau sună-ne la{' '}
+              <a href="tel:+40737299900" className="text-stone-400 hover:text-gold-400 transition-colors">
+                +40 737 299 900
+              </a>
+              {' '}/{' '}
+              <a href="tel:+40731000000" className="text-stone-400 hover:text-gold-400 transition-colors">
+                +40 731 000 000
+              </a>
+            </p>
+          </div>
         </div>
       </section>
     </div>

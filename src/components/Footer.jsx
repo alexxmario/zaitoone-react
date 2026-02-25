@@ -58,16 +58,22 @@ const Footer = () => {
                   Str. Nicolae G. Caramfil 2<br />Bucharest, Romania
                 </span>
               </li>
-              <li className="flex items-center space-x-3 text-sm">
-                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="tel:+40737299900" className="text-stone-400 hover:text-gold-400 transition-colors">
-                  +40 737 299 900
-                </a>
+              <li className="flex items-start space-x-3 text-sm">
+                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
+                <span className="text-stone-400">
+                  <a href="tel:+40737299900" className="hover:text-gold-400 transition-colors">+40 737 299 900</a>
+                  <br />
+                  <a href="tel:+40731000000" className="hover:text-gold-400 transition-colors">+40 731 000 000</a>
+                  <br />
+                  <a href="mailto:rezervari@zaitoone.ro" className="hover:text-gold-400 transition-colors">rezervari@zaitoone.ro</a>
+                </span>
               </li>
               <li className="flex items-start space-x-3 text-sm">
                 <Clock className="w-4 h-4 text-gold-400 mt-0.5 flex-shrink-0" />
                 <span className="text-stone-400">
-                  Daily<br />12:00 PM - 11:00 PM
+                  Luni-Joi: 12:00 - 23:00<br />
+                  Vin-Sâm: 12:00 - 00:00<br />
+                  Duminică: 12:00 - 22:00
                 </span>
               </li>
             </ul>
@@ -96,7 +102,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-stone-500 text-sm">
-            &copy; 2024 Zaitoone Restaurant. All rights reserved.
+            &copy; 2025 Zaitoone Restaurant. Toate drepturile rezervate.
           </p>
           <p className="text-stone-500 text-sm">
             100% Halal Certified • Premium Lebanese Cuisine
