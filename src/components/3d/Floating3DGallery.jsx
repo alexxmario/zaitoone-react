@@ -5,7 +5,7 @@ import { useGLTF, Environment } from '@react-three/drei';
 // Shared scroll ref — read inside useFrame, no React re-renders
 const scrollRef = { current: 0 };
 
-const FloatingModel = ({ modelUrl, position, scale, speed, rotationSpeed, glowColor }) => {
+const FloatingModel = ({ modelUrl, position, scale, speed, rotationSpeed, glowColor, baseTilt = -0.4 }) => {
   const meshRef = useRef();
   const { scene } = useGLTF(modelUrl);
   const clonedScene = scene.clone();
@@ -14,7 +14,8 @@ const FloatingModel = ({ modelUrl, position, scale, speed, rotationSpeed, glowCo
     if (!meshRef.current) return;
     meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * speed) * 0.15;
     meshRef.current.rotation.y += rotationSpeed;
-    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.5) * 0.05;
+    // Base tilt toward viewer + subtle animation
+    meshRef.current.rotation.x = baseTilt + Math.sin(state.clock.elapsedTime * 0.5) * 0.05;
     meshRef.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.3) * 0.03;
   });
 
@@ -74,7 +75,7 @@ const Floating3DGallery = () => {
   const models = [
     {
       url: '/models/menu-items/panini-bologna.glb',
-      basePosition: [-2.5, 0.5, -1],
+      basePosition: [-2.2, 0.5, 1.5],
       scale: 3.5,
       floatSpeed: 0.8,
       rotationSpeed: 0.003,
@@ -83,7 +84,7 @@ const Floating3DGallery = () => {
     },
     {
       url: '/models/menu-items/panini-caprese.glb',
-      basePosition: [0, -0.3, 0.5],
+      basePosition: [0, -0.3, 2.5],
       scale: 4,
       floatSpeed: 1.0,
       rotationSpeed: 0.004,
@@ -92,7 +93,7 @@ const Floating3DGallery = () => {
     },
     {
       url: '/models/menu-items/panini-parma.glb',
-      basePosition: [2.5, 0.2, 1],
+      basePosition: [2.2, 0.2, 2],
       scale: 3.5,
       floatSpeed: 1.2,
       rotationSpeed: 0.005,
