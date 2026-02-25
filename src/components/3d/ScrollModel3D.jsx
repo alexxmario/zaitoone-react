@@ -15,7 +15,7 @@ function ScrollControlledModel({
   startScale = 0.6,
   endScale = 1.2,
   startPositionY = -1,
-  endPositionY = -0.3,
+  endPositionY = -2,
   baseScale = 8,
 }) {
   const meshRef = useRef();
