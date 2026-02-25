@@ -5,7 +5,7 @@ import { useGLTF, Environment } from '@react-three/drei';
 // Shared scroll ref — read inside useFrame, no React re-renders
 const scrollRef = { current: 0 };
 
-const FloatingModel = ({ modelUrl, position, scale, speed, rotationSpeed, glowColor, baseTilt = -0.4 }) => {
+const FloatingModel = ({ modelUrl, position, scale, speed, rotationSpeed, glowColor, baseTilt = 0.5 }) => {
   const meshRef = useRef();
   const { scene } = useGLTF(modelUrl);
   const clonedScene = scene.clone();
