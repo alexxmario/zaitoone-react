@@ -56,6 +56,41 @@ const About = () => {
         </div>
       </section>
 
+      {/* Cinematic Video Section */}
+      <section className="relative h-[70vh] overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/about.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-stone-950/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/50 via-transparent to-stone-950/50" />
+
+        {/* Content */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-4 reveal">
+            <p className="font-script text-gold-400 text-2xl md:text-3xl mb-4 opacity-90">
+              Experience
+            </p>
+            <h2 className="font-serif text-4xl md:text-6xl text-white mb-6">
+              The Art of Lebanese<br />
+              <span className="text-gold-400">Hospitality</span>
+            </h2>
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto" />
+          </div>
+        </div>
+
+        {/* Bottom Fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stone-950 to-transparent" />
+      </section>
+
       {/* Story Section */}
       <section className="relative py-32 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
