@@ -35,7 +35,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Avocado, salată verde, ciuperci, sparanghel, porumb',
       descriptionEn: 'Avocado, green lettuce, mushrooms, asparagus, corn',
-      image: '',
+      image: 'https://framerusercontent.com/images/ovvO9WK8OoRrOp03M5fx7No.png',
     },
     {
       name: 'Platou de legume proaspete',
@@ -133,7 +133,7 @@ export const menuData = {
       price: '49 RON',
       description: 'Vinete cu roșii și condimente',
       descriptionEn: 'Eggplant with tomatoes and spices',
-      image: '',
+      image: 'https://framerusercontent.com/images/YMEQsQIgactbUu8wo1yACboFfWA.png',
     },
     {
       name: 'Fasole verde',
@@ -207,7 +207,7 @@ export const menuData = {
       price: '65 RON',
       description: 'Vinete coapte cu tahini, lămâie, trufe',
       descriptionEn: 'Roasted eggplant with tahini, lemon, truffles',
-      image: '',
+      image: 'https://framerusercontent.com/images/pNTJFhvGFDH0boLC5kTIa4Vcg4.png',
     },
     {
       name: 'Moutabal',
@@ -267,7 +267,7 @@ export const menuData = {
       price: '49 RON',
       description: 'Pastă de năut cu tahini, lămâie, muguri de pin',
       descriptionEn: 'Chickpea paste with tahini, lemon, pine nuts',
-      image: '',
+      image: 'https://framerusercontent.com/images/F2t5sdNwdyE8t5HLpV8h7cDI.png',
     },
     {
       name: 'Hummus cu carne și muguri de pin',
@@ -611,7 +611,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu brânză, ceapă, pătrunjel, mentă',
       descriptionEn: 'Dough filled with cheese, onion, parsley, mint',
-      image: '',
+      image: 'https://framerusercontent.com/images/g6AnhScxNrRnGcK2tfLrtksDI.png',
     },
     {
       name: 'Sambusek cu spanac (5 buc.)',
@@ -765,7 +765,7 @@ export const menuData = {
       price: '124 RON',
       description: 'Mușchi de vită la grătar cu cartofi prăjiți',
       descriptionEn: 'Grilled beef loin with fried potatoes',
-      image: '',
+      image: 'https://framerusercontent.com/images/0j35xVxAB9QAJnFHG5ZG6ZPAaUY.png',
     },
     {
       name: 'Șnițel de pui',
