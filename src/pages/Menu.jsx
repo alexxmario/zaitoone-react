@@ -7,25 +7,15 @@ import { initRevealOnScroll } from '../utils/animations';
 import { menuData, categories } from '../data/menuData';
 
 const MenuCard = ({ item }) => {
-  const hasLink = item.slug;
-  const has3D = item.modelUrl;
-
-  const cardContent = (
-    <div className={`glass-card glow-border rounded-xl overflow-hidden transition-all reveal relative ${hasLink ? 'group hover:bg-white/[0.03] cursor-pointer' : 'hover:bg-white/[0.02]'}`}>
-      {/* 3D Badge for items with models */}
-      {has3D && hasLink && (
-        <div className="absolute top-4 left-4 z-10 bg-gold-500/90 text-stone-950 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
-          View in 3D
-        </div>
-      )}
-
-      {/* Always show image */}
+  return (
+    <div className="glass-card glow-border rounded-xl overflow-hidden transition-all reveal relative hover:bg-white/[0.02]">
+      {/* Image */}
       {item.image && (
         <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
           <img
             src={item.image}
             alt={item.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
@@ -34,33 +24,13 @@ const MenuCard = ({ item }) => {
       {/* Content */}
       <div className="p-6">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="font-serif text-xl text-white group-hover:text-gold-400 transition-colors">{item.name}</h3>
+          <h3 className="font-serif text-xl text-white">{item.name}</h3>
           <span className="text-gold-400 font-medium whitespace-nowrap ml-4">{item.price}</span>
         </div>
         <p className="text-stone-400 text-sm leading-relaxed">{item.description}</p>
-        {hasLink && (
-          <p className="text-gold-500/60 text-xs mt-4 uppercase tracking-wider group-hover:text-gold-400 transition-colors">
-            View Details →
-          </p>
-        )}
       </div>
-
-      {/* Hover overlay */}
-      {hasLink && (
-        <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/5 transition-colors pointer-events-none" />
-      )}
     </div>
   );
-
-  if (hasLink) {
-    return (
-      <Link to={`/menu/${item.slug}`} className="block">
-        {cardContent}
-      </Link>
-    );
-  }
-
-  return cardContent;
 };
 
 const Menu = () => {
