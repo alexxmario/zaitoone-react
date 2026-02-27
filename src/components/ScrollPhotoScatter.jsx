@@ -31,15 +31,15 @@ const menuPhotos = [
   },
 ];
 
-// Random scattered positions for each photo - spread wider to fill left side
+// Random scattered positions for each photo - spread even wider
 const photoConfigs = [
-  { x: -85, y: -20, rotate: -12, scale: 0.9, z: 1 },
-  { x: -10, y: -35, rotate: 8, scale: 1.1, z: 3 },
-  { x: -55, y: 25, rotate: -6, scale: 0.85, z: 2 },
-  { x: 20, y: 15, rotate: 15, scale: 0.95, z: 4 },
-  { x: -35, y: -5, rotate: -3, scale: 1.15, z: 5 },
-  { x: -5, y: 30, rotate: 10, scale: 0.8, z: 0 },
-  { x: -70, y: 0, rotate: -18, scale: 0.75, z: 1 },
+  { x: -120, y: -30, rotate: -15, scale: 0.9, z: 1 },
+  { x: -20, y: -50, rotate: 10, scale: 1.1, z: 3 },
+  { x: -80, y: 40, rotate: -8, scale: 0.85, z: 2 },
+  { x: 25, y: 25, rotate: 18, scale: 0.95, z: 4 },
+  { x: -50, y: -10, rotate: -4, scale: 1.15, z: 5 },
+  { x: -10, y: 45, rotate: 12, scale: 0.8, z: 0 },
+  { x: -100, y: 5, rotate: -20, scale: 0.75, z: 1 },
 ];
 
 const lerp = (start, end, progress) => start + (end - start) * progress;
@@ -152,7 +152,7 @@ const ScrollPhotoScatter = ({
 
         {/* Scattered Photos */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative w-[900px] h-[600px] max-w-[95vw] -translate-x-[5%]">
+          <div className="relative w-[1100px] h-[700px] max-w-[98vw] -translate-x-[8%]">
             {menuPhotos.map((photo, index) => {
               const config = photoConfigs[index];
               return (
