@@ -160,20 +160,9 @@ const Floating3DGallery = () => {
         ))}
       </div>
 
-      <div className="relative z-10 pt-32 pb-16 text-center">
-        <span className="text-gold-500 font-script text-3xl opacity-90 block mb-4 animate-float">
-          Culinary Artistry
-        </span>
-        <h2 className="font-serif text-5xl md:text-6xl text-white mb-6 shimmer-text">
-          Our Signature Collection
-        </h2>
-        <p className="text-stone-400 text-lg max-w-2xl mx-auto px-4">
-          Each dish tells a story of tradition, passion, and culinary excellence
-        </p>
-        <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-8" />
-      </div>
+      {/* Header section removed - can be restored later */}
 
-      <div className="sticky top-0 h-screen">
+      <div className="sticky top-0 h-screen mt-32">
         <Canvas
           camera={{ position: [0, 0, 6], fov: 50 }}
           gl={{ antialias: true, alpha: true }}

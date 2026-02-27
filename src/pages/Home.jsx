@@ -2,9 +2,8 @@ import { useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ScrollVideo from '../components/ScrollVideo';
+import ScrollPhotoScatter from '../components/ScrollPhotoScatter';
 import { initRevealOnScroll, animateCounter } from '../utils/animations';
-
-const ScrollModel3D = lazy(() => import('../components/3d/ScrollModel3D'));
 const Floating3DGallery = lazy(() => import('../components/3d/Floating3DGallery'));
 
 const signatureDishes = [
@@ -229,15 +228,12 @@ const Home = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 3: 3D Sandwich Showcase (Scroll-Controlled)
+          SECTION 3: Photo Scatter Showcase (Scroll-Controlled)
       ═══════════════════════════════════════════════════════════════════ */}
-      <Suspense fallback={<div className="h-screen bg-stone-950" />}>
-        <ScrollModel3D
-          modelUrl="/models/menu-items/tacchino-sandwich.glb"
-          enableLetterbox={true}
-          letterboxHeight={10}
-        />
-      </Suspense>
+      <ScrollPhotoScatter
+        enableLetterbox={true}
+        letterboxHeight={10}
+      />
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 4: Floating 3D Parallax Gallery
