@@ -1,10 +1,9 @@
-import { useEffect, useRef, Suspense, lazy } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ScrollVideo from '../components/ScrollVideo';
 import ScrollPhotoScatter from '../components/ScrollPhotoScatter';
 import { initRevealOnScroll, animateCounter } from '../utils/animations';
-const Floating3DGallery = lazy(() => import('../components/3d/Floating3DGallery'));
 
 const signatureDishes = [
   {
@@ -235,15 +234,10 @@ const Home = () => {
         letterboxHeight={10}
       />
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 4: Floating 3D Parallax Gallery
-      ═══════════════════════════════════════════════════════════════════ */}
-      <Suspense fallback={<div className="h-screen bg-stone-950" />}>
-        <Floating3DGallery />
-      </Suspense>
+      {/* Floating 3D Parallax Gallery - removed, component kept for later */}
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 5: Signature Dishes Showcase
+          SECTION 4: Signature Dishes Showcase
       ═══════════════════════════════════════════════════════════════════ */}
       <div ref={horizontalSectionRef} className="relative" style={{ height: '300vh' }}>
         <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
