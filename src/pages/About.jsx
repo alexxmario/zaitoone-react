@@ -264,10 +264,10 @@ const About = () => {
                     </a>
                     <br />
                     <a
-                      href="tel:+40737299900"
+                      href="tel:+40376203741"
                       className="text-stone-400 hover:text-gold-400 transition-colors"
                     >
-                      +40 737 299 900
+                      +40 (376) 203 741
                     </a>
                   </div>
                 </div>
