@@ -291,7 +291,7 @@ const About = () => {
             <div className="reveal glass-card glow-border p-8 rounded-2xl">
               <div className="aspect-square rounded-xl overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+                  src="/visit.jpg"
                   alt="Restaurant Interior"
                   className="w-full h-full object-cover"
                 />
