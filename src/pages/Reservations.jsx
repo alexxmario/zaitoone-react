@@ -127,7 +127,7 @@ const Reservations = () => {
       </section>
 
       {/* Contact & Form Section */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}
@@ -240,8 +240,8 @@ const Reservations = () => {
             </div>
 
             {/* Reservation Form */}
-            <div className="reveal">
-              <div className="glass-card glow-border p-8 rounded-2xl">
+            <div className="reveal relative z-20">
+              <div className="glass-card glow-border p-8 rounded-2xl relative">
                 <h3 className="font-serif text-3xl text-white mb-6">Reserve Your Table</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
