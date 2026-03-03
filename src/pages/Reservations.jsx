@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Instagram, Sparkles, Award, MapPinned } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import ParticleSystem from '../components/ParticleSystem';
@@ -11,7 +11,6 @@ const EMAILJS_TEMPLATE_ID = 'template_m5szl02';
 const EMAILJS_PUBLIC_KEY = 'tj_YvQ_mvZ3eN-48Y';
 
 const Reservations = () => {
-  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
