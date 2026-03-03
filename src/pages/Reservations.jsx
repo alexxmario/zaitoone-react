@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MapPin, Phone, Clock, Instagram, Sparkles, Award, MapPinned } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import ParticleSystem from '../components/ParticleSystem';
 import GradientOrbs from '../components/GradientOrbs';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
 
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = 'service_68mdslu';
+const EMAILJS_TEMPLATE_ID = 'template_m5szl02';
+const EMAILJS_PUBLIC_KEY = 'tj_YvQ_mvZ3eN-48Y';
+
 const Reservations = () => {
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,7 +22,8 @@ const Reservations = () => {
     message: '',
   });
 
-  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success
+  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success, error
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const cleanupReveal = initRevealOnScroll();
@@ -35,12 +43,28 @@ const Reservations = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('submitting');
+    setErrorMessage('');
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          date: formData.date,
+          time: formData.time,
+          guests: formData.guests,
+          message: formData.message || 'Fără cereri speciale',
+          to_email: 'alexionescu870@gmail.com',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
       setFormStatus('success');
       setTimeout(() => {
         setFormStatus('idle');
@@ -53,8 +77,16 @@ const Reservations = () => {
           guests: '',
           message: '',
         });
-      }, 2000);
-    }, 1500);
+      }, 3000);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setFormStatus('error');
+      setErrorMessage('Failed to send reservation. Please try calling us or try again later.');
+      setTimeout(() => {
+        setFormStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+    }
   };
 
   return (
@@ -339,6 +371,8 @@ const Reservations = () => {
                     className={`liquid-button w-full py-4 rounded-full font-semibold transition-all duration-300 shadow-lg ${
                       formStatus === 'success'
                         ? 'bg-green-600 hover:bg-green-600'
+                        : formStatus === 'error'
+                        ? 'bg-red-600 hover:bg-red-600'
                         : 'bg-gold-500 hover:bg-gold-600 hover:shadow-gold-500/50'
                     } ${
                       formStatus === 'submitting' ? 'opacity-70' : ''
@@ -347,7 +381,12 @@ const Reservations = () => {
                     {formStatus === 'idle' && 'Submit Reservation Request'}
                     {formStatus === 'submitting' && 'Sending Request...'}
                     {formStatus === 'success' && '✓ Request Sent!'}
+                    {formStatus === 'error' && '✕ Failed to Send'}
                   </button>
+
+                  {errorMessage && (
+                    <p className="text-red-400 text-sm text-center">{errorMessage}</p>
+                  )}
 
                   <p className="text-stone-500 text-sm text-center">
                     We'll confirm your reservation via phone or email within 24 hours
