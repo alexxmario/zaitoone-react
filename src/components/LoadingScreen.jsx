@@ -42,7 +42,7 @@ const LoadingScreen = ({ onComplete }) => {
         </div>
         <div className="loading-text-center">
           <h1 className="mb-4 animate-pulse">
-            <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-20 md:h-32 mx-auto" />
+            <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-20 md:h-32 mx-auto" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
           </h1>
           <p className="text-stone-400 text-xl tracking-widest uppercase">
             Loading Experience...
