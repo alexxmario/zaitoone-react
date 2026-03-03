@@ -42,7 +42,7 @@ const LoadingScreen = ({ onComplete }) => {
         </div>
         <div className="loading-text-center">
           <h1 className="font-script text-7xl md:text-9xl text-gold-400 mb-4 animate-pulse">
-            Zaitoone
+            <span className="text-[1.08em]">Z</span>aitoone
           </h1>
           <p className="text-stone-400 text-xl tracking-widest uppercase">
             Loading Experience...
