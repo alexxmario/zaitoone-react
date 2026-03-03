@@ -57,7 +57,7 @@ const Reservations = () => {
           time: formData.time,
           guests: formData.guests,
           message: formData.message || 'Fără cereri speciale',
-          to_email: 'alexionescu870@gmail.com',
+          to_email: 'office@zaitoone.ro',
         },
         EMAILJS_PUBLIC_KEY
       );
