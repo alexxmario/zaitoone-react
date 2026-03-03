@@ -26,7 +26,7 @@ const Navigation = () => {
             </div>
             <div>
               <h1 className="font-script text-3xl text-gold-400 group-hover:text-gold-300 transition-colors">
-                <span className="font-serif text-[1.08em]">Z</span>aitoone
+                Zaitoone
               </h1>
               <p className="text-xs text-stone-400 tracking-widest uppercase">Lebanese Cuisine</p>
             </div>

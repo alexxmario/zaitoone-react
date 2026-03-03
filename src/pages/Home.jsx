@@ -166,7 +166,7 @@ const Home = () => {
 
             {/* Main title */}
             <h1 className="font-script text-editorial-xl text-gold-400 mb-6">
-              <span className="font-serif text-[1.08em]">Z</span>aitoone
+              Zaitoone
             </h1>
 
             {/* Subtle divider */}
