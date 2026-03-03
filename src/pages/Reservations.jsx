@@ -90,7 +90,7 @@ const Reservations = () => {
     <div className="min-h-screen">
       {/* Hero Section with Parallax */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="parallax-bg absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0" style={{ pointerEvents: 'none' }}>
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -235,8 +235,8 @@ const Reservations = () => {
             </div>
 
             {/* Reservation Form */}
-            <div className="reveal relative z-20">
-              <div className="glass-card glow-border p-8 rounded-2xl relative">
+            <div className="reveal relative" style={{ zIndex: 50, position: 'relative' }}>
+              <div className="glass-card glow-border p-8 rounded-2xl relative" style={{ pointerEvents: 'auto' }}>
                 <h3 className="font-serif text-3xl text-white mb-6">Reserve Your Table</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
