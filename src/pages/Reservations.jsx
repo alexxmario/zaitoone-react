@@ -326,18 +326,40 @@ const Reservations = () => {
                       <label htmlFor="time" className="block text-stone-400 mb-2 text-sm">
                         Ora *
                       </label>
-                      <input
-                        type="time"
+                      <select
                         id="time"
                         name="time"
-                        min="12:00"
-                        max="23:00"
                         value={formData.time}
                         onChange={handleChange}
                         required
                         style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
                         className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                      />
+                      >
+                        <option value="" disabled>Selectează ora</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
+                        <option value="16:00">16:00</option>
+                        <option value="16:30">16:30</option>
+                        <option value="17:00">17:00</option>
+                        <option value="17:30">17:30</option>
+                        <option value="18:00">18:00</option>
+                        <option value="18:30">18:30</option>
+                        <option value="19:00">19:00</option>
+                        <option value="19:30">19:30</option>
+                        <option value="20:00">20:00</option>
+                        <option value="20:30">20:30</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="22:00">22:00</option>
+                        <option value="22:30">22:30</option>
+                        <option value="23:00">23:00</option>
+                      </select>
                     </div>
                   </div>
 
