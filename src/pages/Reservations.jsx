@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Instagram, Sparkles, Award, MapPinned } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import ParticleSystem from '../components/ParticleSystem';
-import GradientOrbs from '../components/GradientOrbs';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
 
 // EmailJS Configuration
@@ -90,9 +88,6 @@ const Reservations = () => {
 
   return (
     <div className="min-h-screen">
-      <ParticleSystem />
-      <GradientOrbs />
-
       {/* Hero Section with Parallax */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="parallax-bg absolute inset-0 z-0">
