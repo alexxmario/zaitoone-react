@@ -35,7 +35,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Avocado, salată verde, ciuperci, sparanghel, porumb',
       descriptionEn: 'Avocado, green lettuce, mushrooms, asparagus, corn',
-      image: 'https://framerusercontent.com/images/ovvO9WK8OoRrOp03M5fx7No.png',
+      image: '/images/salata-panache.jpg',
     },
     {
       name: 'Platou de legume proaspete',
