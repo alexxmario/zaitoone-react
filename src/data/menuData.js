@@ -611,7 +611,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu brânză, ceapă, pătrunjel, mentă',
       descriptionEn: 'Dough filled with cheese, onion, parsley, mint',
-      image: 'https://framerusercontent.com/images/g6AnhScxNrRnGcK2tfLrtksDI.png',
+      image: '/images/sambusek-cu-branza.jpg',
     },
     {
       name: 'Sambusek cu spanac (5 buc.)',
