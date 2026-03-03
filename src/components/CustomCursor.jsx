@@ -14,7 +14,7 @@ const CustomCursor = () => {
       posRef.current.y = e.clientY;
       if (!rafRef.current) {
         rafRef.current = requestAnimationFrame(() => {
-          cursor.style.transform = `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0)`;
+          cursor.style.transform = `translate3d(${posRef.current.x - 16}px, ${posRef.current.y - 16}px, 0)`;
           rafRef.current = null;
         });
       }
