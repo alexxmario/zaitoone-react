@@ -173,7 +173,7 @@ const Reservations = () => {
                         +40 (376) 203 741
                       </a>
                       <p className="text-stone-500 text-sm mt-1">
-                        rezervari@zaitoone.ro
+                        office@zaitoone.ro
                       </p>
                     </div>
                   </div>
@@ -330,6 +330,8 @@ const Reservations = () => {
                         type="time"
                         id="time"
                         name="time"
+                        min="12:00"
+                        max="23:00"
                         value={formData.time}
                         onChange={handleChange}
                         required
