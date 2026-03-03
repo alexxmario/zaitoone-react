@@ -63,7 +63,7 @@ const Footer = () => {
                 <span className="text-stone-400">
                   <a href="tel:+40737299900" className="hover:text-gold-400 transition-colors">+40 737 299 900</a>
                   <br />
-                  <a href="tel:+40731000000" className="hover:text-gold-400 transition-colors">+40 731 000 000</a>
+                  <a href="tel:+40737299900" className="hover:text-gold-400 transition-colors">+40 737 299 900</a>
                   <br />
                   <a href="mailto:rezervari@zaitoone.ro" className="hover:text-gold-400 transition-colors">rezervari@zaitoone.ro</a>
                 </span>

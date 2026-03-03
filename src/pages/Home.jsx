@@ -504,8 +504,8 @@ const Home = () => {
                 +40 737 299 900
               </a>
               {' '}/{' '}
-              <a href="tel:+40731000000" className="text-stone-400 hover:text-gold-400 transition-colors">
-                +40 731 000 000
+              <a href="tel:+40737299900" className="text-stone-400 hover:text-gold-400 transition-colors">
+                +40 737 299 900
               </a>
             </p>
           </div>
