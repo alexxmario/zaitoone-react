@@ -78,7 +78,7 @@ const Reservations = () => {
     } catch (error) {
       console.error('EmailJS error:', error);
       setFormStatus('error');
-      setErrorMessage('Failed to send reservation. Please try calling us or try again later.');
+      setErrorMessage('Nu s-a putut trimite rezervarea. Vă rugăm să ne sunați sau să încercați din nou.');
       setTimeout(() => {
         setFormStatus('idle');
         setErrorMessage('');
@@ -105,17 +105,17 @@ const Reservations = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 pb-20">
           <div className="reveal">
             <span className="text-gold-500 font-script text-3xl md:text-4xl opacity-90 mb-4 block animate-float">
-              Book a Table
+              Rezervă o Masă
             </span>
           </div>
           <div className="reveal" style={{ transitionDelay: '0.1s' }}>
             <h1 className="font-serif text-5xl md:text-7xl text-white mb-6 gradient-text">
-              Reservations
+              Rezervări
             </h1>
           </div>
           <div className="reveal" style={{ transitionDelay: '0.2s' }}>
             <p className="text-stone-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-              Reserve your table for an unforgettable Lebanese dining experience
+              Rezervă-ți masa pentru o experiență culinară libaneză de neuitat
             </p>
           </div>
         </div>
@@ -128,10 +128,9 @@ const Reservations = () => {
             {/* Contact Information */}
             <div className="space-y-12">
               <div className="reveal">
-                <h2 className="font-serif text-4xl text-white mb-6">Get in Touch</h2>
+                <h2 className="font-serif text-4xl text-white mb-6">Contactează-ne</h2>
                 <p className="text-stone-400 text-lg leading-relaxed">
-                  We'd love to host you at Zaitoone. Reserve your table or contact us for any
-                  special requests.
+                  Ne-ar face plăcere să te găzduim la Zaitoone. Rezervă-ți masa sau contactează-ne pentru orice solicitare specială.
                 </p>
               </div>
 
@@ -143,11 +142,11 @@ const Reservations = () => {
                       <MapPin className="w-6 h-6 text-gold-400" />
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold mb-2 text-lg">Address</h4>
+                      <h4 className="text-white font-semibold mb-2 text-lg">Adresă</h4>
                       <p className="text-stone-400">
                         Str. Nicolae G. Caramfil 2<br />
-                        Lake Herastrau Area<br />
-                        Bucharest, Romania
+                        Zona Lacul Herăstrău<br />
+                        București, România
                       </p>
                     </div>
                   </div>
@@ -159,7 +158,7 @@ const Reservations = () => {
                       <Phone className="w-6 h-6 text-gold-400" />
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold mb-2 text-lg">Phone</h4>
+                      <h4 className="text-white font-semibold mb-2 text-lg">Telefon</h4>
                       <a
                         href="tel:+40737299900"
                         className="text-stone-400 hover:text-gold-400 transition-colors text-lg"
@@ -186,11 +185,9 @@ const Reservations = () => {
                       <Clock className="w-6 h-6 text-gold-400" />
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold mb-2 text-lg">Opening Hours</h4>
+                      <h4 className="text-white font-semibold mb-2 text-lg">Program</h4>
                       <p className="text-stone-400">
-                        Luni-Joi: 12:00 - 23:00<br />
-                        Vineri-Sâmbătă: 12:00 - 00:00<br />
-                        Duminică: 12:00 - 22:00
+                        Zilnic: 12:00 - 00:00
                       </p>
                     </div>
                   </div>
@@ -211,7 +208,7 @@ const Reservations = () => {
                       >
                         @zaitoone.ro
                       </a>
-                      <p className="text-stone-500 text-sm mt-1">Follow us for updates</p>
+                      <p className="text-stone-500 text-sm mt-1">Urmărește-ne pentru noutăți</p>
                     </div>
                   </div>
                 </div>
@@ -225,11 +222,11 @@ const Reservations = () => {
                 </div>
                 <div className="glass-card p-4 rounded-xl text-center">
                   <Award className="w-6 h-6 text-gold-400 mx-auto mb-2" />
-                  <p className="text-stone-400 text-xs">Award-Winning</p>
+                  <p className="text-stone-400 text-xs">Premiat</p>
                 </div>
                 <div className="glass-card p-4 rounded-xl text-center">
                   <MapPinned className="w-6 h-6 text-gold-400 mx-auto mb-2" />
-                  <p className="text-stone-400 text-xs">Exclusive Location</p>
+                  <p className="text-stone-400 text-xs">Locație Exclusivă</p>
                 </div>
               </div>
             </div>
@@ -253,11 +250,11 @@ const Reservations = () => {
                   zIndex: 1
                 }}
               >
-                <h3 className="font-serif text-3xl text-white mb-6">Reserve Your Table</h3>
+                <h3 className="font-serif text-3xl text-white mb-6">Rezervă-ți Masa</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-stone-400 mb-2 text-sm">
-                      Full Name *
+                      Nume Complet *
                     </label>
                     <input
                       type="text"
@@ -268,7 +265,7 @@ const Reservations = () => {
                       required
                       style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
                       className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                      placeholder="John Doe"
+                      placeholder="Ion Popescu"
                     />
                   </div>
 
@@ -286,13 +283,13 @@ const Reservations = () => {
                         required
                         style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
                         className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                        placeholder="john@example.com"
+                        placeholder="ion@exemplu.ro"
                       />
                     </div>
 
                     <div>
                       <label htmlFor="phone" className="block text-stone-400 mb-2 text-sm">
-                        Phone *
+                        Telefon *
                       </label>
                       <input
                         type="tel"
@@ -311,7 +308,7 @@ const Reservations = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="date" className="block text-stone-400 mb-2 text-sm">
-                        Date *
+                        Data *
                       </label>
                       <input
                         type="date"
@@ -327,7 +324,7 @@ const Reservations = () => {
 
                     <div>
                       <label htmlFor="time" className="block text-stone-400 mb-2 text-sm">
-                        Time *
+                        Ora *
                       </label>
                       <input
                         type="time"
@@ -344,7 +341,7 @@ const Reservations = () => {
 
                   <div>
                     <label htmlFor="guests" className="block text-stone-400 mb-2 text-sm">
-                      Number of Guests *
+                      Număr de Persoane *
                     </label>
                     <select
                       id="guests"
@@ -355,20 +352,20 @@ const Reservations = () => {
                       style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
                       className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                     >
-                      <option value="">Select number of guests</option>
-                      <option value="1">1 Guest</option>
-                      <option value="2">2 Guests</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                      <option value="5">5 Guests</option>
-                      <option value="6">6 Guests</option>
-                      <option value="7+">7+ Guests</option>
+                      <option value="">Selectează numărul de persoane</option>
+                      <option value="1">1 Persoană</option>
+                      <option value="2">2 Persoane</option>
+                      <option value="3">3 Persoane</option>
+                      <option value="4">4 Persoane</option>
+                      <option value="5">5 Persoane</option>
+                      <option value="6">6 Persoane</option>
+                      <option value="7+">7+ Persoane</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-stone-400 mb-2 text-sm">
-                      Special Requests (Optional)
+                      Cereri Speciale (Opțional)
                     </label>
                     <textarea
                       id="message"
@@ -378,7 +375,7 @@ const Reservations = () => {
                       rows="4"
                       style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
                       className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all resize-none"
-                      placeholder="Any dietary restrictions or special occasions?"
+                      placeholder="Restricții alimentare sau ocazii speciale?"
                     />
                   </div>
 
@@ -396,10 +393,10 @@ const Reservations = () => {
                       formStatus === 'submitting' ? 'opacity-70' : ''
                     } text-stone-950`}
                   >
-                    {formStatus === 'idle' && 'Submit Reservation Request'}
-                    {formStatus === 'submitting' && 'Sending Request...'}
-                    {formStatus === 'success' && '✓ Request Sent!'}
-                    {formStatus === 'error' && '✕ Failed to Send'}
+                    {formStatus === 'idle' && 'Trimite Cererea de Rezervare'}
+                    {formStatus === 'submitting' && 'Se trimite...'}
+                    {formStatus === 'success' && '✓ Cerere Trimisă!'}
+                    {formStatus === 'error' && '✕ Eroare la Trimitere'}
                   </button>
 
                   {errorMessage && (
@@ -407,7 +404,7 @@ const Reservations = () => {
                   )}
 
                   <p className="text-stone-500 text-sm text-center">
-                    We'll confirm your reservation via phone or email within 24 hours
+                    Vom confirma rezervarea ta prin telefon sau email în maxim 24 de ore
                   </p>
                 </form>
               </div>
