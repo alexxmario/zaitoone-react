@@ -25,9 +25,7 @@ const Navigation = () => {
               <img src="/logo.png" alt="Zaitoone" className="w-full h-full object-cover" />
             </div>
             <div>
-              <h1 className="font-script text-3xl text-gold-400 group-hover:text-gold-300 transition-colors">
-                Zaitoone
-              </h1>
+              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-8 group-hover:opacity-80 transition-opacity" style={{ filter: 'invert(67%) sepia(57%) saturate(396%) hue-rotate(2deg) brightness(92%) contrast(87%)' }} />
               <p className="text-xs text-stone-400 tracking-widest uppercase">Lebanese Cuisine</p>
             </div>
           </Link>

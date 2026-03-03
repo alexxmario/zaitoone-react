@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" fill="currentColor">
+  <!-- Decorative Z with olive/leaf shape -->
+  <g>
+    <!-- Three dots above Z -->
+    <circle cx="28" cy="8" r="3"/>
+    <circle cx="40" cy="5" r="2.5"/>
+    <circle cx="50" cy="10" r="2"/>
+
+    <!-- Stylized Z shape like olive leaf -->
+    <path d="M20 18 Q35 15, 45 25 Q55 35, 45 45 Q35 55, 50 65 L48 68 Q30 55, 42 43 Q50 35, 40 28 Q30 22, 18 25 Z"/>
+  </g>
+
+  <!-- "aitoone" in script style -->
+  <text x="55" y="55" font-family="'Playfair Display', Georgia, serif" font-size="36" font-style="italic" letter-spacing="1">
+    aitoone
+  </text>
+</svg>
