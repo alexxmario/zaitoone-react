@@ -71,9 +71,9 @@ const Footer = () => {
               <li className="flex items-start space-x-3 text-sm">
                 <Clock className="w-4 h-4 text-gold-400 mt-0.5 flex-shrink-0" />
                 <span className="text-stone-400">
-                  Luni-Joi: 12:00 - 23:00<br />
+                  Luni-Joi: 12:00 - 00:00<br />
                   Vin-Sâm: 12:00 - 00:00<br />
-                  Duminică: 12:00 - 22:00
+                  Duminică: 12:00 - 00:00
                 </span>
               </li>
             </ul>
@@ -94,7 +94,7 @@ const Footer = () => {
             <div className="space-y-2">
               <p className="text-xs text-gold-400 font-medium uppercase tracking-wider">Awards</p>
               <p className="text-stone-400 text-sm">Horeca Awards Winner</p>
-              <p className="text-stone-500 text-xs">2022, 2023, 2024</p>
+              <p className="text-stone-500 text-xs">2022, 2023, 2024, 2025</p>
             </div>
           </div>
         </div>

@@ -163,6 +163,18 @@ const About = () => {
               <p className="text-white font-semibold mb-2">Horeca Awards Winner</p>
               <p className="text-stone-500 text-sm">Outstanding Culinary Experience</p>
             </div>
+
+            <div className="reveal tilt-card glass-card glow-border p-8 rounded-2xl text-center group hover:bg-white/[0.05] transition-all" style={{ transitionDelay: '0.3s' }}>
+              <div className="relative mb-6">
+                <div className="w-20 h-20 mx-auto rounded-full bg-gold-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Award className="w-10 h-10 text-gold-400" />
+                </div>
+                <div className="absolute top-0 right-1/4 w-2 h-2 bg-gold-400 rounded-full animate-pulse" style={{ animationDelay: '0.9s' }} />
+              </div>
+              <h3 className="font-serif text-3xl text-gold-400 mb-2">2025</h3>
+              <p className="text-white font-semibold mb-2">Horeca Awards Winner</p>
+              <p className="text-stone-500 text-sm">Excellence in Lebanese Cuisine</p>
+            </div>
           </div>
         </div>
       </section>
