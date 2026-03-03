@@ -235,8 +235,24 @@ const Reservations = () => {
             </div>
 
             {/* Reservation Form */}
-            <div className="reveal relative" style={{ zIndex: 50, position: 'relative' }}>
-              <div className="glass-card glow-border p-8 rounded-2xl relative" style={{ pointerEvents: 'auto' }}>
+            <div
+              className="reveal"
+              style={{
+                position: 'relative',
+                zIndex: 100,
+                isolation: 'isolate'
+              }}
+            >
+              <div
+                style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '1rem',
+                  padding: '2rem',
+                  position: 'relative',
+                  zIndex: 1
+                }}
+              >
                 <h3 className="font-serif text-3xl text-white mb-6">Reserve Your Table</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -250,7 +266,8 @@ const Reservations = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                       placeholder="John Doe"
                     />
                   </div>
@@ -267,7 +284,8 @@ const Reservations = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                        style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                        className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -283,7 +301,8 @@ const Reservations = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                        style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                        className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                         placeholder="+40 xxx xxx xxx"
                       />
                     </div>
@@ -301,7 +320,8 @@ const Reservations = () => {
                         value={formData.date}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                        style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
+                        className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                       />
                     </div>
 
@@ -316,7 +336,8 @@ const Reservations = () => {
                         value={formData.time}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                        style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
+                        className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                       />
                     </div>
                   </div>
@@ -331,7 +352,8 @@ const Reservations = () => {
                       value={formData.guests}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                     >
                       <option value="">Select number of guests</option>
                       <option value="1">1 Guest</option>
@@ -354,7 +376,8 @@ const Reservations = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows="4"
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all resize-none"
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all resize-none"
                       placeholder="Any dietary restrictions or special occasions?"
                     />
                   </div>
@@ -362,7 +385,8 @@ const Reservations = () => {
                   <button
                     type="submit"
                     disabled={formStatus !== 'idle'}
-                    className={`liquid-button w-full py-4 rounded-full font-semibold transition-all duration-300 shadow-lg ${
+                    style={{ cursor: 'pointer' }}
+                    className={`w-full py-4 rounded-full font-semibold transition-all duration-300 shadow-lg ${
                       formStatus === 'success'
                         ? 'bg-green-600 hover:bg-green-600'
                         : formStatus === 'error'
