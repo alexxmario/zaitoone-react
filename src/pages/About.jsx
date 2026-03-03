@@ -163,8 +163,10 @@ const About = () => {
               <p className="text-white font-semibold mb-2">Horeca Awards Winner</p>
               <p className="text-stone-500 text-sm">Outstanding Culinary Experience</p>
             </div>
+          </div>
 
-            <div className="reveal tilt-card glass-card glow-border p-8 rounded-2xl text-center group hover:bg-white/[0.05] transition-all" style={{ transitionDelay: '0.3s' }}>
+          <div className="flex justify-center mt-8">
+            <div className="reveal tilt-card glass-card glow-border p-8 rounded-2xl text-center group hover:bg-white/[0.05] transition-all md:w-1/3" style={{ transitionDelay: '0.3s' }}>
               <div className="relative mb-6">
                 <div className="w-20 h-20 mx-auto rounded-full bg-gold-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Award className="w-10 h-10 text-gold-400" />
@@ -277,9 +279,9 @@ const About = () => {
                   <div>
                     <h4 className="text-white font-semibold mb-1">Hours</h4>
                     <p className="text-stone-400">
-                      Luni-Joi: 12:00 - 23:00<br />
+                      Luni-Joi: 12:00 - 00:00<br />
                       Vineri-Sâmbătă: 12:00 - 00:00<br />
-                      Duminică: 12:00 - 22:00
+                      Duminică: 12:00 - 00:00
                     </p>
                   </div>
                 </div>
