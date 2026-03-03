@@ -24,10 +24,7 @@ const Navigation = () => {
             <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gold-500/30 group-hover:border-gold-500/60 transition-all duration-300">
               <img src="/logo.png" alt="Zaitoone" className="w-full h-full object-cover" />
             </div>
-            <div>
-              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-8 group-hover:opacity-80 transition-opacity" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
-              <p className="text-xs text-stone-400 tracking-widest uppercase">Lebanese Cuisine</p>
-            </div>
+            <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-12 group-hover:opacity-80 transition-opacity" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
           </Link>
 
           {/* Desktop Navigation */}
