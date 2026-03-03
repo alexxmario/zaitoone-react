@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gold-500/30">
                 <img src="/logo.png" alt="Zaitoone" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-script text-2xl text-gold-400"><span className="text-[1.08em]">Z</span>aitoone</h3>
+              <h3 className="font-script text-2xl text-gold-400"><span className="font-serif text-[1.08em]">Z</span>aitoone</h3>
             </div>
             <p className="text-stone-400 text-sm leading-relaxed">
               Authentic Lebanese cuisine in the heart of Bucharest. Award-winning restaurant serving 100% Halal food.
