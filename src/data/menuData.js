@@ -207,7 +207,7 @@ export const menuData = {
       price: '65 RON',
       description: 'Vinete coapte cu tahini, lămâie, trufe',
       descriptionEn: 'Roasted eggplant with tahini, lemon, truffles',
-      image: 'https://framerusercontent.com/images/pNTJFhvGFDH0boLC5kTIa4Vcg4.png',
+      image: '/images/moutabal-cu-trufe.jpg',
     },
     {
       name: 'Moutabal',
