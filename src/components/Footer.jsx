@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gold-500/30">
                 <img src="/logo.png" alt="Zaitoone" className="w-full h-full object-cover" />
               </div>
-              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-6" style={{ filter: 'invert(67%) sepia(57%) saturate(396%) hue-rotate(2deg) brightness(92%) contrast(87%)' }} />
+              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-6" />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed">
               Authentic Lebanese cuisine in the heart of Bucharest. Award-winning restaurant serving 100% Halal food.

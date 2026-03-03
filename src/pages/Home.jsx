@@ -166,7 +166,7 @@ const Home = () => {
 
             {/* Main title */}
             <h1 className="mb-6">
-              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-24 md:h-32 mx-auto" style={{ filter: 'invert(67%) sepia(57%) saturate(396%) hue-rotate(2deg) brightness(92%) contrast(87%)' }} />
+              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-24 md:h-32 mx-auto" />
             </h1>
 
             {/* Subtle divider */}
