@@ -9,6 +9,8 @@ import Menu from './pages/Menu';
 import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Reservations from './pages/Reservations';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -35,6 +37,8 @@ function AppContent() {
           <Route path="/menu/:slug" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/reservations" element={<Reservations />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
         <Footer />
       </div>
