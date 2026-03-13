@@ -49,7 +49,7 @@
 
   input::placeholder,
   textarea::placeholder {
-    color: #78716c !important;
+    color: white !important;
   }
 
   /* Style select dropdowns for Windows/cross-browser compatibility */
