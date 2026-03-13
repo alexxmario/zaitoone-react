@@ -326,16 +326,23 @@ const Reservations = () => {
                       <label htmlFor="date" className="block text-stone-400 mb-2 text-sm">
                         Data *
                       </label>
-                      <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleChange}
-                        required
-                        style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
-                        className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                      />
+                      <div className="relative">
+                        <input
+                          type="date"
+                          id="date"
+                          name="date"
+                          value={formData.date}
+                          onChange={handleChange}
+                          required
+                          style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
+                          className={`w-full px-4 py-3 border border-white/10 rounded-lg focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all ${formData.date ? 'text-white' : 'text-transparent'}`}
+                        />
+                        {!formData.date && (
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500 pointer-events-none">
+                            Selectează data
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <div>
