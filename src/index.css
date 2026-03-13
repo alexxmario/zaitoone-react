@@ -74,34 +74,45 @@
     opacity: 1;
   }
 
-  input[type="date"]::-webkit-datetime-edit {
+  /* Hide native date format when empty (using text-transparent class) */
+  input[type="date"].text-transparent::-webkit-datetime-edit {
+    color: transparent;
+  }
+
+  input[type="date"].text-transparent::-webkit-datetime-edit-fields-wrapper {
+    color: transparent;
+  }
+
+  input[type="date"].text-transparent::-webkit-datetime-edit-text {
+    color: transparent;
+  }
+
+  input[type="date"].text-transparent::-webkit-datetime-edit-day-field,
+  input[type="date"].text-transparent::-webkit-datetime-edit-month-field,
+  input[type="date"].text-transparent::-webkit-datetime-edit-year-field {
+    color: transparent;
+  }
+
+  /* Show date format when has value */
+  input[type="date"].text-white::-webkit-datetime-edit {
     color: white;
     padding: 0;
   }
 
-  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  input[type="date"].text-white::-webkit-datetime-edit-fields-wrapper {
     color: white;
     padding: 0;
   }
 
-  input[type="date"]::-webkit-datetime-edit-text {
+  input[type="date"].text-white::-webkit-datetime-edit-text {
     color: #a8a29e;
     padding: 0 2px;
   }
 
-  input[type="date"]::-webkit-datetime-edit-day-field {
+  input[type="date"].text-white::-webkit-datetime-edit-day-field,
+  input[type="date"].text-white::-webkit-datetime-edit-month-field,
+  input[type="date"].text-white::-webkit-datetime-edit-year-field {
     color: white;
-    min-width: 2ch;
-  }
-
-  input[type="date"]::-webkit-datetime-edit-month-field {
-    color: white;
-    min-width: 2ch;
-  }
-
-  input[type="date"]::-webkit-datetime-edit-year-field {
-    color: white;
-    min-width: 4ch;
   }
 }
 
