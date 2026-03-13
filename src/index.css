@@ -66,6 +66,17 @@
   /* Style date inputs for Windows/cross-browser compatibility */
   input[type="date"] {
     color-scheme: dark;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Mobile date input sizing */
+  @media (max-width: 768px) {
+    input[type="date"] {
+      font-size: 16px;
+      max-width: 100%;
+    }
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator {
