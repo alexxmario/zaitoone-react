@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
-  const posRef = useRef({ x: 0, y: 0 });
-  const rafRef = useRef(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
@@ -25,21 +23,13 @@ const CustomCursor = () => {
     if (!cursor) return;
 
     const onMove = (e) => {
-      posRef.current.x = e.clientX;
-      posRef.current.y = e.clientY;
-      if (!rafRef.current) {
-        rafRef.current = requestAnimationFrame(() => {
-          cursor.style.transform = `translate3d(${posRef.current.x - 16}px, ${posRef.current.y - 16}px, 0)`;
-          rafRef.current = null;
-        });
-      }
+      cursor.style.transform = `translate3d(${e.clientX - 16}px, ${e.clientY - 16}px, 0)`;
     };
 
     window.addEventListener('mousemove', onMove, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', onMove);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [isTouchDevice]);
 
