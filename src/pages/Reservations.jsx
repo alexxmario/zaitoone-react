@@ -421,7 +421,20 @@ const Reservations = () => {
                       <option value="4">4 Persoane</option>
                       <option value="5">5 Persoane</option>
                       <option value="6">6 Persoane</option>
-                      <option value="7+">7+ Persoane</option>
+                      <option value="7">7 Persoane</option>
+                      <option value="8">8 Persoane</option>
+                      <option value="9">9 Persoane</option>
+                      <option value="10">10 Persoane</option>
+                      <option value="11">11 Persoane</option>
+                      <option value="12">12 Persoane</option>
+                      <option value="13">13 Persoane</option>
+                      <option value="14">14 Persoane</option>
+                      <option value="15">15 Persoane</option>
+                      <option value="16">16 Persoane</option>
+                      <option value="17">17 Persoane</option>
+                      <option value="18">18 Persoane</option>
+                      <option value="19">19 Persoane</option>
+                      <option value="20">20 Persoane</option>
                     </select>
                   </div>
 
