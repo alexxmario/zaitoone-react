@@ -75,21 +75,32 @@
 
   input[type="date"]::-webkit-datetime-edit {
     color: white;
+    padding: 0;
   }
 
   input[type="date"]::-webkit-datetime-edit-fields-wrapper {
     color: white;
+    padding: 0;
   }
 
   input[type="date"]::-webkit-datetime-edit-text {
     color: #a8a29e;
-    padding: 0 4px;
+    padding: 0 2px;
   }
 
-  input[type="date"]::-webkit-datetime-edit-month-field,
-  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-day-field {
+    color: white;
+    min-width: 2ch;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-month-field {
+    color: white;
+    min-width: 2ch;
+  }
+
   input[type="date"]::-webkit-datetime-edit-year-field {
     color: white;
+    min-width: 4ch;
   }
 }
 
