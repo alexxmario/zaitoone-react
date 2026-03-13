@@ -336,7 +336,6 @@ const Reservations = () => {
                         style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
                         className="w-full px-4 py-3 border border-white/10 rounded-lg text-white focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
                       />
-                      <p className="text-stone-500 text-xs mt-1">Format: zi/lună/an</p>
                     </div>
 
                     <div>
