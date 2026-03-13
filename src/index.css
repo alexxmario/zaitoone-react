@@ -41,6 +41,25 @@
       display: none !important;
     }
   }
+
+  /* Style select dropdowns for Windows/cross-browser compatibility */
+  select {
+    background-color: #1c1917 !important;
+    color: white !important;
+  }
+
+  select option {
+    background-color: #1c1917 !important;
+    color: white !important;
+    padding: 12px !important;
+  }
+
+  select option:hover,
+  select option:focus,
+  select option:checked {
+    background-color: #44403c !important;
+    color: white !important;
+  }
 }
 
 @layer utilities {
