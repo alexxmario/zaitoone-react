@@ -32,7 +32,7 @@ export const menuData = {
     },
     {
       name: 'Salată Panache cu dressing',
-      price: '50 RON',
+      price: '70 RON',
       description: 'Avocado, salată verde, ciuperci, sparanghel, porumb',
       descriptionEn: 'Avocado, green lettuce, mushrooms, asparagus, corn',
       image: '/images/salata-panache.jpg',
