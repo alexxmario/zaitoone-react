@@ -1,11 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
   const posRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Detect touch device
+    const checkTouchDevice = () => {
+      return (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches
+      );
+    };
+    setIsTouchDevice(checkTouchDevice());
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     const cursor = cursorRef.current;
     if (!cursor) return;
 
@@ -27,6 +42,9 @@ const CustomCursor = () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
+
+  // Don't render cursor on touch devices (mobile/tablet)
+  if (isTouchDevice) return null;
 
   return <div ref={cursorRef} className="custom-cursor" style={{ left: 0, top: 0, willChange: 'transform' }} />;
 };

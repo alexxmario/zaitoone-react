@@ -5,8 +5,11 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    cursor: none !important;
+  /* Only hide cursor on devices with mouse (not touch devices) */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
   }
 
   body {
@@ -30,6 +33,13 @@
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: transform 0.1s ease;
+  }
+
+  /* Hide custom cursor on touch devices */
+  @media (pointer: coarse) {
+    .custom-cursor {
+      display: none !important;
+    }
   }
 }
 
