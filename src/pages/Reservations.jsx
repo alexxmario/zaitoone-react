@@ -6,6 +6,7 @@ import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
 // EmailJS Configuration
 const EMAILJS_SERVICE_ID = 'service_68mdslu';
 const EMAILJS_TEMPLATE_ID = 'template_m5szl02';
+const EMAILJS_CUSTOMER_TEMPLATE_ID = 'template_8qxevqa';
 const EMAILJS_PUBLIC_KEY = 'tj_YvQ_mvZ3eN-48Y';
 
 const Reservations = () => {
@@ -46,6 +47,7 @@ const Reservations = () => {
     setErrorMessage('');
 
     try {
+      // Send email to restaurant
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -58,6 +60,20 @@ const Reservations = () => {
           guests: formData.guests,
           message: formData.message || 'Fără cereri speciale',
           to_email: 'office@zaitoone.ro',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      // Send confirmation email to customer
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_CUSTOMER_TEMPLATE_ID,
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          date: formData.date,
+          time: formData.time,
+          guests: formData.guests,
         },
         EMAILJS_PUBLIC_KEY
       );
