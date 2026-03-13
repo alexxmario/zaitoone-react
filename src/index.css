@@ -69,13 +69,22 @@
     min-width: 0;
     width: 100%;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   /* Mobile date input sizing */
   @media (max-width: 768px) {
     input[type="date"] {
-      font-size: 16px;
-      max-width: 100%;
+      font-size: 14px !important;
+      max-width: 100% !important;
+      padding: 10px 12px !important;
+      height: 44px !important;
+      min-height: 44px !important;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      width: 16px !important;
+      height: 16px !important;
     }
   }
 

@@ -333,10 +333,10 @@ const Reservations = () => {
                           name="date"
                           value={formData.date}
                           onChange={handleChange}
-                          onClick={(e) => e.target.showPicker()}
+                          onClick={(e) => { e.preventDefault(); e.target.showPicker(); }}
                           required
                           style={{ background: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}
-                          className={`w-full px-4 py-3 border border-white/10 rounded-lg focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all ${formData.date ? 'text-white' : 'text-transparent'}`}
+                          className={`w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base border border-white/10 rounded-lg focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all ${formData.date ? 'text-white' : 'text-transparent'}`}
                         />
                         {!formData.date && (
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500 pointer-events-none">
