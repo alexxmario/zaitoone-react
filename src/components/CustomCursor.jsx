@@ -41,7 +41,7 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', onMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [isTouchDevice]);
 
   // Don't render cursor on touch devices (mobile/tablet)
   if (isTouchDevice) return null;
