@@ -40,6 +40,18 @@
     }
   }
 
+  /* Force white text on all form fields */
+  input,
+  textarea,
+  select {
+    color: white !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #78716c !important;
+  }
+
   /* Style select dropdowns for Windows/cross-browser compatibility */
   select {
     background: #1c1917 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center !important;
