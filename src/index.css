@@ -58,6 +58,35 @@
     background-color: #44403c !important;
     color: white !important;
   }
+
+  /* Style date inputs for Windows/cross-browser compatibility */
+  input[type="date"] {
+    color-scheme: dark;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  input[type="date"]::-webkit-datetime-edit {
+    color: white;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    color: white;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-text {
+    color: #a8a29e;
+    padding: 0 4px;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    color: white;
+  }
 }
 
 @layer utilities {
