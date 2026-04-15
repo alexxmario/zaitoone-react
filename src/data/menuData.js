@@ -51,7 +51,7 @@ export const menuData = {
       price: '46 RON',
       description: 'Măsline verzi cu cimbru, nuci, ceapă, roșii, lămâie, pătrunjel',
       descriptionEn: 'Green olives with thyme, walnuts, onion, tomatoes, lemon, parsley',
-      image: '/images/GyPAKq6IqJQ0bZNGGST4BrlBpk.png',
+      image: '/images/X2HteAWoo7CgPgUH4G3PVsg0GM.png',
     },
     {
       name: 'Salată Zaitoone',
