@@ -2,31 +2,31 @@ import { useRef, useEffect, useState } from 'react';
 
 const menuPhotos = [
   {
-    src: 'https://framerusercontent.com/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+    src: '/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
     alt: 'Creveți Zaitoone',
   },
   {
-    src: 'https://framerusercontent.com/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+    src: '/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
     alt: 'Falafel',
   },
   {
-    src: 'https://framerusercontent.com/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+    src: '/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
     alt: 'Shawarma de vită',
   },
   {
-    src: 'https://framerusercontent.com/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+    src: '/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
     alt: 'Grătar mixt',
   },
   {
-    src: 'https://framerusercontent.com/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+    src: '/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
     alt: 'Künefe',
   },
   {
-    src: 'https://framerusercontent.com/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+    src: '/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
     alt: 'Tabbouleh',
   },
   {
-    src: 'https://framerusercontent.com/images/tvGaal8qmReWLV8sr7X7RbGP9G0.png',
+    src: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.png',
     alt: 'Baba Ganoush',
   },
 ];
