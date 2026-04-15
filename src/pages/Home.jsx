@@ -31,7 +31,7 @@ const signatureDishes = [
     description: 'Vită, pui, kafta, cotlet de miel'
   },
   {
-    name: 'Künefe la frigare',
+    name: 'Künefe la shish',
     category: 'Deserturi',
     image: 'https://framerusercontent.com/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
     description: 'Fidea caramelizată, brânză dulce, miere, fistic'
@@ -40,7 +40,7 @@ const signatureDishes = [
     name: 'Tabbouleh',
     category: 'Salate',
     image: 'https://framerusercontent.com/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
-    description: 'Pătrunjel, ceapă, quinoa, lămâie, ulei de măsline'
+    description: 'Pătrunjel, ceapă, bulgur, lămâie, ulei de măsline'
   }
 ];
 

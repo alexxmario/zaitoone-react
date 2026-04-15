@@ -79,8 +79,8 @@ export const menuData = {
     {
       name: 'Tabbouleh',
       price: '49 RON',
-      description: 'Pătrunjel, ceapă, quinoa, lămâie, ulei de măsline',
-      descriptionEn: 'Parsley, onion, quinoa, lemon, olive oil',
+      description: 'Pătrunjel, ceapă, bulgur, lămâie, ulei de măsline',
+      descriptionEn: 'Parsley, onion, bulgur, lemon, olive oil',
       image: 'https://framerusercontent.com/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
     },
     {
@@ -257,8 +257,8 @@ export const menuData = {
     {
       name: 'Hummus Beiruti',
       price: '40 RON',
-      description: 'Pastă de năut cu tahini, lămâie, pătrunjel, ardei galben',
-      descriptionEn: 'Chickpea paste with tahini, lemon, parsley, yellow pepper',
+      description: 'Pastă de năut cu tahini, lămâie, pătrunjel, ardei iute',
+      descriptionEn: 'Chickpea paste with tahini, lemon, parsley, chili pepper',
       image: 'https://framerusercontent.com/images/rmXYiSBHvNQatDBs86X6ZJA2ho.png',
     },
     {
@@ -406,11 +406,11 @@ export const menuData = {
       image: 'https://framerusercontent.com/images/lwIyPOD04tAZcVEqbqSC8v9EyRU.png',
     },
     {
-      name: 'Ras Asfour de miel (picant)',
-      nameEn: 'Ras Asfour Lamb (Spicy)',
+      name: 'Ras Asfour de berbec (picant)',
+      nameEn: 'Ras Asfour Mutton (Spicy)',
       price: '77 RON',
-      description: 'Mușchi de miel tăiat cubulețe, ulei de măsline, muguri de pin, usturoi, ardei iuți',
-      descriptionEn: 'Diced lamb loin, olive oil, pine nuts, garlic, hot peppers',
+      description: 'Mușchi de berbec tăiat cubulețe, ulei de măsline, muguri de pin, usturoi, ardei iuți',
+      descriptionEn: 'Diced mutton loin, olive oil, pine nuts, garlic, hot peppers',
       image: 'https://framerusercontent.com/images/myd6WLspFjssEJPsB4Hm6WFkvFk.png',
     },
     {
@@ -514,8 +514,8 @@ export const menuData = {
       name: 'Creier de berbec pane',
       nameEn: 'Breaded Lamb Brain',
       price: '67 RON',
-      description: 'Creier de berbec pane cu sos de lămâie',
-      descriptionEn: 'Breaded lamb brain with lemon sauce',
+      description: 'Creier de berbec pane',
+      descriptionEn: 'Breaded lamb brain',
       image: 'https://framerusercontent.com/images/buf7RoVVDXRz5Ys0hdXBgXysRZM.png',
     },
     {
@@ -553,8 +553,8 @@ export const menuData = {
       name: 'Kebbe prăjite (5 buc.)',
       nameEn: 'Fried Kebbe (5 pieces)',
       price: '49 RON',
-      description: 'Carne tocată, grâu marinat, muguri de pin, ceapă',
-      descriptionEn: 'Ground meat, marinated wheat, pine nuts, onion',
+      description: 'Carne tocată, grâu, muguri de pin, ceapă',
+      descriptionEn: 'Ground meat, wheat, pine nuts, onion',
       image: 'https://framerusercontent.com/images/PLNr9NstCeFPq4zPMCfeYnu4Q.png',
     },
     {
@@ -609,8 +609,8 @@ export const menuData = {
       name: 'Sambusek cu brânză (5 buc.)',
       nameEn: 'Sambusek with Cheese (5 pieces)',
       price: '43 RON',
-      description: 'Aluat umplut cu brânză, ceapă, pătrunjel, mentă',
-      descriptionEn: 'Dough filled with cheese, onion, parsley, mint',
+      description: 'Aluat umplut cu brânză, pătrunjel, mentă',
+      descriptionEn: 'Dough filled with cheese, parsley, mint',
       image: '/images/sambusek-cu-branza.jpg',
     },
     {
@@ -747,8 +747,8 @@ export const menuData = {
       name: 'Cotlet de miel',
       nameEn: 'Lamb Chop',
       price: '165 RON',
-      description: 'Cotlet de miel la grătar cu cartofi prăjiți',
-      descriptionEn: 'Grilled lamb chop with fried potatoes',
+      description: 'Cotlet de miel la grătar cu bulgur',
+      descriptionEn: 'Grilled lamb chop with bulgur',
       image: 'https://framerusercontent.com/images/ZdYTc75hF6hvN3RNih2V6FRXpSk.png',
     },
     {
@@ -768,8 +768,8 @@ export const menuData = {
       image: 'https://framerusercontent.com/images/0j35xVxAB9QAJnFHG5ZG6ZPAaUY.png',
     },
     {
-      name: 'Șnițel de pui',
-      nameEn: 'Chicken Schnitzel',
+      name: 'Cotlet de pui',
+      nameEn: 'Chicken Chop',
       price: '102 RON',
       description: 'Aripi de pui dezosate, usturoi, coleslaw, cartofi prăjiți',
       descriptionEn: 'Boneless chicken wings, garlic, coleslaw, fried potatoes',
@@ -807,8 +807,8 @@ export const menuData = {
       image: 'https://framerusercontent.com/images/cp1QwgSRIqirXQhOlDDenJoF44.png',
     },
     {
-      name: 'Kebab cu măsline',
-      nameEn: 'Kebab with Olives',
+      name: 'Kebab Zaitoone',
+      nameEn: 'Kebab Zaitoone',
       price: '118 RON',
       description: 'Carne tocată de vită și miel cu ceapă și busuioc',
       descriptionEn: 'Beef and lamb ground meat with onion and basil',
@@ -848,8 +848,8 @@ export const menuData = {
       name: 'Mușchi de vită cu ciuperci',
       nameEn: 'Beef Loin with Mushrooms',
       price: '165 RON',
-      description: 'Mușchi de vită cu sos de ciuperci și cartofi wedge',
-      descriptionEn: 'Beef loin with mushroom sauce and wedge potatoes',
+      description: 'Mușchi de vită cu sos de ciuperci și cartofi chips',
+      descriptionEn: 'Beef loin with mushroom sauce and potato chips',
       image: 'https://framerusercontent.com/images/3CBZbRuQR478j9IB04Hzf7TJilc.png',
     },
     {
@@ -1167,8 +1167,8 @@ export const menuData = {
       image: 'https://framerusercontent.com/images/gxFKASu6mJXvSNBVBXjFm3tP18.png',
     },
     {
-      name: 'Künefe la frigare',
-      nameEn: 'Kunafa on the Grill',
+      name: 'Künefe la shish',
+      nameEn: 'Kunafa on Shish',
       price: '155 RON',
       description: 'Fidea caramelizată, brânză dulce, miere, fistic',
       descriptionEn: 'Caramelized noodles, sweet cheese, honey, pistachio',
