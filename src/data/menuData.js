@@ -48,10 +48,10 @@ export const menuData = {
     {
       name: 'Salată de măsline',
       nameEn: 'Olive Salad',
-      price: '46 RON',
+      price: '60 RON',
       description: 'Măsline verzi cu cimbru, nuci, ceapă, roșii, lămâie, pătrunjel',
       descriptionEn: 'Green olives with thyme, walnuts, onion, tomatoes, lemon, parsley',
-      image: '/images/X2HteAWoo7CgPgUH4G3PVsg0GM.png',
+      image: '/images/salatamasline.jpg',
     },
     {
       name: 'Salată Zaitoone',
@@ -63,7 +63,7 @@ export const menuData = {
     {
       name: 'Salată libaneză mixtă',
       nameEn: 'Mixed Lebanese Salad',
-      price: '46 RON',
+      price: '60 RON',
       description: 'Roșii, castraveți, salată verde, ceapă, ardei, ridichi, valerianella, mentă, lămâie, ulei de măsline',
       descriptionEn: 'Tomatoes, cucumbers, green lettuce, onion, peppers, radishes, lamb\'s lettuce, mint, lemon, olive oil',
       image: '/images/3jM8mZgRlIMrAt55dsKqjyqXw.png',
@@ -71,7 +71,7 @@ export const menuData = {
     {
       name: 'Salată arabească tocată fin',
       nameEn: 'Finely Chopped Arab Salad',
-      price: '50 RON',
+      price: '60 RON',
       description: 'Roșii, castraveți, salată verde, ceapă, ardei, ridichi, mentă, lămâie, ulei de măsline',
       descriptionEn: 'Tomatoes, cucumbers, green lettuce, onion, peppers, radishes, mint, lemon, olive oil',
       image: '/images/jMcNkH6Q52OxC0j6nf4e6Ovuzwc.png',
@@ -449,7 +449,7 @@ export const menuData = {
       name: 'Shawarma de vită',
       nameEn: 'Beef Shawarma',
       slug: 'beef-shawarma',
-      price: '82 RON',
+      price: '99 RON',
       description: 'Mușchi de vită marinat în sos special',
       descriptionEn: 'Beef loin marinated in special sauce',
       fullDescription: 'Mușchiul de vită este marinat timp de ore întregi în amestecul nostru special de condimente libaneze, apoi gătit lent pe frigare verticală. Servit cu tahini, murături și legume proaspete.',
@@ -463,7 +463,7 @@ export const menuData = {
       name: 'Shawarma de pui',
       nameEn: 'Chicken Shawarma',
       slug: 'chicken-shawarma',
-      price: '72 RON',
+      price: '85 RON',
       description: 'Piept de pui marinat în sos special',
       descriptionEn: 'Chicken breast marinated in special sauce',
       fullDescription: 'Pieptul de pui este marinat timp de 24 de ore într-un amestec secret de condimente libaneze, apoi gătit lent pe frigare verticală tradițională. Carnea este feliată la comandă și servită cu sos cremos de tahini, toum cu usturoi, legume proaspete și pâine caldă.',
@@ -720,6 +720,14 @@ export const menuData = {
       description: 'Pâine libaneză cu brânză',
       descriptionEn: 'Lebanese bread with cheese',
       image: '/images/YPZwJOHGSsTAXGKxmgoYaGeuvc.png',
+    },
+    {
+      name: 'Mix Kebab',
+      nameEn: 'Mix Kebab',
+      price: '150 RON',
+      description: 'Kebab de pui, Kebab Zaitoone, Kebab Adana, Kafta (400g)',
+      descriptionEn: 'Chicken Kebab, Kebab Zaitoone, Kebab Adana, Kafta (400g)',
+      image: '/images/mix-kebab.jpeg',
     },
     {
       name: 'Grătar mixt',
