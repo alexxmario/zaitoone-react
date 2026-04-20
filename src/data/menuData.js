@@ -547,7 +547,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Halloumi, roșii cherry, sos pesto',
       descriptionEn: 'Halloumi cheese, cherry tomatoes, pesto sauce',
-      image: '/images/halloumi-pesto.jpg',
+      image: '/images/halloumi-pesto.png',
     },
     {
       name: 'Brânză halloumi',
