@@ -542,6 +542,14 @@ export const menuData = {
       image: '/images/jYYZy1jVbKDxehmVQlvfKrl8.png',
     },
     {
+      name: 'Halloumi cu Pesto',
+      nameEn: 'Halloumi Cheese with Pesto',
+      price: '57 RON',
+      description: 'Halloumi, roșii cherry, sos pesto',
+      descriptionEn: 'Halloumi cheese, cherry tomatoes, pesto sauce',
+      image: '/images/halloumi-pesto.jpg',
+    },
+    {
       name: 'Brânză halloumi',
       nameEn: 'Grilled Halloumi',
       price: '49 RON',
