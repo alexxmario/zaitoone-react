@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { UtensilsCrossed, Users, Calendar, MessageSquare } from 'lucide-react';
+import { UtensilsCrossed, Users, MessageSquare } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
 
@@ -11,10 +11,6 @@ const Catering = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
-    eventType: '',
-    guestsApprox: '',
-    date: '',
     preferences: '',
   });
 
@@ -50,9 +46,9 @@ const Catering = () => {
         EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
-          from_email: formData.email,
+          from_email: '',
           phone: formData.phone,
-          message: `[CERERE CATERING]\n\nTip eveniment: ${formData.eventType || 'Nespecificat'}\nNumăr aproximativ persoane: ${formData.guestsApprox || 'Nespecificat'}\nData dorită: ${formData.date || 'Nespecificată'}\n\nPreferințe și detalii:\n${formData.preferences || 'Fără detalii suplimentare'}`,
+          message: `[CERERE CATERING]\n\n${formData.preferences}`,
           to_email: 'office@zaitoone.ro',
         },
         EMAILJS_PUBLIC_KEY
@@ -64,10 +60,6 @@ const Catering = () => {
         setFormData({
           name: '',
           phone: '',
-          email: '',
-          eventType: '',
-          guestsApprox: '',
-          date: '',
           preferences: '',
         });
       }, 3000);
@@ -121,7 +113,7 @@ const Catering = () => {
       <section className="relative py-32 overflow-hidden z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Info Cards */}
-          <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+          <div className="reveal grid grid-cols-3 gap-4 mb-16">
             <div className="glass-card p-5 rounded-xl text-center">
               <UtensilsCrossed className="w-6 h-6 text-gold-400 mx-auto mb-2" />
               <p className="text-stone-400 text-xs">Meniu Personalizat</p>
@@ -129,10 +121,6 @@ const Catering = () => {
             <div className="glass-card p-5 rounded-xl text-center">
               <Users className="w-6 h-6 text-gold-400 mx-auto mb-2" />
               <p className="text-stone-400 text-xs">Orice Număr de Invitați</p>
-            </div>
-            <div className="glass-card p-5 rounded-xl text-center">
-              <Calendar className="w-6 h-6 text-gold-400 mx-auto mb-2" />
-              <p className="text-stone-400 text-xs">Flexibilitate Totală</p>
             </div>
             <div className="glass-card p-5 rounded-xl text-center">
               <MessageSquare className="w-6 h-6 text-gold-400 mx-auto mb-2" />
@@ -200,73 +188,6 @@ const Catering = () => {
                       placeholder="+40 xxx xxx xxx"
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-stone-400 mb-2 text-sm">
-                    Email (opțional)
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
-                    className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                    placeholder="email@exemplu.ro"
-                  />
-                </div>
-
-                {/* Event basics - kept loose */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="eventType" className="block text-stone-400 mb-2 text-sm">
-                      Ce tip de eveniment ai în vedere? (opțional)
-                    </label>
-                    <input
-                      type="text"
-                      id="eventType"
-                      name="eventType"
-                      value={formData.eventType}
-                      onChange={handleChange}
-                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
-                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                      placeholder="ex: nuntă, aniversare, corporate, privat..."
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="guestsApprox" className="block text-stone-400 mb-2 text-sm">
-                      Cam câți invitați? (opțional)
-                    </label>
-                    <input
-                      type="text"
-                      id="guestsApprox"
-                      name="guestsApprox"
-                      value={formData.guestsApprox}
-                      onChange={handleChange}
-                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
-                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                      placeholder="ex: 50, 100-150, nu sunt sigur..."
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="date" className="block text-stone-400 mb-2 text-sm">
-                    Când ai dori să fie? (opțional)
-                  </label>
-                  <input
-                    type="text"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
-                    className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
-                    placeholder="ex: luna iunie, 15 iulie, încă nu m-am hotărât..."
-                  />
                 </div>
 
                 {/* The main open-ended field */}
