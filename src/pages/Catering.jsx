@@ -1,0 +1,326 @@
+import { useState, useEffect } from 'react';
+import { UtensilsCrossed, Users, Calendar, MessageSquare } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
+
+const EMAILJS_SERVICE_ID = 'service_68mdslu';
+const EMAILJS_TEMPLATE_ID = 'template_m5szl02';
+const EMAILJS_PUBLIC_KEY = 'tj_YvQ_mvZ3eN-48Y';
+
+const Catering = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    eventType: '',
+    guestsApprox: '',
+    date: '',
+    preferences: '',
+  });
+
+  const [formStatus, setFormStatus] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const cleanupReveal = initRevealOnScroll();
+    const cleanupParallax = initParallaxScroll();
+
+    return () => {
+      cleanupReveal();
+      cleanupParallax();
+    };
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          message: `[CERERE CATERING]\n\nTip eveniment: ${formData.eventType || 'Nespecificat'}\nNumăr aproximativ persoane: ${formData.guestsApprox || 'Nespecificat'}\nData dorită: ${formData.date || 'Nespecificată'}\n\nPreferințe și detalii:\n${formData.preferences || 'Fără detalii suplimentare'}`,
+          to_email: 'office@zaitoone.ro',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setFormStatus('success');
+      setTimeout(() => {
+        setFormStatus('idle');
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          eventType: '',
+          guestsApprox: '',
+          date: '',
+          preferences: '',
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setFormStatus('error');
+      setErrorMessage('Nu s-a putut trimite cererea. Vă rugăm să ne sunați sau să încercați din nou.');
+      setTimeout(() => {
+        setFormStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+    }
+  };
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0" style={{ pointerEvents: 'none' }}>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&q=80')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-stone-950/80 via-stone-950/60 to-stone-950" />
+          </div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 pb-20">
+          <div className="reveal">
+            <span className="text-gold-500 font-script text-3xl md:text-4xl opacity-90 mb-4 block animate-float">
+              Catering
+            </span>
+          </div>
+          <div className="reveal" style={{ transitionDelay: '0.1s' }}>
+            <h1 className="font-serif text-5xl md:text-7xl text-white mb-6 gradient-text">
+              Catering pentru Evenimente
+            </h1>
+          </div>
+          <div className="reveal" style={{ transitionDelay: '0.2s' }}>
+            <p className="text-stone-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+              Spune-ne despre evenimentul tău și noi vom crea o experiență culinară personalizată
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="relative py-32 overflow-hidden z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Info Cards */}
+          <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            <div className="glass-card p-5 rounded-xl text-center">
+              <UtensilsCrossed className="w-6 h-6 text-gold-400 mx-auto mb-2" />
+              <p className="text-stone-400 text-xs">Meniu Personalizat</p>
+            </div>
+            <div className="glass-card p-5 rounded-xl text-center">
+              <Users className="w-6 h-6 text-gold-400 mx-auto mb-2" />
+              <p className="text-stone-400 text-xs">Orice Număr de Invitați</p>
+            </div>
+            <div className="glass-card p-5 rounded-xl text-center">
+              <Calendar className="w-6 h-6 text-gold-400 mx-auto mb-2" />
+              <p className="text-stone-400 text-xs">Flexibilitate Totală</p>
+            </div>
+            <div className="glass-card p-5 rounded-xl text-center">
+              <MessageSquare className="w-6 h-6 text-gold-400 mx-auto mb-2" />
+              <p className="text-stone-400 text-xs">Consultanță Gratuită</p>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div
+            className="reveal"
+            style={{
+              position: 'relative',
+              zIndex: 100,
+              isolation: 'isolate'
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '1rem',
+                padding: '2rem',
+                position: 'relative',
+                zIndex: 1
+              }}
+            >
+              <h3 className="font-serif text-3xl text-white mb-2">Spune-ne despre evenimentul tău</h3>
+              <p className="text-stone-400 mb-8">
+                Completează câteva detalii de bază, iar noi te vom contacta pentru a discuta totul în detaliu.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Contact basics */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-stone-400 mb-2 text-sm">
+                      Numele tău *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                      placeholder="Cum te numești?"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-stone-400 mb-2 text-sm">
+                      Telefon *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                      placeholder="+40 xxx xxx xxx"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-stone-400 mb-2 text-sm">
+                    Email (opțional)
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                    className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                    placeholder="email@exemplu.ro"
+                  />
+                </div>
+
+                {/* Event basics - kept loose */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="eventType" className="block text-stone-400 mb-2 text-sm">
+                      Ce tip de eveniment ai în vedere? (opțional)
+                    </label>
+                    <input
+                      type="text"
+                      id="eventType"
+                      name="eventType"
+                      value={formData.eventType}
+                      onChange={handleChange}
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                      placeholder="ex: nuntă, aniversare, corporate, privat..."
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="guestsApprox" className="block text-stone-400 mb-2 text-sm">
+                      Cam câți invitați? (opțional)
+                    </label>
+                    <input
+                      type="text"
+                      id="guestsApprox"
+                      name="guestsApprox"
+                      value={formData.guestsApprox}
+                      onChange={handleChange}
+                      style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                      className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                      placeholder="ex: 50, 100-150, nu sunt sigur..."
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="date" className="block text-stone-400 mb-2 text-sm">
+                    Când ai dori să fie? (opțional)
+                  </label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                    className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all"
+                    placeholder="ex: luna iunie, 15 iulie, încă nu m-am hotărât..."
+                  />
+                </div>
+
+                {/* The main open-ended field */}
+                <div>
+                  <label htmlFor="preferences" className="block text-stone-400 mb-2 text-sm">
+                    Spune-ne ce ți-ai dori *
+                  </label>
+                  <textarea
+                    id="preferences"
+                    name="preferences"
+                    value={formData.preferences}
+                    onChange={handleChange}
+                    required
+                    rows="6"
+                    style={{ background: 'rgba(255,255,255,0.05)', cursor: 'text' }}
+                    className="w-full px-4 py-3 border border-white/10 rounded-lg text-white placeholder-stone-500 focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20 transition-all resize-none"
+                    placeholder="Descrie-ne viziunea ta: ce tip de preparate îți dorești, dacă ai preferințe speciale (vegetarian, halal, fără gluten), atmosfera pe care o vrei, bugetul orientativ, sau orice alt detaliu care ne-ar ajuta să creăm meniul perfect pentru tine..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={formStatus !== 'idle'}
+                  style={{ cursor: 'pointer' }}
+                  className={`w-full py-4 rounded-full font-semibold transition-all duration-300 shadow-lg ${
+                    formStatus === 'success'
+                      ? 'bg-green-600 hover:bg-green-600'
+                      : formStatus === 'error'
+                      ? 'bg-red-600 hover:bg-red-600'
+                      : 'bg-gold-500 hover:bg-gold-600 hover:shadow-gold-500/50'
+                  } ${
+                    formStatus === 'submitting' ? 'opacity-70' : ''
+                  } text-stone-950`}
+                >
+                  {formStatus === 'idle' && 'Trimite Cererea'}
+                  {formStatus === 'submitting' && 'Se trimite...'}
+                  {formStatus === 'success' && '✓ Cerere Trimisă!'}
+                  {formStatus === 'error' && '✕ Eroare la Trimitere'}
+                </button>
+
+                {errorMessage && (
+                  <p className="text-red-400 text-sm text-center">{errorMessage}</p>
+                )}
+
+                <p className="text-stone-500 text-sm text-center">
+                  Te vom contacta în maxim 24 de ore pentru a discuta detaliile
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Catering;

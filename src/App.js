@@ -11,6 +11,7 @@ import About from './pages/About';
 import Reservations from './pages/Reservations';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Catering from './pages/Catering';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -37,6 +38,7 @@ function AppContent() {
           <Route path="/menu/:slug" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/reservations" element={<Reservations />} />
+          <Route path="/catering" element={<Catering />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
