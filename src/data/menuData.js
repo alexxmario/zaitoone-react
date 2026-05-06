@@ -1307,7 +1307,7 @@ export const menuData = {
       price: '80 RON',
       description: 'Baclava tradițională fără înghețată',
       descriptionEn: 'Traditional baklava without ice cream',
-      image: '/images/baclava-fara-inghetata.png',
+      image: '/images/prajitura-zaitoone.jpg',
     },
     {
       name: 'Mascarpone cu înghețată',
@@ -1323,14 +1323,6 @@ export const menuData = {
       description: 'Muguri de pin, caju, fistic, făină, apă de trandafir',
       descriptionEn: 'Pine nuts, flour, pistachio, cashew nuts, rose water',
       image: '/images/mini-baclava.jpg',
-    },
-    {
-      name: 'Prăjitură Zaitoone',
-      nameEn: 'Zaitoone Cake',
-      price: '57 RON',
-      description: 'Tortul casei',
-      descriptionEn: 'House cake',
-      image: '/images/prajitura-zaitoone.jpg',
     },
     {
       name: 'Sorbet de lămâie',
