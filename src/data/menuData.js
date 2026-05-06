@@ -887,11 +887,11 @@ export const menuData = {
       image: '/images/tE3pGdva5zH7pmZgepobf7TIa8.png',
     },
     {
-      name: 'Adana de pui',
-      nameEn: 'Chicken Adana',
+      name: 'Kebab de pui',
+      nameEn: 'Chicken Kebab',
       price: '118 RON',
-      description: 'Carne tocată de pui cu usturoi și paprika',
-      descriptionEn: 'Minced chicken with garlic and paprika',
+      description: 'Piept de pui, usturoi, coriandru, salată coleslaw, ardei iute, ceapă și cartofi prăjiți',
+      descriptionEn: 'Chicken breast, garlic, cilantro, chilli, coleslaw salad, onion, fries',
       image: '/images/kebab-pui.jpg',
     },
     {
@@ -1169,20 +1169,6 @@ export const menuData = {
     },
   ],
   desserts: [
-    {
-      name: 'Baclava',
-      nameEn: 'Baklava',
-      slug: 'baklava',
-      price: '57 RON',
-      description: 'Straturi crocante de foietaj cu nuci, caju, sirop',
-      descriptionEn: 'Crispy pastry layers with walnuts, cashews, syrup',
-      fullDescription: 'Baclava noastră este o adevărată operă de artă culinară, cu straturi subțiri de foietaj întinse manual, fiecare unsă cu unt clarifiat. Umplute generos cu un amestec de nuci și caju premium, apoi coapte la perfecțiune aurie și îmbibate în sirop parfumat cu apă de flori de portocal.',
-      image: '/images/o4E3exu1tDK3IzcTqZ8dvdXBhb4.png',
-      modelUrl: '/models/menu-items/fagottini-ai-formaggio-e-pere.glb',
-      scale: 5,
-      position: [0, -1.2, 0],
-      category: 'desserts',
-    },
     {
       name: 'Sorbet de cocos',
       nameEn: 'Coconut Sorbet',
