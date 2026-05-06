@@ -627,7 +627,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Foietaj umplut cu creveți, morcovi, ghimbir, praz',
       descriptionEn: 'Shrimp rolls, carrots, ginger, leek',
-      image: '/images/ZbtthhHjLFIJR6LkUK9QOsNiL8.png',
+      image: '/images/rulouri-creveti.png',
     },
     {
       name: 'Rulouri cu brânză (4 buc.)',
@@ -643,7 +643,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu sujuk, mozzarella, oregano, roșii decojite, telemea de vacă, pătrunjel și mentă',
       descriptionEn: 'Pastry stuffed with sujuk, mozzarella, oregano, tomatoes, cow cheese, parsley, mint',
-      image: '/images/sm9LLI15E4sXomh0kCUjwyClE.png',
+      image: '/images/sambusek-cu-sujuk.png',
     },
     {
       name: 'Supă cremă de linte',
@@ -659,7 +659,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu carne tocată, ceapă, muguri de pin',
       descriptionEn: 'Dough filled with ground meat, onion, pine nuts',
-      image: '/images/JkGbEhkwXQhwZcIndXTasAufw0.png',
+      image: '/images/sambusek-cu-carne.png',
     },
     {
       name: 'Sambusek cu brânză (5 buc.)',
@@ -675,7 +675,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu spanac, ceapă, rodie',
       descriptionEn: 'Dough filled with spinach, onion, pomegranate',
-      image: '/images/zUa5czPnfuuRk2nEQMc98cE79Y.png',
+      image: '/images/sambusek-cu-spanac.png',
     },
   ],
   rawMeat: [
@@ -783,7 +783,7 @@ export const menuData = {
       price: '150 RON',
       description: 'Kebab de pui, Kebab Zaitoone, Kebab Adana, Kafta (400g)',
       descriptionEn: 'Chicken Kebab, Kebab Zaitoone, Kebab Adana, Kafta (400g)',
-      image: '/images/mix-kebab.jpeg',
+      image: '/images/mix-kebab-new.png',
     },
     {
       name: 'Grătar mixt',
