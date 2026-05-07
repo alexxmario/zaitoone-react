@@ -6,9 +6,12 @@ import GradientOrbs from '../components/GradientOrbs';
 import { initRevealOnScroll } from '../utils/animations';
 import { menuData, categories } from '../data/menuData';
 
-const MenuCard = ({ item }) => {
+const MenuCard = ({ item, onSelect }) => {
   return (
-    <div className="glass-card glow-border rounded-xl overflow-hidden transition-all reveal relative hover:bg-white/[0.02]">
+    <div
+      onClick={() => onSelect(item)}
+      className="glass-card glow-border rounded-xl overflow-hidden transition-all reveal relative hover:bg-white/[0.02] md:cursor-pointer"
+    >
       {/* Image */}
       {item.image && (
         <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
@@ -33,9 +36,57 @@ const MenuCard = ({ item }) => {
   );
 };
 
+const ProductModal = ({ item, onClose }) => {
+  if (!item) return null;
+
+  return (
+    <div
+      className="hidden md:flex fixed inset-0 z-[100] items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-2xl w-full bg-stone-900 border border-gold-500/20 rounded-2xl overflow-hidden shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {item.image && (
+          <div className="w-full aspect-[4/3] overflow-hidden bg-stone-950">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        <div className="p-8">
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="font-serif text-2xl md:text-3xl text-white">{item.name}</h3>
+            <span className="text-gold-400 font-semibold text-xl whitespace-nowrap ml-4">{item.price}</span>
+          </div>
+          {item.nameEn && (
+            <p className="text-stone-500 text-sm italic mb-4">{item.nameEn}</p>
+          )}
+          <p className="text-stone-300 leading-relaxed">{item.description}</p>
+          {item.descriptionEn && (
+            <p className="text-stone-500 text-sm mt-2 italic">{item.descriptionEn}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     const cleanup = initRevealOnScroll();
@@ -58,10 +109,25 @@ const Menu = () => {
     scrollToCategory(newIndex);
   };
 
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') setSelectedItem(null);
+    };
+    if (selectedItem) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleEsc);
+    }
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [selectedItem]);
+
   return (
     <div className="min-h-screen">
       <ParticleSystem />
       <GradientOrbs />
+      <ProductModal item={selectedItem} onClose={() => setSelectedItem(null)} />
 
       {/* Floating Category Menu Button */}
       <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50">
@@ -175,7 +241,7 @@ const Menu = () => {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {menuData[category.id]?.map((item, index) => (
-                  <MenuCard key={index} item={item} use3D={false} />
+                  <MenuCard key={index} item={item} onSelect={setSelectedItem} />
                 ))}
               </div>
             </div>

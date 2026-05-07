@@ -283,7 +283,7 @@ export const menuData = {
       price: '49 RON',
       description: 'Pastă de năut cu tahini, lămâie, muguri de pin',
       descriptionEn: 'Chickpea paste with tahini, lemon, pine nuts',
-      image: '/images/F2t5sdNwdyE8t5HLpV8h7cDI.png',
+      image: '/images/Humus cu Muguri Pin (2).jpg',
     },
     {
       name: 'Hummus cu caracatiță',
@@ -907,7 +907,7 @@ export const menuData = {
       price: '124 RON',
       description: 'Carne de vită și berbec tocată cu ceapă, pătrunjel, condimente și cartofi prăjiți',
       descriptionEn: 'Minced beef and lamb meat with onions, parsley, spices and french fries',
-      image: '/images/wQ1G4Jusk1bVIbR3LfZA9W7O2E.png',
+      image: '/images/Kafta 2.jpg',
     },
     {
       name: 'Kebab Adana',
@@ -974,6 +974,14 @@ export const menuData = {
       image: '/images/nTF7ynUrvwcyFpApI23u7Nb0d80.png',
     },
     {
+      name: 'Caracatiță cu sos de lămâie',
+      nameEn: 'Octopus with Lemon Sauce',
+      price: '185 RON',
+      description: 'Caracatiță cu sos proaspăt de lămâie',
+      descriptionEn: 'Octopus with fresh lemon sauce',
+      image: '/images/kQk1qsfWfnm2nCLVcyrYceQqdN8.png',
+    },
+    {
       name: 'Calamari pane cu cartofi prăjiți',
       nameEn: 'Breaded Squid with Fried Potatoes',
       price: '103 RON',
@@ -995,7 +1003,7 @@ export const menuData = {
       price: '93 RON',
       description: 'Calamari fragezi cu sos proaspăt de lămâie',
       descriptionEn: 'Tender squid with fresh lemon sauce',
-      image: '/images/kQk1qsfWfnm2nCLVcyrYceQqdN8.png',
+      image: '/images/Calamari cu Sos de Lamaie (3).jpg',
     },
     {
       name: 'Shawarma cu pește',
@@ -1192,14 +1200,6 @@ export const menuData = {
       description: 'Baclava tradițională servită cu înghețată de vanilie',
       descriptionEn: 'Traditional baklava served with vanilla ice cream',
       image: '/images/o4E3exu1tDK3IzcTqZ8dvdXBhb4.png',
-    },
-    {
-      name: 'Tort cu rodie',
-      nameEn: 'Pomegranate Cake',
-      price: '57 RON',
-      description: 'Tort delicat cu aromă de rodie',
-      descriptionEn: 'Delicate cake with pomegranate flavor',
-      image: '/images/kBIoKATSZsq4w0spSvYB9dZkM.png',
     },
     {
       name: 'Ciocolată Dubai',
