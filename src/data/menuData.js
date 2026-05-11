@@ -13,7 +13,7 @@ export const menuData = {
       price: '40 RON',
       description: 'Vinete coapte cu ceapă, usturoi, ardei, pătrunjel, lămâie și sos de rodie',
       descriptionEn: 'Roasted eggplant with onion, garlic, pepper, parsley, lemon, pomegranate sauce',
-      image: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.png',
+      image: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
     },
     {
       name: 'Salată specială (picantă)',
@@ -595,7 +595,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Halloumi, roșii cherry, sos pesto',
       descriptionEn: 'Halloumi cheese, cherry tomatoes, pesto sauce',
-      image: '/images/halloumi-pesto.png',
+      image: '/images/halloumi-pesto.jpg',
     },
     {
       name: 'Brânză halloumi',
@@ -937,7 +937,7 @@ export const menuData = {
       price: '124 RON',
       description: 'Carne tocată vită și berbec cu usturoi în lipie cu cașcaval și iaurt',
       descriptionEn: 'Minced beef and lamb meat with garlic in a pita wrap with yoghurt',
-      image: '/images/6l9oIhlBP20uF8Dsv2l0BlfzKgA.png',
+      image: '/images/6l9oIhlBP20uF8Dsv2l0BlfzKgA.jpg',
     },
     {
       name: 'Kafta cu tahini',

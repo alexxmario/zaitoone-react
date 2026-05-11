@@ -26,7 +26,7 @@ const menuPhotos = [
     alt: 'Tabbouleh',
   },
   {
-    src: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.png',
+    src: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
     alt: 'Baba Ganoush',
   },
 ];
