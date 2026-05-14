@@ -28,7 +28,7 @@ export const menuData = {
       price: '33 RON',
       description: 'Varză, maioneză, morcovi',
       descriptionEn: 'Cabbage, mayo, carrots',
-      image: '/images/SwkBJmgjltF1WsWmS9fSdrp6N0.png',
+      image: '/images/salata-coleslow.jpg',
     },
     {
       name: 'Salată Panache cu dressing',
@@ -246,7 +246,7 @@ export const menuData = {
       price: '82 RON',
       description: 'Pastă de năut cu trufe extra, tahini, lămâie, ulei de măsline',
       descriptionEn: 'Chickpea paste with extra truffles, tahini, lemon, olive oil',
-      image: '/images/HVmjGvwmIwQ79kijTbYDXlmOVE.png',
+      image: '/images/hummus-cu-pasta-de-trufe-12.jpg',
     },
     {
       name: 'Hummus cu trufe',
@@ -254,14 +254,14 @@ export const menuData = {
       price: '64 RON',
       description: 'Pastă de năut cu trufe, tahini, lămâie, ulei de măsline',
       descriptionEn: 'Chickpea paste with truffles, tahini, lemon, olive oil',
-      image: '/images/4QDJNTsHu6J18fmmrcY9XJLEmk.png',
+      image: '/images/hummus-cu-trufe-6.jpg',
     },
     {
       name: 'Hummus cu pesto',
       price: '53 RON',
       description: 'Pastă de năut cu tahini, lămâie, pesto, busuioc',
       descriptionEn: 'Chickpea paste with tahini, lemon, pesto, basil',
-      image: '/images/vpwmbeu6BXxdqTf1lLYAgCvmKDI.png',
+      image: '/images/hummus-pesto-2.jpg',
     },
     {
       name: 'Hummus',
@@ -745,7 +745,7 @@ export const menuData = {
       price: '62 RON',
       description: 'Pâine libaneză cu halloumi și mentă',
       descriptionEn: 'Lebanese bread with halloumi and mint',
-      image: '/images/DTkgSlG4gMJgN7TgPq3iMpyYDI.png',
+      image: '/images/arayes-halloumi-24.jpg',
     },
     {
       name: 'Arayes Pui și Cașcaval',
@@ -753,21 +753,21 @@ export const menuData = {
       price: '62 RON',
       description: 'Lipie libaneză cu carne de pui și cașcaval',
       descriptionEn: 'Lebanese bread with chicken and yellow cheese',
-      image: '/images/arayes-pui-cascaval.jpg',
+      image: '/images/arayes-pui-si-cascaval-20.jpg',
     },
     {
       name: 'Arayes Kafta Special',
       price: '77 RON',
       description: 'Pâine libaneză cu carne tocată',
       descriptionEn: 'Lebanese bread with ground meat',
-      image: '/images/w7MuQQG6UL4B4CKwU3Pbbq3lUs.png',
+      image: '/images/arayes-kafta-special-37.jpg',
     },
     {
       name: 'Arayes Kafta',
       price: '72 RON',
       description: 'Pâine libaneză cu carne tocată și brânză',
       descriptionEn: 'Lebanese bread with ground meat and cheese',
-      image: '/images/dGF3cGMC5MJAxFn2ML9AAAznlb0.png',
+      image: '/images/arayes-kafta-37.jpg',
     },
     {
       name: 'Arayes Cașcaval',
@@ -775,7 +775,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Lipie libaneză cu cașcaval',
       descriptionEn: 'Lebanese bread with cheese',
-      image: '/images/YPZwJOHGSsTAXGKxmgoYaGeuvc.png',
+      image: '/images/arayes-cascaval-28.jpg',
     },
     {
       name: 'Mix Kebab',
