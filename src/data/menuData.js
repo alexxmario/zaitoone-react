@@ -9,13 +9,6 @@ export const menuData = {
       image: '/images/JkOECGWfiVc4WcAsro3LvKpTaU.png',
     },
     {
-      name: 'Baba Ganoush',
-      price: '40 RON',
-      description: 'Vinete coapte cu ceapă, mentă, ardei gras, pătrunjel, sos de rodii, lămâie, nuci, rodie',
-      descriptionEn: 'Smoked grilled eggplant mixed with onions, mint, mild pepper, lemon juice, nuts, pomegranate',
-      image: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
-    },
-    {
       name: 'Salată specială (picantă)',
       nameEn: 'Special Spicy Salad',
       price: '67 RON',
@@ -108,6 +101,13 @@ export const menuData = {
     },
   ],
   coldAppetizers: [
+    {
+      name: 'Baba Ganoush',
+      price: '40 RON',
+      description: 'Vinete coapte cu ceapă, mentă, ardei gras, pătrunjel, sos de rodii, lămâie, nuci, rodie',
+      descriptionEn: 'Smoked grilled eggplant mixed with onions, mint, mild pepper, lemon juice, nuts, pomegranate',
+      image: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
+    },
     {
       name: 'Murături asortate',
       nameEn: 'Assorted Pickles',
