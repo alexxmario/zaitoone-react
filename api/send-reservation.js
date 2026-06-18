@@ -19,7 +19,7 @@ module.exports = async function handler(req, res) {
     // Email to restaurant
     await resend.emails.send({
       from: 'Zaitoone Rezervări <rezervari@zaitoone.ro>',
-      to: 'alexionescu870@gmail.com',
+      to: 'office@zaitoone.ro',
       subject: `[Rezervare Nouă] ${name} – ${date} ${time} – ${guests} ${guests === '1' ? 'persoană' : 'persoane'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">

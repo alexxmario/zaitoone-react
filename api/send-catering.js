@@ -16,7 +16,7 @@ module.exports = async function handler(req, res) {
   try {
     await resend.emails.send({
       from: 'Zaitoone Catering <rezervari@zaitoone.ro>',
-      to: 'alexionescu870@gmail.com',
+      to: 'office@zaitoone.ro',
       subject: `[Cerere Catering] ${name} – ${eventType}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
