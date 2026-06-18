@@ -128,65 +128,6 @@ const Catering = () => {
         </div>
       </section>
 
-      {/* Video Showcase */}
-      <section className="relative py-16 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="reveal text-center mb-10">
-            <p className="font-script text-gold-400 text-2xl mb-2">Momente Reale</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-white">Din culisele unui eveniment</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4 reveal">
-            <video
-              src={cdnUrl('/catering/videos/catering-video-02.mp4')}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full rounded-lg object-cover"
-              style={{ maxHeight: '520px' }}
-            />
-            <video
-              src={cdnUrl('/catering/videos/catering-video-01.mp4')}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full rounded-lg object-cover"
-              style={{ maxHeight: '520px' }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Photo Gallery */}
-      <section className="relative pb-20 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="reveal text-center mb-10">
-            <p className="font-script text-gold-400 text-2xl mb-2">Galerie</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-white">Inspirație pentru evenimentul tău</h2>
-          </div>
-          <div
-            className="reveal"
-            style={{ columns: '2', columnGap: '10px' }}
-          >
-            {cateringPhotos.map((photo, i) => (
-              <div
-                key={i}
-                className="mb-2.5 overflow-hidden rounded-lg"
-                style={{ breakInside: 'avoid' }}
-              >
-                <img
-                  src={cdnUrl(photo)}
-                  alt={`Catering Zaitoone ${i + 1}`}
-                  className="w-full object-cover hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Form Section */}
       <section className="relative py-32 overflow-hidden z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -392,6 +333,66 @@ const Catering = () => {
           </div>
         </div>
       </section>
+
+      {/* Video Showcase */}
+      <section className="relative py-16 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal text-center mb-10">
+            <p className="font-script text-gold-400 text-2xl mb-2">Momente Reale</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-white">Din culisele unui eveniment</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 reveal">
+            <video
+              src={cdnUrl('/catering/videos/catering-video-02.mp4')}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full rounded-lg object-cover"
+              style={{ maxHeight: '520px' }}
+            />
+            <video
+              src={cdnUrl('/catering/videos/catering-video-01.mp4')}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full rounded-lg object-cover"
+              style={{ maxHeight: '520px' }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="relative pb-20 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal text-center mb-10">
+            <p className="font-script text-gold-400 text-2xl mb-2">Galerie</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-white">Inspirație pentru evenimentul tău</h2>
+          </div>
+          <div
+            className="reveal"
+            style={{ columns: '2', columnGap: '10px' }}
+          >
+            {cateringPhotos.map((photo, i) => (
+              <div
+                key={i}
+                className="mb-2.5 overflow-hidden rounded-lg"
+                style={{ breakInside: 'avoid' }}
+              >
+                <img
+                  src={cdnUrl(photo)}
+                  alt={`Catering Zaitoone ${i + 1}`}
+                  className="w-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
