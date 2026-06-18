@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UtensilsCrossed, Users, Calendar, MessageSquare } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
-
-const EMAILJS_SERVICE_ID = 'service_68mdslu';
-const EMAILJS_TEMPLATE_ID = 'template_m5szl02';
-const EMAILJS_PUBLIC_KEY = 'tj_YvQ_mvZ3eN-48Y';
 
 const Catering = () => {
   const [formData, setFormData] = useState({
@@ -45,18 +40,13 @@ const Catering = () => {
     setErrorMessage('');
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          message: `[CERERE CATERING]\n\nTip eveniment: ${formData.eventType}\nNumăr aproximativ persoane: ${formData.guestsApprox}\nData dorită: ${formData.date}\n\nPreferințe și detalii:\n${formData.preferences}`,
-          to_email: 'office@zaitoone.ro',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
+      const response = await fetch('/api/send-catering', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Server error');
 
       setFormStatus('success');
       setTimeout(() => {
@@ -72,7 +62,7 @@ const Catering = () => {
         });
       }, 3000);
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('Resend error:', error);
       setFormStatus('error');
       setErrorMessage('Nu s-a putut trimite cererea. Vă rugăm să ne sunați sau să încercați din nou.');
       setTimeout(() => {

@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Instagram, Sparkles, Award, MapPinned } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
-
-// EmailJS Configuration
-const EMAILJS_SERVICE_ID = 'service_68mdslu';
-const EMAILJS_TEMPLATE_ID = 'template_m5szl02';
-const EMAILJS_CUSTOMER_TEMPLATE_ID = 'template_8qxevqa';
-const EMAILJS_PUBLIC_KEY = 'tj_YvQ_mvZ3eN-48Y';
 
 const Reservations = () => {
   const [formData, setFormData] = useState({
@@ -47,36 +40,13 @@ const Reservations = () => {
     setErrorMessage('');
 
     try {
-      // Send email to restaurant
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          date: formData.date,
-          time: formData.time,
-          guests: formData.guests,
-          message: formData.message || 'Fără cereri speciale',
-          to_email: 'office@zaitoone.ro',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
+      const response = await fetch('/api/send-reservation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-      // Send confirmation email to customer
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_CUSTOMER_TEMPLATE_ID,
-        {
-          to_name: formData.name,
-          to_email: formData.email,
-          date: formData.date,
-          time: formData.time,
-          guests: formData.guests,
-        },
-        EMAILJS_PUBLIC_KEY
-      );
+      if (!response.ok) throw new Error('Server error');
 
       setFormStatus('success');
       setTimeout(() => {
@@ -92,7 +62,7 @@ const Reservations = () => {
         });
       }, 3000);
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('Resend error:', error);
       setFormStatus('error');
       setErrorMessage('Nu s-a putut trimite rezervarea. Vă rugăm să ne sunați sau să încercați din nou.');
       setTimeout(() => {
