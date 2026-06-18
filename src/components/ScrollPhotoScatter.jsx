@@ -3,31 +3,31 @@ import { cdnUrl } from '../utils/cdn';
 
 const menuPhotos = [
   {
-    src: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+    src: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png'),
     alt: 'Creveți Zaitoone',
   },
   {
-    src: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+    src: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png'),
     alt: 'Falafel',
   },
   {
-    src: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+    src: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png'),
     alt: 'Shawarma de vită',
   },
   {
-    src: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+    src: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png'),
     alt: 'Grătar mixt',
   },
   {
-    src: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+    src: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png'),
     alt: 'Künefe',
   },
   {
-    src: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+    src: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png'),
     alt: 'Tabbouleh',
   },
   {
-    src: cdnUrl('/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
+    src: cdnUrl('/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg'),
     alt: 'Baba Ganoush',
   },
 ];

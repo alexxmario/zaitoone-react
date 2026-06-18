@@ -10,37 +10,37 @@ const signatureDishes = [
   {
     name: 'Creveți Zaitoone',
     category: 'Fructe de mare',
-    image: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+    image: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png'),
     description: 'Creveți aromați cu sos special de rodie'
   },
   {
     name: 'Falafel',
     category: 'Mezze',
-    image: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+    image: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png'),
     description: 'Chifteluțe de năut cu ceapă, coriandru, usturoi'
   },
   {
     name: 'Shawarma de vită',
     category: 'Signature',
-    image: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+    image: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png'),
     description: 'Mușchi de vită marinat în sos special'
   },
   {
     name: 'Grătar mixt',
     category: 'Grătar',
-    image: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+    image: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png'),
     description: 'Vită, pui, kafta, cotlet de miel'
   },
   {
     name: 'Künefe la shish',
     category: 'Deserturi',
-    image: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+    image: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png'),
     description: 'Fidea caramelizată, brânză dulce, miere, fistic'
   },
   {
     name: 'Tabbouleh',
     category: 'Salate',
-    image: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+    image: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png'),
     description: 'Pătrunjel, ceapă, bulgur, lămâie, ulei de măsline'
   }
 ];
