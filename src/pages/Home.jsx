@@ -454,6 +454,84 @@ const Home = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 7: Catering Promo
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-32 md:py-40 overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0">
+          <img
+            src={cdnUrl('/catering/images/catering-11.jpg')}
+            alt="Catering Zaitoone"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/85 to-stone-950/50" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left: Text */}
+            <div className="reveal">
+              <p className="font-script text-gold-400 text-3xl mb-4">Evenimente Speciale</p>
+              <h2 className="font-serif text-5xl md:text-6xl text-white leading-none mb-6">
+                Catering
+                <br />
+                <span className="text-gold-400">Zaitoone</span>
+              </h2>
+              <p className="text-stone-400 text-lg leading-relaxed mb-4">
+                Nunți, aniversări, corporate, gale — aducem bucătăria libaneză
+                direct la evenimentul tău, oriunde în București.
+              </p>
+              <p className="text-stone-500 text-base leading-relaxed mb-10">
+                Meniuri personalizate, ingrediente premium, prezentare impecabilă.
+                Pentru orice număr de invitați.
+              </p>
+              <Link
+                to="/catering"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gold-500 text-stone-950 font-serif text-lg tracking-wide hover:bg-gold-400 transition-colors duration-300"
+              >
+                Solicită ofertă
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+            {/* Right: Photo collage */}
+            <div className="reveal hidden lg:block">
+              <div className="relative h-[480px]">
+                {/* Back-left photo */}
+                <div
+                  className="absolute overflow-hidden rounded-lg shadow-2xl"
+                  style={{ width: '220px', top: '30px', left: '0px', transform: 'rotate(-3deg)' }}
+                >
+                  <img src={cdnUrl('/catering/images/catering-03.jpg')} alt="" className="w-full object-cover" />
+                </div>
+                {/* Center large photo */}
+                <div
+                  className="absolute overflow-hidden rounded-lg shadow-2xl"
+                  style={{ width: '260px', top: '0px', left: '140px', transform: 'rotate(1deg)', zIndex: 2 }}
+                >
+                  <img src={cdnUrl('/catering/images/catering-07.jpg')} alt="" className="w-full object-cover" />
+                </div>
+                {/* Front-right photo */}
+                <div
+                  className="absolute overflow-hidden rounded-lg shadow-2xl"
+                  style={{ width: '220px', top: '80px', left: '300px', transform: 'rotate(3.5deg)', zIndex: 3 }}
+                >
+                  <img src={cdnUrl('/catering/images/catering-13.jpg')} alt="" className="w-full object-cover" />
+                </div>
+                {/* Small accent bottom-left */}
+                <div
+                  className="absolute overflow-hidden rounded-lg shadow-xl"
+                  style={{ width: '160px', bottom: '20px', left: '60px', transform: 'rotate(-1.5deg)', zIndex: 4 }}
+                >
+                  <img src={cdnUrl('/catering/images/catering-05.jpg')} alt="" className="w-full object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
           SECTION 8: Reservation CTA
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-48 overflow-hidden">

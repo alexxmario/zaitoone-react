@@ -8,10 +8,11 @@ const Navigation = () => {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/menu', label: 'Menu' },
-    { path: '/about', label: 'About' },
-    { path: '/reservations', label: 'Reservations' },
+    { path: '/', label: 'Acasă' },
+    { path: '/menu', label: 'Meniu' },
+    { path: '/about', label: 'Despre Noi' },
+    { path: '/catering', label: 'Catering' },
+    { path: '/reservations', label: 'Rezervări' },
   ];
 
   const isActive = (path) => location.pathname === path;

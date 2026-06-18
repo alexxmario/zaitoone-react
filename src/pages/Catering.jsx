@@ -1,6 +1,27 @@
 import { useState, useEffect } from 'react';
 import { UtensilsCrossed, Users, Calendar, MessageSquare } from 'lucide-react';
+import { cdnUrl } from '../utils/cdn';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
+
+const cateringPhotos = [
+  '/catering/images/catering-01.jpg',
+  '/catering/images/catering-02.jpg',
+  '/catering/images/catering-03.jpg',
+  '/catering/images/catering-04.jpg',
+  '/catering/images/catering-05.jpg',
+  '/catering/images/catering-06.jpg',
+  '/catering/images/catering-07.jpg',
+  '/catering/images/catering-08.jpg',
+  '/catering/images/catering-09.jpg',
+  '/catering/images/catering-10.jpg',
+  '/catering/images/catering-11.jpg',
+  '/catering/images/catering-12.jpg',
+  '/catering/images/catering-13.jpg',
+  '/catering/images/catering-14.jpg',
+  '/catering/images/catering-15.jpg',
+  '/catering/images/catering-16.jpg',
+  '/catering/images/catering-17.jpg',
+];
 
 const Catering = () => {
   const [formData, setFormData] = useState({
@@ -103,6 +124,65 @@ const Catering = () => {
             <p className="text-stone-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
               Spune-ne despre evenimentul tău și noi vom crea o experiență culinară personalizată
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Showcase */}
+      <section className="relative py-16 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal text-center mb-10">
+            <p className="font-script text-gold-400 text-2xl mb-2">Momente Reale</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-white">Din culisele unui eveniment</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 reveal">
+            <video
+              src={cdnUrl('/catering/videos/catering-video-02.mp4')}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full rounded-lg object-cover"
+              style={{ maxHeight: '520px' }}
+            />
+            <video
+              src={cdnUrl('/catering/videos/catering-video-01.mp4')}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full rounded-lg object-cover"
+              style={{ maxHeight: '520px' }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="relative pb-20 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal text-center mb-10">
+            <p className="font-script text-gold-400 text-2xl mb-2">Galerie</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-white">Inspirație pentru evenimentul tău</h2>
+          </div>
+          <div
+            className="reveal"
+            style={{ columns: '2', columnGap: '10px' }}
+          >
+            {cateringPhotos.map((photo, i) => (
+              <div
+                key={i}
+                className="mb-2.5 overflow-hidden rounded-lg"
+                style={{ breakInside: 'avoid' }}
+              >
+                <img
+                  src={cdnUrl(photo)}
+                  alt={`Catering Zaitoone ${i + 1}`}
+                  className="w-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
