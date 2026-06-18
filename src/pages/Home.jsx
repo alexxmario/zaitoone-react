@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { cdnUrl } from '../utils/cdn';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ScrollVideo from '../components/ScrollVideo';
@@ -9,37 +10,37 @@ const signatureDishes = [
   {
     name: 'Creveți Zaitoone',
     category: 'Fructe de mare',
-    image: '/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+    image: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
     description: 'Creveți aromați cu sos special de rodie'
   },
   {
     name: 'Falafel',
     category: 'Mezze',
-    image: '/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+    image: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
     description: 'Chifteluțe de năut cu ceapă, coriandru, usturoi'
   },
   {
     name: 'Shawarma de vită',
     category: 'Signature',
-    image: '/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+    image: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
     description: 'Mușchi de vită marinat în sos special'
   },
   {
     name: 'Grătar mixt',
     category: 'Grătar',
-    image: '/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+    image: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
     description: 'Vită, pui, kafta, cotlet de miel'
   },
   {
     name: 'Künefe la shish',
     category: 'Deserturi',
-    image: '/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+    image: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
     description: 'Fidea caramelizată, brânză dulce, miere, fistic'
   },
   {
     name: 'Tabbouleh',
     category: 'Salate',
-    image: '/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+    image: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
     description: 'Pătrunjel, ceapă, bulgur, lămâie, ulei de măsline'
   }
 ];
@@ -166,7 +167,7 @@ const Home = () => {
 
             {/* Main title */}
             <h1 className="mb-6">
-              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-24 md:h-32 mx-auto" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
+              <img src={cdnUrl('/zaitoone-logo.svg')} alt="Zaitoone" className="h-24 md:h-32 mx-auto" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
             </h1>
 
             {/* Subtle divider */}

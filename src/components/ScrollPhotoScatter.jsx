@@ -1,32 +1,33 @@
 import { useRef, useEffect, useState } from 'react';
+import { cdnUrl } from '../utils/cdn';
 
 const menuPhotos = [
   {
-    src: '/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+    src: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
     alt: 'Creveți Zaitoone',
   },
   {
-    src: '/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+    src: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
     alt: 'Falafel',
   },
   {
-    src: '/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+    src: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
     alt: 'Shawarma de vită',
   },
   {
-    src: '/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+    src: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
     alt: 'Grătar mixt',
   },
   {
-    src: '/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+    src: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
     alt: 'Künefe',
   },
   {
-    src: '/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+    src: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
     alt: 'Tabbouleh',
   },
   {
-    src: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
+    src: cdnUrl('/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
     alt: 'Baba Ganoush',
   },
 ];

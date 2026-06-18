@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { cdnUrl } from '../utils/cdn';
 import { Link } from 'react-router-dom';
 import { Award, Heart, Leaf, MapPin, Phone, Clock, ArrowRight } from 'lucide-react';
 import ParticleSystem from '../components/ParticleSystem';
@@ -66,7 +67,7 @@ const About = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/video/about.mp4" type="video/mp4" />
+          <source src={cdnUrl('/video/about.mp4')} type="video/mp4" />
         </video>
 
         {/* Overlay Gradients */}
@@ -291,7 +292,7 @@ const About = () => {
             <div className="reveal glass-card glow-border p-8 rounded-2xl">
               <div className="aspect-square rounded-xl overflow-hidden">
                 <img
-                  src="/visit.jpg"
+                  src={cdnUrl('/visit.jpg')}
                   alt="Restaurant Interior"
                   className="w-full h-full object-cover"
                 />

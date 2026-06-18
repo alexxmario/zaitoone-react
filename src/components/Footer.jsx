@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { cdnUrl } from '../utils/cdn';
 import { MapPin, Phone, Clock, Instagram } from 'lucide-react';
 
 const Footer = () => {
@@ -12,9 +13,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gold-500/30">
-                <img src="/logo.png" alt="Zaitoone" className="w-full h-full object-cover" />
+                <img src={cdnUrl('/logo.png')} alt="Zaitoone" className="w-full h-full object-cover" />
               </div>
-              <img src="/zaitoone-logo.svg" alt="Zaitoone" className="h-6" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
+              <img src={cdnUrl('/zaitoone-logo.svg')} alt="Zaitoone" className="h-6" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed">
               Authentic Lebanese cuisine in the heart of Bucharest. Award-winning restaurant serving 100% Halal food.

@@ -1,3 +1,5 @@
+import { cdnUrl } from '../utils/cdn';
+
 export const menuData = {
   salads: [
     {
@@ -6,7 +8,7 @@ export const menuData = {
       price: '41 RON',
       description: 'Salată cos, sare, lămâie, ulei de măsline',
       descriptionEn: 'Cos lettuce, salt, lemon, olive oil',
-      image: '/images/JkOECGWfiVc4WcAsro3LvKpTaU.png',
+      image: cdnUrl('/images/JkOECGWfiVc4WcAsro3LvKpTaU.png',
     },
     {
       name: 'Salată specială (picantă)',
@@ -14,21 +16,21 @@ export const menuData = {
       price: '67 RON',
       description: 'Focaccia, avocado, oregano, valerianella, ceapă, halloumi, ulei de măsline, sare, roșii, ardei iuți',
       descriptionEn: 'Focaccia, avocado, oregano, lamb\'s lettuce, onion, halloumi, olive oil, tomatoes, hot peppers',
-      image: '/images/apDS5sg6cLg4JIR0bnjRjMSEY.png',
+      image: cdnUrl('/images/apDS5sg6cLg4JIR0bnjRjMSEY.png',
     },
     {
       name: 'Salată Coleslaw',
       price: '33 RON',
       description: 'Varză, maioneză, morcovi',
       descriptionEn: 'Cabbage, mayo, carrots',
-      image: '/images/salata-coleslow.jpg',
+      image: cdnUrl('/images/salata-coleslow.jpg',
     },
     {
       name: 'Salată Panache cu dressing',
       price: '70 RON',
       description: 'Avocado, salată verde, roșii, porumb, anghinare, sparanghel',
       descriptionEn: 'Avocado, green salad, tomatoes, corn, artichoke, asparagus',
-      image: '/images/salata-panache.jpg',
+      image: cdnUrl('/images/salata-panache.jpg',
     },
     {
       name: 'Platou de legume proaspete',
@@ -36,7 +38,7 @@ export const menuData = {
       price: '77 RON',
       description: 'Selecție de legume proaspete',
       descriptionEn: 'Selection of fresh vegetables',
-      image: '/images/AjZzJOvqezYLG4bN5ETsvTbMRGM.png',
+      image: cdnUrl('/images/AjZzJOvqezYLG4bN5ETsvTbMRGM.png',
     },
     {
       name: 'Salată de măsline',
@@ -44,14 +46,14 @@ export const menuData = {
       price: '60 RON',
       description: 'Măsline verzi cu cimbru, nuci, ceapă, roșii, lămâie, pătrunjel, sos de rodie',
       descriptionEn: 'Green olives with thyme, walnuts, onion, tomatoes, lemon, parsley, pomegranate sauce',
-      image: '/images/salatamasline.jpg',
+      image: cdnUrl('/images/salatamasline.jpg',
     },
     {
       name: 'Salată Zaitoone',
       price: '50 RON',
       description: 'Rucolă, valerianella, oregano, măsline verzi, ceapă roșie, salată verde, roșii, sare, lămâie, ulei de măsline',
       descriptionEn: 'Arugula, lamb\'s lettuce, oregano, green olives, red onion, green lettuce, tomatoes, salt, lemon, olive oil',
-      image: '/images/salata-zaitoone-new.jpg',
+      image: cdnUrl('/images/salata-zaitoone-new.jpg',
     },
     {
       name: 'Salată libaneză mixtă',
@@ -59,7 +61,7 @@ export const menuData = {
       price: '60 RON',
       description: 'Roșii, castraveți, salată verde, ceapă, ardei, ridichi, valerianella, mentă, lămâie, ulei de măsline',
       descriptionEn: 'Tomatoes, cucumbers, green lettuce, onion, peppers, radishes, lamb\'s lettuce, mint, lemon, olive oil',
-      image: '/images/3jM8mZgRlIMrAt55dsKqjyqXw.png',
+      image: cdnUrl('/images/3jM8mZgRlIMrAt55dsKqjyqXw.png',
     },
     {
       name: 'Salată arabească tocată fin',
@@ -67,14 +69,14 @@ export const menuData = {
       price: '60 RON',
       description: 'Roșii, castraveți, salată verde, ceapă, ardei, ridichi, mentă, lămâie, ulei de măsline',
       descriptionEn: 'Tomatoes, cucumbers, green lettuce, onion, peppers, radishes, mint, lemon, olive oil',
-      image: '/images/jMcNkH6Q52OxC0j6nf4e6Ovuzwc.png',
+      image: cdnUrl('/images/jMcNkH6Q52OxC0j6nf4e6Ovuzwc.png',
     },
     {
       name: 'Tabbouleh',
       price: '49 RON',
       description: 'Roșii, pătrunjel, grâu, ceapă, mentă, lămâie și ulei de măsline',
       descriptionEn: 'Tomatoes, parsley, wheat, onion, mint, lemon and olive oil',
-      image: '/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
+      image: cdnUrl('/images/bHeryJnDuLQMzlNKlClRNywCOwU.png',
     },
     {
       name: 'Salată Garden',
@@ -82,7 +84,7 @@ export const menuData = {
       price: '70 RON',
       description: 'Smântână, muștar, salată verde, oțet, rucolă, baby spanac, valerianella, rodii, piper, miere, ulei de floarea soarelui, lămâi, muguri de pin',
       descriptionEn: 'Sour cream, mustard, green salad, vinegar, arugula, baby spinach, valerian, pomegranate, honey, olive oil, lemon, pine seeds',
-      image: '/images/salata-garden.jpg',
+      image: cdnUrl('/images/salata-garden.jpg',
     },
     {
       name: 'Salată Avocado cu Pesto',
@@ -90,14 +92,14 @@ export const menuData = {
       price: '46 RON',
       description: 'Avocado, ulei de măsline, sos pesto',
       descriptionEn: 'Avocado, olive oil, pesto sauce',
-      image: '/images/salata-avocado-pesto.jpg',
+      image: cdnUrl('/images/salata-avocado-pesto.jpg',
     },
     {
       name: 'Fattoush',
       price: '55 RON',
       description: 'Roșii, castraveți, salată verde, ridichii, ceapă verde, ardei gras, lămâie, ulei de măsline, valerianella, mentă, sos de rodii, lipie',
       descriptionEn: 'Tomatoes, cucumber, lettuce, radish, spring onion, capsicum, lemon, olive oil, valerian, mint, pomegranate sauce, bread',
-      image: '/images/FRvC5K47GtFAcejQ3kvwF3YltE.png',
+      image: cdnUrl('/images/FRvC5K47GtFAcejQ3kvwF3YltE.png',
     },
   ],
   coldAppetizers: [
@@ -106,7 +108,7 @@ export const menuData = {
       price: '40 RON',
       description: 'Vinete coapte cu ceapă, mentă, ardei gras, pătrunjel, sos de rodii, lămâie, nuci, rodie',
       descriptionEn: 'Smoked grilled eggplant mixed with onions, mint, mild pepper, lemon juice, nuts, pomegranate',
-      image: '/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
+      image: cdnUrl('/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg',
     },
     {
       name: 'Murături asortate',
@@ -114,42 +116,42 @@ export const menuData = {
       price: '41 RON',
       description: 'Selecție de murături tradiționale',
       descriptionEn: 'Selection of traditional pickles',
-      image: '/images/IDlutDuzzwOhakovvYMtuT4odH8.png',
+      image: cdnUrl('/images/IDlutDuzzwOhakovvYMtuT4odH8.png',
     },
     {
       name: 'Telemea',
       price: '18 RON',
       description: 'Telemea proaspătă',
       descriptionEn: 'Fresh telemea cheese',
-      image: '/images/bQyLEvZ3nFbvmKYgzLjFDSDNU.png',
+      image: cdnUrl('/images/bQyLEvZ3nFbvmKYgzLjFDSDNU.png',
     },
     {
       name: 'Makdous',
       price: '46 RON',
       description: 'Vinete umplute cu nuci, pastă de ardei, condimente',
       descriptionEn: 'Eggplant stuffed with walnuts, chili paste, spices',
-      image: '/images/J8dzTdmmwFlYDQBmluGHicbOtVg.png',
+      image: cdnUrl('/images/J8dzTdmmwFlYDQBmluGHicbOtVg.png',
     },
     {
       name: 'Muhammara',
       price: '49 RON',
       description: 'Pastă de nuci cu ulei de măsline și boia',
       descriptionEn: 'Walnut paste with olive oil and paprika',
-      image: '/images/dWpOwWy71pc7sIVjImEt6lqjAZ0.png',
+      image: cdnUrl('/images/dWpOwWy71pc7sIVjImEt6lqjAZ0.png',
     },
     {
       name: 'Bame',
       price: '48 RON',
       description: 'Bame cu roșii, ceapă, condimente',
       descriptionEn: 'Okra with tomatoes, onion, spices',
-      image: '/images/PbIvOPYAbDxy3L9pZkA4EKlhC7o.png',
+      image: cdnUrl('/images/PbIvOPYAbDxy3L9pZkA4EKlhC7o.png',
     },
     {
       name: 'Musaca',
       price: '49 RON',
       description: 'Mâncare de vinete cu roșii și condimente, ceapă',
       descriptionEn: 'Eggplant cooked with tomato, onions and spices',
-      image: '/images/YMEQsQIgactbUu8wo1yACboFfWA.png',
+      image: cdnUrl('/images/YMEQsQIgactbUu8wo1yACboFfWA.png',
     },
     {
       name: 'Fasole verde',
@@ -157,7 +159,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Mâncare de fasole verde cu suc de roșii și usturoi',
       descriptionEn: 'Green beans simmered with tomato juice and garlic',
-      image: '/images/R9EZ7YgJguyFbPzkUfQxGkQOCXo.png',
+      image: cdnUrl('/images/R9EZ7YgJguyFbPzkUfQxGkQOCXo.png',
     },
     {
       name: 'Sarmale de post',
@@ -165,21 +167,21 @@ export const menuData = {
       price: '41 RON',
       description: 'Sarmale în foi de viță cu orez, roșii, ceapă și condimente',
       descriptionEn: 'Vine leaves rolls filled with rice, tomato, onions, herbs, spices',
-      image: '/images/vRde9uCTHwYUeu5XoqW3oIcgxNs.png',
+      image: cdnUrl('/images/vRde9uCTHwYUeu5XoqW3oIcgxNs.png',
     },
     {
       name: 'Shanklish',
       price: '53 RON',
       description: 'Brânză condimentată cu cimbru, roșii, ceapă, pătrunjel',
       descriptionEn: 'Spiced cheese with thyme, tomatoes, onion, parsley',
-      image: '/images/ro5jB64L2GmoC9nPT7l9KXKLQU.png',
+      image: cdnUrl('/images/ro5jB64L2GmoC9nPT7l9KXKLQU.png',
     },
     {
       name: 'Labneh Zaitoone',
       price: '43 RON',
       description: 'Cremă proaspătă de iaurt cu măsline',
       descriptionEn: 'Fresh yogurt cream with olives',
-      image: '/images/VY4W3PR0o78GTQk6YMeuJwRtl1Y.png',
+      image: cdnUrl('/images/VY4W3PR0o78GTQk6YMeuJwRtl1Y.png',
     },
     {
       name: 'Labneh cu usturoi și mentă',
@@ -187,35 +189,35 @@ export const menuData = {
       price: '40 RON',
       description: 'Cremă proaspătă de iaurt cu usturoi și mentă',
       descriptionEn: 'Fresh yogurt cream with garlic and mint',
-      image: '/images/RVlbDXsn7OOVQ2FUYZKh6cM0IA.png',
+      image: cdnUrl('/images/RVlbDXsn7OOVQ2FUYZKh6cM0IA.png',
     },
     {
       name: 'Labneh',
       price: '40 RON',
       description: 'Cremă proaspătă de iaurt',
       descriptionEn: 'Fresh yogurt cream',
-      image: '/images/qwYbp7MXbf2h4pXHoQuyCvte66U.png',
+      image: cdnUrl('/images/qwYbp7MXbf2h4pXHoQuyCvte66U.png',
     },
     {
       name: 'Foul Mudamas',
       price: '40 RON',
       description: 'Boabe de fasole și năut, usturoi, lămâie, ulei de măsline și chimion',
       descriptionEn: 'Beans and chickpeas with garlic, lemon and olive oil',
-      image: '/images/F2t5sdNwdyE8t5HLpV8h7cDI.png',
+      image: cdnUrl('/images/F2t5sdNwdyE8t5HLpV8h7cDI.png',
     },
     {
       name: 'Balilla',
       price: '40 RON',
       description: 'Năut cu ulei de măsline și chimion',
       descriptionEn: 'Chickpeas with olive oil and cumin',
-      image: '/images/ffRFzDNQ6mb9NXDFxRMkmrQmc.png',
+      image: cdnUrl('/images/ffRFzDNQ6mb9NXDFxRMkmrQmc.png',
     },
     {
       name: 'Mudardara',
       price: '40 RON',
       description: 'Linte cu orez, ceapă, condimente',
       descriptionEn: 'Lentils with rice, onion, spices',
-      image: '/images/ICxdUIVs7BYCflVU3x2fJuDpMs.png',
+      image: cdnUrl('/images/ICxdUIVs7BYCflVU3x2fJuDpMs.png',
     },
     {
       name: 'Moutabal cu trufe',
@@ -223,14 +225,14 @@ export const menuData = {
       price: '65 RON',
       description: 'Vinete coapte cu tahini, lămâie, trufe',
       descriptionEn: 'Roasted eggplant with tahini, lemon, truffles',
-      image: '/images/moutabal-cu-trufe.jpg',
+      image: cdnUrl('/images/moutabal-cu-trufe.jpg',
     },
     {
       name: 'Moutabal',
       price: '40 RON',
       description: 'Vinete coapte cu tahini, lămâie, semințe de rodie',
       descriptionEn: 'Roasted eggplant with tahini, lemon, pomegranate seeds',
-      image: '/images/Kper7WuTS0yahKhtTekJJLIujo.png',
+      image: cdnUrl('/images/Kper7WuTS0yahKhtTekJJLIujo.png',
     },
     {
       name: 'Hummus cu shawarma',
@@ -238,7 +240,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Pastă de năut cu tahini, lămâie, shawarma de vită',
       descriptionEn: 'Chickpea paste with tahini, lemon, beef shawarma',
-      image: '/images/7XrlZ5sKMf0PaJla12PaIhyVI.png',
+      image: cdnUrl('/images/7XrlZ5sKMf0PaJla12PaIhyVI.png',
     },
     {
       name: 'Hummus cu trufe extra',
@@ -246,7 +248,7 @@ export const menuData = {
       price: '82 RON',
       description: 'Pastă de năut cu trufe extra, tahini, lămâie, ulei de măsline',
       descriptionEn: 'Chickpea paste with extra truffles, tahini, lemon, olive oil',
-      image: '/images/hummus-cu-pasta-de-trufe-12.jpg',
+      image: cdnUrl('/images/hummus-cu-pasta-de-trufe-12.jpg',
     },
     {
       name: 'Hummus cu trufe',
@@ -254,28 +256,28 @@ export const menuData = {
       price: '64 RON',
       description: 'Pastă de năut cu trufe, tahini, lămâie, ulei de măsline',
       descriptionEn: 'Chickpea paste with truffles, tahini, lemon, olive oil',
-      image: '/images/hummus-cu-trufe-6.jpg',
+      image: cdnUrl('/images/hummus-cu-trufe-6.jpg',
     },
     {
       name: 'Hummus cu pesto',
       price: '53 RON',
       description: 'Pastă de năut cu tahini, lămâie, pesto, busuioc, muguri de pin',
       descriptionEn: 'Chickpea paste with tahini, lemon, pesto, basil, pine seeds',
-      image: '/images/hummus-pesto-2.jpg',
+      image: cdnUrl('/images/hummus-pesto-2.jpg',
     },
     {
       name: 'Hummus',
       price: '40 RON',
       description: 'Pastă de năut cu tahini și lămâie',
       descriptionEn: 'Chickpea paste with tahini and lemon',
-      image: '/images/k1PhSfxjj0LNZOAJyRr7QxPhtQM.png',
+      image: cdnUrl('/images/k1PhSfxjj0LNZOAJyRr7QxPhtQM.png',
     },
     {
       name: 'Hummus Beiruti',
       price: '40 RON',
       description: 'Pastă de năut cu tahini, lămâie, pătrunjel, ardei iute',
       descriptionEn: 'Chickpea paste with tahini, lemon, parsley, chili pepper',
-      image: '/images/rmXYiSBHvNQatDBs86X6ZJA2ho.png',
+      image: cdnUrl('/images/rmXYiSBHvNQatDBs86X6ZJA2ho.png',
     },
     {
       name: 'Hummus cu muguri de pin',
@@ -283,7 +285,7 @@ export const menuData = {
       price: '49 RON',
       description: 'Pastă de năut cu tahini, lămâie, muguri de pin',
       descriptionEn: 'Chickpea paste with tahini, lemon, pine nuts',
-      image: '/images/Humus cu Muguri Pin (2).jpg',
+      image: cdnUrl('/images/Humus cu Muguri Pin (2).jpg',
     },
     {
       name: 'Hummus cu caracatiță',
@@ -291,7 +293,7 @@ export const menuData = {
       price: '90 RON',
       description: 'Hummus, caracatiță, usturoi, ardei iute, muguri de pin',
       descriptionEn: 'Hummus, octopus, garlic, hot pepper, pine seeds',
-      image: '/images/hummus-caracatita.jpg',
+      image: cdnUrl('/images/hummus-caracatita.jpg',
     },
     {
       name: 'Hummus cu creveți',
@@ -299,7 +301,7 @@ export const menuData = {
       price: '80 RON',
       description: 'Hummus, creveți, usturoi, ardei iute, muguri de pin',
       descriptionEn: 'Hummus, shrimps, garlic, hot pepper, pine seeds',
-      image: '/images/hummus-creveti.jpg',
+      image: cdnUrl('/images/hummus-creveti.jpg',
     },
     {
       name: 'Hummus cu carne și muguri de pin',
@@ -307,7 +309,7 @@ export const menuData = {
       price: '59 RON',
       description: 'Pastă de năut cu tahini, lămâie, muguri de pin, vită',
       descriptionEn: 'Chickpea paste with tahini, lemon, pine nuts, beef',
-      image: '/images/1alI4QOIvjToe1259tXSqoPE10.png',
+      image: cdnUrl('/images/1alI4QOIvjToe1259tXSqoPE10.png',
     },
   ],
   hotAppetizers: [
@@ -317,7 +319,7 @@ export const menuData = {
       price: '15 RON',
       description: 'Pâine caldă proaspăt scoasă din cuptor',
       descriptionEn: 'Warm fresh-baked bread',
-      image: '/images/HozzGgsqQ0fzsWDV3cvwibReAmI.png',
+      image: cdnUrl('/images/HozzGgsqQ0fzsWDV3cvwibReAmI.png',
     },
     {
       name: 'Sfiha (6 buc.)',
@@ -325,14 +327,14 @@ export const menuData = {
       price: '41 RON',
       description: 'Carne de vită și berbecuț pe blat',
       descriptionEn: 'Small middle pizza with minced blended meat',
-      image: '/images/4o84DIFGjyy1o4ASNI2I98SkvXo.png',
+      image: cdnUrl('/images/4o84DIFGjyy1o4ASNI2I98SkvXo.png',
     },
     {
       name: 'Lahm Be Ajiin',
       price: '52 RON',
       description: 'Aluat cu carne tocată, ceapă, roșii',
       descriptionEn: 'Dough with ground meat, onion, tomatoes',
-      image: '/images/yKicL2kikusRM1V8kog0jMiM4.png',
+      image: cdnUrl('/images/yKicL2kikusRM1V8kog0jMiM4.png',
     },
     {
       name: 'Manakish Jibneh',
@@ -340,14 +342,14 @@ export const menuData = {
       price: '41 RON',
       description: 'Aluat cu trei tipuri de brânză',
       descriptionEn: 'Dough with three types of cheese',
-      image: '/images/YbOXn0UUEE5BwOF8EBrNhvrs.png',
+      image: cdnUrl('/images/YbOXn0UUEE5BwOF8EBrNhvrs.png',
     },
     {
       name: 'Manakish Zaatar',
       price: '36 RON',
       description: 'Aluat cu cimbru, susan și ulei de măsline',
       descriptionEn: 'Dough with thyme, sesame and olive oil',
-      image: '/images/SxLJHXrc9wI9DcOhg3ggAz75gM.png',
+      image: cdnUrl('/images/SxLJHXrc9wI9DcOhg3ggAz75gM.png',
     },
     {
       name: 'Fatteh cu cartofi iuți',
@@ -355,7 +357,7 @@ export const menuData = {
       price: '60 RON',
       description: 'Cartofi iuți, carne vită, iaurt, sos roșu, muguri de pin, lipie prăjită',
       descriptionEn: 'Hot potatoes, yoghurt, beef, red sauce, pine seeds, toasted pita bread',
-      image: '/images/mdUxcVsVZ84fadBPCcs1yVg4.png',
+      image: cdnUrl('/images/mdUxcVsVZ84fadBPCcs1yVg4.png',
     },
     {
       name: 'Fatteh cu vinete',
@@ -363,7 +365,7 @@ export const menuData = {
       price: '60 RON',
       description: 'Vinete, lipie prăjită, iaurt, carne vită, muguri de pin, sos roșu',
       descriptionEn: 'Eggplants, toast, beef, pine seeds, yoghurt, red sauce',
-      image: '/images/y7jz9eHrXtYnFzXR5B5ZuqE2sY.png',
+      image: cdnUrl('/images/y7jz9eHrXtYnFzXR5B5ZuqE2sY.png',
     },
     {
       name: 'Fatteh cu creveți',
@@ -371,7 +373,7 @@ export const menuData = {
       price: '72 RON',
       description: 'Creveți, coriandru, usturoi, boia iute, ulei măsline, iaurt, năut, muguri pin, lipie prăjită',
       descriptionEn: 'Shrimp, coriander, garlic, olive oil, yogurt, chickpeas, pine nuts, toasted pita bread',
-      image: '/images/s96oANTllBrItDW3Eh5tvJQTTw.png',
+      image: cdnUrl('/images/s96oANTllBrItDW3Eh5tvJQTTw.png',
     },
     {
       name: 'Fatteh cu pui și orez',
@@ -379,7 +381,7 @@ export const menuData = {
       price: '60 RON',
       description: 'Carne pui, orez, sumac, lipie prăjită, muguri de pin, iaurt',
       descriptionEn: 'Chicken breast, rice, sumac, yogurt, pine seeds, toasted pita bread',
-      image: '/images/wl8DAqFCWpbDAgTgcIuuKpSrA.png',
+      image: cdnUrl('/images/wl8DAqFCWpbDAgTgcIuuKpSrA.png',
     },
     {
       name: 'Fatteh cu spanac, orez și carne vită',
@@ -387,7 +389,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Spanac, orez, carne de vită, muguri de pin, iaurt, lipie prăjită',
       descriptionEn: 'Spinach, rice, beef, pine buds, yogurt, toasted pita bread',
-      image: '/images/dnOltoinTHH7UR22CpXYQ5pF44s.png',
+      image: cdnUrl('/images/dnOltoinTHH7UR22CpXYQ5pF44s.png',
     },
     {
       name: 'Fatteh Hummus cu carne și muguri de pin',
@@ -395,7 +397,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Vită cu năut, usturoi, iaurt, pâine prăjită, muguri de pin',
       descriptionEn: 'Beef with chickpeas, garlic, yogurt, toasted bread, pine nuts',
-      image: '/images/UjSgEJKQRKFye8Ne5Vba4JJ4Eg.png',
+      image: cdnUrl('/images/UjSgEJKQRKFye8Ne5Vba4JJ4Eg.png',
     },
     {
       name: 'Fatteh simplu',
@@ -403,7 +405,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Năut, tahini, usturoi, iaurt, pâine prăjită, muguri de pin',
       descriptionEn: 'Chickpeas, tahini, garlic, yogurt, toasted bread, pine nuts',
-      image: '/images/jPIP3N7bFNurTszgKhExArSp89Y.png',
+      image: cdnUrl('/images/jPIP3N7bFNurTszgKhExArSp89Y.png',
     },
     {
       name: 'Pui Zaitoone crocant',
@@ -411,7 +413,7 @@ export const menuData = {
       price: '55 RON',
       description: 'Piept de pui pane cu sos provencal',
       descriptionEn: 'Breaded chicken breast with Provencal sauce',
-      image: '/images/T62H7EipkotWLkePFfdGntrzL0.png',
+      image: cdnUrl('/images/T62H7EipkotWLkePFfdGntrzL0.png',
     },
     {
       name: 'Ras Asfour de pui',
@@ -419,7 +421,7 @@ export const menuData = {
       price: '55 RON',
       description: 'Piept de pui tăiat cubulețe cu ceapă, ardei, sos de rodie',
       descriptionEn: 'Diced chicken breast with onion, peppers, pomegranate sauce',
-      image: '/images/2snvTdlSfsIkSmJZdTzxWehGGQ.png',
+      image: cdnUrl('/images/2snvTdlSfsIkSmJZdTzxWehGGQ.png',
     },
     {
       name: 'Ras Asfour Vită Zaitoone',
@@ -427,7 +429,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Mușchi de vită tăiat cubulețe cu muguri de pin, usturoi, busuioc, parmezan',
       descriptionEn: 'Diced beef loin with pine nuts, garlic, basil, parmesan',
-      image: '/images/eLiFZLp0RLhDh3NiqBbcxPZi0U4.png',
+      image: cdnUrl('/images/eLiFZLp0RLhDh3NiqBbcxPZi0U4.png',
     },
     {
       name: 'Ras Asfour de vită',
@@ -435,7 +437,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Mușchi de vită tăiat cubulețe cu ceapă și sos de rodie',
       descriptionEn: 'Diced beef loin with onion and pomegranate sauce',
-      image: '/images/lwIyPOD04tAZcVEqbqSC8v9EyRU.png',
+      image: cdnUrl('/images/lwIyPOD04tAZcVEqbqSC8v9EyRU.png',
     },
     {
       name: 'Ras Asfour de berbec (picant)',
@@ -443,7 +445,7 @@ export const menuData = {
       price: '77 RON',
       description: 'Mușchi de berbec tăiat cubulețe, ulei de măsline, muguri de pin, usturoi, ardei iuți',
       descriptionEn: 'Diced mutton loin, olive oil, pine nuts, garlic, hot peppers',
-      image: '/images/myd6WLspFjssEJPsB4Hm6WFkvFk.png',
+      image: cdnUrl('/images/myd6WLspFjssEJPsB4Hm6WFkvFk.png',
     },
     {
       name: 'Sharhat de vită Zaitoone',
@@ -451,7 +453,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Felii de mușchi de vită cu sos alb',
       descriptionEn: 'Beef loin slices with white sauce',
-      image: '/images/DhPQk80W2jgFA8xlFRmy3lsRco.png',
+      image: cdnUrl('/images/DhPQk80W2jgFA8xlFRmy3lsRco.png',
     },
     {
       name: 'Sharhat de vită în sos de rodii',
@@ -459,7 +461,7 @@ export const menuData = {
       price: '80 RON',
       description: 'Mușchi de vițel, usturoi, piper negru cu sos de rodii',
       descriptionEn: 'Veal fillet, garlic, black pepper with pomegranate sauce',
-      image: '/images/Pe2FQcAl7PuqvJ8I4GtWGf7qw.png',
+      image: cdnUrl('/images/Pe2FQcAl7PuqvJ8I4GtWGf7qw.png',
     },
     {
       name: 'Sharhat de vită',
@@ -467,7 +469,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Mușchi de vită feliat cu sos de lămâie și usturoi',
       descriptionEn: 'Sliced beef fillet with lemon sauce and garlic',
-      image: '/images/sharhat-vita.jpg',
+      image: cdnUrl('/images/sharhat-vita.jpg',
     },
     {
       name: 'Sharhat de pui Zaitoone',
@@ -475,7 +477,7 @@ export const menuData = {
       price: '55 RON',
       description: 'Piept de pui, usturoi, ardei iute verde, smântână, ghimbir',
       descriptionEn: 'Chicken breast, garlic, ginger, hot pepper, sour cream',
-      image: '/images/hNisHnENiry8TGkcMO2x4FEA3vw.png',
+      image: cdnUrl('/images/hNisHnENiry8TGkcMO2x4FEA3vw.png',
     },
     {
       name: 'Sharhat de pui',
@@ -483,7 +485,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Piept de pui feliat cu usturoi, coriandru, lămâie',
       descriptionEn: 'Sliced chicken breast with garlic, coriander, lemon',
-      image: '/images/1FUc6gym5UreyXt1DzrJ0Kp0LU.png',
+      image: cdnUrl('/images/1FUc6gym5UreyXt1DzrJ0Kp0LU.png',
     },
     {
       name: 'Shawarma de vită',
@@ -493,8 +495,8 @@ export const menuData = {
       description: 'Carne de vită marinată cu ceapă și roșii, sos special, cartofi prăjiți',
       descriptionEn: 'Beef meat with onion and tomato marinated with special sauce, fries',
       fullDescription: 'Mușchiul de vită este marinat timp de ore întregi în amestecul nostru special de condimente libaneze, apoi gătit lent pe frigare verticală. Servit cu tahini, murături și legume proaspete.',
-      image: '/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
-      modelUrl: '/models/menu-items/PULLED PORK SANDWICH.glb',
+      image: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png',
+      modelUrl: cdnUrl('/models/menu-items/PULLED PORK SANDWICH.glb',
       scale: 4,
       position: [0, -1, 0],
       category: 'hotAppetizers',
@@ -507,8 +509,8 @@ export const menuData = {
       description: 'Piept de pui marinat în sos special, cartofi prăjiți',
       descriptionEn: 'Chicken breast marinated in special sauce, french fries',
       fullDescription: 'Pieptul de pui este marinat timp de 24 de ore într-un amestec secret de condimente libaneze, apoi gătit lent pe frigare verticală tradițională. Carnea este feliată la comandă și servită cu sos cremos de tahini, toum cu usturoi, legume proaspete și pâine caldă.',
-      image: '/images/shaorma-pui-new.jpg',
-      modelUrl: '/models/menu-items/tacchino-sandwich.glb',
+      image: cdnUrl('/images/shaorma-pui-new.jpg',
+      modelUrl: cdnUrl('/models/menu-items/tacchino-sandwich.glb',
       scale: 4,
       position: [0, -0.9, 0],
       category: 'hotAppetizers',
@@ -519,7 +521,7 @@ export const menuData = {
       price: '62 RON',
       description: 'Ficătei de vițel, ceapă, ulei floarea soarelui, coriandru, ardei iute',
       descriptionEn: 'Beef liver with onion, sunflower oil, coriander, chilli',
-      image: '/images/ficatei-vitel.jpg',
+      image: cdnUrl('/images/ficatei-vitel.jpg',
     },
     {
       name: 'Ficat de pui',
@@ -527,28 +529,28 @@ export const menuData = {
       price: '54 RON',
       description: 'Ficat de pui cu usturoi și sos de rodie',
       descriptionEn: 'Chicken liver with garlic and pomegranate sauce',
-      image: '/images/uyYtPs5PJij7EAPGGuNBBCzK8nc.png',
+      image: cdnUrl('/images/uyYtPs5PJij7EAPGGuNBBCzK8nc.png',
     },
     {
       name: 'Sucuk',
       price: '57 RON',
       description: 'Cârnați vită picanți cu roșii și usturoi',
       descriptionEn: 'Spicy beef sausages with tomatoes and garlic',
-      image: '/images/9wKp5jilWNnU7VuPAnfhYXzS5B4.png',
+      image: cdnUrl('/images/9wKp5jilWNnU7VuPAnfhYXzS5B4.png',
     },
     {
       name: 'Makanek',
       price: '57 RON',
       description: 'Cârnați vită și miel cu sos de rodii',
       descriptionEn: 'Beef and lamb sausages with pomegranate sauce',
-      image: '/images/bUGAal1BFiMQLQT8IwMWdwM0.png',
+      image: cdnUrl('/images/bUGAal1BFiMQLQT8IwMWdwM0.png',
     },
     {
       name: 'Falafel',
       price: '49 RON',
       description: 'Năut cu ceapă, coriandru, grâu și usturoi',
       descriptionEn: 'Chickpea balls blended with onion, wheat, coriander and garlic',
-      image: '/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
+      image: cdnUrl('/images/um8WPEW3IJgQ6weNmAI8LkTJTTU.png',
     },
     {
       name: 'Limbă',
@@ -556,7 +558,7 @@ export const menuData = {
       price: '62 RON',
       description: 'Limbă cu sos de usturoi, coriandru și lămâie',
       descriptionEn: 'Tongue with garlic sauce, coriander and lemon',
-      image: '/images/j6rxaYxWG7XEHAUUsAs5CTQaw0.png',
+      image: cdnUrl('/images/j6rxaYxWG7XEHAUUsAs5CTQaw0.png',
     },
     {
       name: 'Creier de berbec pane',
@@ -564,7 +566,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Creier de berbec pane, lămâie, usturoi',
       descriptionEn: 'Fried brain, lemon, garlic',
-      image: '/images/buf7RoVVDXRz5Ys0hdXBgXysRZM.png',
+      image: cdnUrl('/images/buf7RoVVDXRz5Ys0hdXBgXysRZM.png',
     },
     {
       name: 'Creier de berbec',
@@ -572,14 +574,14 @@ export const menuData = {
       price: '60 RON',
       description: 'Creier, sos de lămâie și coriandru și usturoi',
       descriptionEn: 'Brain, lemon and coriander and garlic',
-      image: '/images/fUKnTmtF35YR9hUaW6SVgk8QSMI.png',
+      image: cdnUrl('/images/fUKnTmtF35YR9hUaW6SVgk8QSMI.png',
     },
     {
       name: 'Batata Harra',
       price: '38 RON',
       description: 'Cartofi tăiați cubulețe, prăjiți cu coriandru, usturoi, pastă de ardei iuți',
       descriptionEn: 'Diced fried potatoes with coriander, garlic, hot chili paste',
-      image: '/images/cBujuzrfRcHgGOQVA3EJFkFjF2g.png',
+      image: cdnUrl('/images/cBujuzrfRcHgGOQVA3EJFkFjF2g.png',
     },
     {
       name: 'Halloumi cu migdale',
@@ -587,7 +589,7 @@ export const menuData = {
       price: '66 RON',
       description: 'Brânză halloumi, migdale, gem de smochine',
       descriptionEn: 'Halloumi cheese, almonds, fig jam',
-      image: '/images/jYYZy1jVbKDxehmVQlvfKrl8.png',
+      image: cdnUrl('/images/jYYZy1jVbKDxehmVQlvfKrl8.png',
     },
     {
       name: 'Halloumi cu Pesto',
@@ -595,7 +597,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Halloumi, roșii cherry, sos pesto',
       descriptionEn: 'Halloumi cheese, cherry tomatoes, pesto sauce',
-      image: '/images/halloumi-pesto.jpg',
+      image: cdnUrl('/images/halloumi-pesto.jpg',
     },
     {
       name: 'Brânză halloumi',
@@ -603,7 +605,7 @@ export const menuData = {
       price: '49 RON',
       description: 'Brânză halloumi la grătar',
       descriptionEn: 'Grilled halloumi cheese',
-      image: '/images/wnTCmN3I9RFWh7KoQicsXWKuw.png',
+      image: cdnUrl('/images/wnTCmN3I9RFWh7KoQicsXWKuw.png',
     },
     {
       name: 'Kebbe prăjite (5 buc.)',
@@ -611,7 +613,7 @@ export const menuData = {
       price: '49 RON',
       description: 'Carne tocată, grâu, muguri de pin, ceapă',
       descriptionEn: 'Ground meat, wheat, pine nuts, onion',
-      image: '/images/kebbe-prajite-new.jpg',
+      image: cdnUrl('/images/kebbe-prajite-new.jpg',
     },
     {
       name: 'Rulouri de pui picante (3 buc.)',
@@ -619,7 +621,7 @@ export const menuData = {
       price: '44 RON',
       description: 'Foietaj umplut cu pui, ceapă',
       descriptionEn: 'Pastry stuffed with chicken, onion',
-      image: '/images/rulouri-pui-picant.jpg',
+      image: cdnUrl('/images/rulouri-pui-picant.jpg',
     },
     {
       name: 'Rulouri cu creveți (3 buc.)',
@@ -627,7 +629,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Foietaj umplut cu creveți, morcovi, ghimbir, praz',
       descriptionEn: 'Shrimp rolls, carrots, ginger, leek',
-      image: '/images/rulouri-creveti.png',
+      image: cdnUrl('/images/rulouri-creveti.png',
     },
     {
       name: 'Rulouri cu brânză (4 buc.)',
@@ -635,7 +637,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Foietaj umplut cu brânză și sos de roșii',
       descriptionEn: 'Cheese rolls with tomato sauce',
-      image: '/images/avSHJG3vsJAr23yCocIsGezOM8w.png',
+      image: cdnUrl('/images/avSHJG3vsJAr23yCocIsGezOM8w.png',
     },
     {
       name: 'Sambusek cu sujuk (5 buc.)',
@@ -643,7 +645,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu sujuk, mozzarella, oregano, roșii decojite, telemea de vacă, pătrunjel și mentă',
       descriptionEn: 'Pastry stuffed with sujuk, mozzarella, oregano, tomatoes, cow cheese, parsley, mint',
-      image: '/images/sambusek-cu-sujuk.png',
+      image: cdnUrl('/images/sambusek-cu-sujuk.png',
     },
     {
       name: 'Supă cremă de linte',
@@ -651,7 +653,7 @@ export const menuData = {
       price: '46 RON',
       description: 'Supă cremă de linte cu condimente orientale',
       descriptionEn: 'Lentil cream soup with oriental spices',
-      image: '/images/supa-linte-new.jpg',
+      image: cdnUrl('/images/supa-linte-new.jpg',
     },
     {
       name: 'Sambusek cu carne (5 buc.)',
@@ -659,7 +661,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu carne tocată, ceapă, muguri de pin',
       descriptionEn: 'Dough filled with ground meat, onion, pine nuts',
-      image: '/images/sambusek-cu-carne.png',
+      image: cdnUrl('/images/sambusek-cu-carne.png',
     },
     {
       name: 'Sambusek cu brânză (5 buc.)',
@@ -667,7 +669,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu brânză, pătrunjel, mentă',
       descriptionEn: 'Dough filled with cheese, parsley, mint',
-      image: '/images/sambusek-cu-branza.jpg',
+      image: cdnUrl('/images/sambusek-cu-branza.jpg',
     },
     {
       name: 'Sambusek cu spanac (5 buc.)',
@@ -675,7 +677,7 @@ export const menuData = {
       price: '43 RON',
       description: 'Aluat umplut cu spanac, ceapă, rodie',
       descriptionEn: 'Dough filled with spinach, onion, pomegranate',
-      image: '/images/sambusek-cu-spanac.png',
+      image: cdnUrl('/images/sambusek-cu-spanac.png',
     },
   ],
   rawMeat: [
@@ -685,42 +687,42 @@ export const menuData = {
       price: '49 RON',
       description: 'Mușchi de vită uscat cu condimente speciale',
       descriptionEn: 'Aged beef loin, cured with special spices',
-      image: '/images/nCNDbH2ytrb9uLe4ynwrQmPSOI.png',
+      image: cdnUrl('/images/nCNDbH2ytrb9uLe4ynwrQmPSOI.png',
     },
     {
       name: 'Frake',
       price: '72 RON',
       description: 'Bulgur, mușchi de miel, pastă picantă, ceapă, mentă',
       descriptionEn: 'Bulgur, lamb loin, spicy paste, onion, mint',
-      image: '/images/Yq9AELIXq2eeAkbNSPbkWMj6iY.png',
+      image: cdnUrl('/images/Yq9AELIXq2eeAkbNSPbkWMj6iY.png',
     },
     {
       name: 'Kebbeh Nayeh',
       price: '72 RON',
       description: 'Carne crudă de berbec cu grâu zdrobit, ceapă și condimente speciale',
       descriptionEn: 'Lamb meat with crushed wheat, onion and special spices',
-      image: '/images/GotJDkCrzFitNkNQbTYHJ1tM.png',
+      image: cdnUrl('/images/GotJDkCrzFitNkNQbTYHJ1tM.png',
     },
     {
       name: 'Habra Nayeh',
       price: '72 RON',
       description: 'Pastă crudă de vită cu condimente speciale',
       descriptionEn: 'Raw beef paste with special spices',
-      image: '/images/AlNaMC7ICFluEBHHjoo7OBsOEIw.png',
+      image: cdnUrl('/images/AlNaMC7ICFluEBHHjoo7OBsOEIw.png',
     },
     {
       name: 'Kafta Nayeh',
       price: '72 RON',
       description: 'Carne crudă de berbec cu ceapă, pătrunjel și condimente',
       descriptionEn: 'Lamb meat with onions, parsley and spices',
-      image: '/images/h5AeYNW0YQJekwqbc8f14KUIU.png',
+      image: cdnUrl('/images/h5AeYNW0YQJekwqbc8f14KUIU.png',
     },
     {
       name: 'Shi Kafta',
       price: '72 RON',
       description: 'Bulgur, mușchi de berbec, pastă iute, salată verde',
       descriptionEn: 'Bulgur with lamb meat, hot pepper, lettuce',
-      image: '/images/DCPw40dBcimvWIQT5eSX9UHbHKc.png',
+      image: cdnUrl('/images/DCPw40dBcimvWIQT5eSX9UHbHKc.png',
     },
   ],
   grill: [
@@ -730,7 +732,7 @@ export const menuData = {
       price: '255 RON',
       description: 'Antricot vită Wagyu, chips, ciuperci, ardei iute, usturoi, rozmarin, unt',
       descriptionEn: 'Wagyu beef entrecote, chips, chilli, garlic, butter, mushroom, rosemary',
-      image: '/images/1pRUsbEFBydUZrCmQk1tJUGgBw.png',
+      image: cdnUrl('/images/1pRUsbEFBydUZrCmQk1tJUGgBw.png',
     },
     {
       name: 'Legume la grătar asortate',
@@ -738,14 +740,14 @@ export const menuData = {
       price: '72 RON',
       description: 'Selecție de legume proaspete la grătar',
       descriptionEn: 'Selection of fresh grilled vegetables',
-      image: '/images/fAzARGsgQlhnc5lTdkizPiiOuo.png',
+      image: cdnUrl('/images/fAzARGsgQlhnc5lTdkizPiiOuo.png',
     },
     {
       name: 'Arayes Halloumi',
       price: '62 RON',
       description: 'Pâine libaneză cu halloumi și mentă',
       descriptionEn: 'Lebanese bread with halloumi and mint',
-      image: '/images/arayes-halloumi-24.jpg',
+      image: cdnUrl('/images/arayes-halloumi-24.jpg',
     },
     {
       name: 'Arayes Pui și Cașcaval',
@@ -753,21 +755,21 @@ export const menuData = {
       price: '62 RON',
       description: 'Lipie libaneză cu carne de pui și cașcaval',
       descriptionEn: 'Lebanese bread with chicken and yellow cheese',
-      image: '/images/arayes-pui-si-cascaval-20.jpg',
+      image: cdnUrl('/images/arayes-pui-si-cascaval-20.jpg',
     },
     {
       name: 'Arayes Kafta Special',
       price: '77 RON',
       description: 'Lipie libaneză cu carne tocată vită și berbec, cașcaval, pătrunjel, ceapă',
       descriptionEn: 'Lebanese bread with minced beef and lamb meat and cheese, parsley, onion',
-      image: '/images/arayes-kafta-special-37.jpg',
+      image: cdnUrl('/images/arayes-kafta-special-37.jpg',
     },
     {
       name: 'Arayes Kafta',
       price: '72 RON',
       description: 'Lipie libaneză cu carne tocată vită și berbec, pătrunjel, ceapă',
       descriptionEn: 'Lebanese bread with minced beef and lamb meat, parsley, onion',
-      image: '/images/arayes-kafta-37.jpg',
+      image: cdnUrl('/images/arayes-kafta-37.jpg',
     },
     {
       name: 'Arayes Cașcaval',
@@ -775,7 +777,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Lipie libaneză cu cașcaval',
       descriptionEn: 'Lebanese bread with cheese',
-      image: '/images/arayes-cascaval-28.jpg',
+      image: cdnUrl('/images/arayes-cascaval-28.jpg',
     },
     {
       name: 'Mix Kebab',
@@ -783,7 +785,7 @@ export const menuData = {
       price: '150 RON',
       description: 'Kebab de pui, Kebab cu fistic, Kebab Adana, Kafta (400g)',
       descriptionEn: 'Chicken Kebab, Pistachio Kebab, Kebab Adana, Kafta (400g)',
-      image: '/images/mix-kebab-new.png',
+      image: cdnUrl('/images/mix-kebab-new.png',
     },
     {
       name: 'Grătar mixt',
@@ -793,8 +795,8 @@ export const menuData = {
       description: 'Cuburi de mușchi de vită, pui, kafta, cartofi prăjiți, cotlet de miel, sos usturoi',
       descriptionEn: 'Diced beef fillet, chicken, kafta, lamb chop, french fries, garlic sauce',
       fullDescription: 'Experiența supremă a grătarului libanez. Acest platou generos include cuburi de mușchi de vită suculent, pui marinat, kafta tradițională și cotlet de miel, toate preparate pe grătar cu cărbuni. Însoțit de cartofi prăjiți și o gamă de sosuri tradiționale.',
-      image: '/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
-      modelUrl: '/models/menu-items/limba-de-vita-cu-masline.glb',
+      image: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png',
+      modelUrl: cdnUrl('/models/menu-items/limba-de-vita-cu-masline.glb',
       scale: 5,
       position: [0, -0.8, 0],
       category: 'grill',
@@ -805,7 +807,7 @@ export const menuData = {
       price: '123 RON',
       description: 'Pastramă de miel la grătar cu condimente',
       descriptionEn: 'Grilled lamb pastrami with spices',
-      image: '/images/z5vP715UOyuhUX634C9X6nhiB4.png',
+      image: cdnUrl('/images/z5vP715UOyuhUX634C9X6nhiB4.png',
     },
     {
       name: 'Cotlet de miel',
@@ -813,7 +815,7 @@ export const menuData = {
       price: '165 RON',
       description: 'Cotlete de miel, bulgur, legume asortate la grătar',
       descriptionEn: 'Lamb chops, bulgur wheat, grilled vegetables',
-      image: '/images/ZdYTc75hF6hvN3RNih2V6FRXpSk.png',
+      image: cdnUrl('/images/ZdYTc75hF6hvN3RNih2V6FRXpSk.png',
     },
     {
       name: 'Frigărui de berbec',
@@ -821,7 +823,7 @@ export const menuData = {
       price: '118 RON',
       description: 'Mușchi de miel la grătar cu cartofi prăjiți',
       descriptionEn: 'Grilled lamb loin with fried potatoes',
-      image: '/images/dsAbwdz4G8mUZsg8u1HyDmsx2M.png',
+      image: cdnUrl('/images/dsAbwdz4G8mUZsg8u1HyDmsx2M.png',
     },
     {
       name: 'Frigărui de vită',
@@ -829,7 +831,7 @@ export const menuData = {
       price: '124 RON',
       description: 'Mușchi de vită la grătar cu cartofi prăjiți',
       descriptionEn: 'Grilled beef loin with fried potatoes',
-      image: '/images/0j35xVxAB9QAJnFHG5ZG6ZPAaUY.png',
+      image: cdnUrl('/images/0j35xVxAB9QAJnFHG5ZG6ZPAaUY.png',
     },
     {
       name: 'Cotlet de pui',
@@ -837,7 +839,7 @@ export const menuData = {
       price: '102 RON',
       description: 'Aripi de pui dezosate, usturoi, coleslaw, cartofi prăjiți',
       descriptionEn: 'Boneless chicken wings, garlic, coleslaw, fried potatoes',
-      image: '/images/U759j5nIoKnr0npuQBTXUVaUjeM.png',
+      image: cdnUrl('/images/U759j5nIoKnr0npuQBTXUVaUjeM.png',
     },
     {
       name: 'Frigărui de pui',
@@ -845,7 +847,7 @@ export const menuData = {
       price: '113 RON',
       description: 'Piept de pui marinat tăiat cubulețe cu sos de usturoi, cartofi prăjiți, salată coleslaw',
       descriptionEn: 'Marinated diced chicken breast with garlic sauce, french fries, coleslaw salad',
-      image: '/images/tXkZb8FG9ARzmxsXWPebANX641s.png',
+      image: cdnUrl('/images/tXkZb8FG9ARzmxsXWPebANX641s.png',
     },
     {
       name: 'Piept de pui',
@@ -853,7 +855,7 @@ export const menuData = {
       price: '102 RON',
       description: 'Piept de pui marinat la grătar cu cartofi prăjiți și salată coleslaw',
       descriptionEn: 'Grilled marinated chicken breast and french fries, coleslaw salad',
-      image: '/images/Fyh24ueEqB1ZIr7tstnjkPZ0fc.png',
+      image: cdnUrl('/images/Fyh24ueEqB1ZIr7tstnjkPZ0fc.png',
     },
     {
       name: 'Aripi de pui',
@@ -861,14 +863,14 @@ export const menuData = {
       price: '102 RON',
       description: 'Aripioare de pui marinate la grătar cu cartofi prăjiți și salată coleslaw',
       descriptionEn: 'Grilled marinated chicken wings and french fries, coleslaw salad',
-      image: '/images/3u2oyqgmW7S2nQ3dGsTHbuDrgbc.png',
+      image: cdnUrl('/images/3u2oyqgmW7S2nQ3dGsTHbuDrgbc.png',
     },
     {
       name: 'Kebab Orfali',
       price: '118 RON',
       description: 'Carne tocată de vită și miel cu sos de roșii picant',
       descriptionEn: 'Beef and lamb ground meat with spicy tomato sauce',
-      image: '/images/cp1QwgSRIqirXQhOlDDenJoF44.png',
+      image: cdnUrl('/images/cp1QwgSRIqirXQhOlDDenJoF44.png',
     },
     {
       name: 'Kebab Zaitoone',
@@ -876,7 +878,7 @@ export const menuData = {
       price: '118 RON',
       description: 'Carne tocată de vită și miel cu ceapă și busuioc',
       descriptionEn: 'Beef and lamb ground meat with onion and basil',
-      image: '/images/uNzhQN4etiPhsbvgB9QrbiXVRO0.png',
+      image: cdnUrl('/images/uNzhQN4etiPhsbvgB9QrbiXVRO0.png',
     },
     {
       name: 'Kebab cu iaurt',
@@ -884,7 +886,7 @@ export const menuData = {
       price: '118 RON',
       description: 'Carne tocată vită și berbec cu iaurt, ceapă și pătrunjel',
       descriptionEn: 'Blended beef and lamb mince with yogurt, onion and parsley',
-      image: '/images/tE3pGdva5zH7pmZgepobf7TIa8.png',
+      image: cdnUrl('/images/tE3pGdva5zH7pmZgepobf7TIa8.png',
     },
     {
       name: 'Kebab de pui',
@@ -892,7 +894,7 @@ export const menuData = {
       price: '118 RON',
       description: 'Piept de pui, usturoi, coriandru, salată coleslaw, ardei iute, ceapă și cartofi prăjiți',
       descriptionEn: 'Chicken breast, garlic, cilantro, chilli, coleslaw salad, onion, fries',
-      image: '/images/kebab-pui.jpg',
+      image: cdnUrl('/images/kebab-pui.jpg',
     },
     {
       name: 'Kafta cu fistic',
@@ -900,21 +902,21 @@ export const menuData = {
       price: '124 RON',
       description: 'Carne tocată vită și berbec, pătrunjel, condimente, fistic, cartofi prăjiți',
       descriptionEn: 'Minced beef and lamb meat, parsley, spices, pistachio, french fries',
-      image: '/images/kafta-fistic.jpg',
+      image: cdnUrl('/images/kafta-fistic.jpg',
     },
     {
       name: 'Kafta',
       price: '124 RON',
       description: 'Carne de vită și berbec tocată cu ceapă, pătrunjel, condimente și cartofi prăjiți',
       descriptionEn: 'Minced beef and lamb meat with onions, parsley, spices and french fries',
-      image: '/images/Kafta 2.jpg',
+      image: cdnUrl('/images/Kafta 2.jpg',
     },
     {
       name: 'Kebab Adana',
       price: '118 RON',
       description: 'Carne tocată vită și berbec cu usturoi și paprika',
       descriptionEn: 'Blended beef and lamb mince with garlic and paprika',
-      image: '/images/QvomUuXnc85lVwjkHPvYSmwn0.png',
+      image: cdnUrl('/images/QvomUuXnc85lVwjkHPvYSmwn0.png',
     },
     {
       name: 'Mușchi de vită cu fistic și sparanghel',
@@ -922,7 +924,7 @@ export const menuData = {
       price: '196 RON',
       description: 'Mușchi de vită, fistic, sos de muștar, sparanghel',
       descriptionEn: 'Beef loin, pistachio, mustard sauce, asparagus',
-      image: '/images/6qEIe3NTdK96va3qYM7Izckol6s.png',
+      image: cdnUrl('/images/6qEIe3NTdK96va3qYM7Izckol6s.png',
     },
     {
       name: 'Mușchi de vită cu ciuperci',
@@ -930,14 +932,14 @@ export const menuData = {
       price: '165 RON',
       description: 'Mușchi de vită cu sos de ciuperci și cartofi chips',
       descriptionEn: 'Beef loin with mushroom sauce and potato chips',
-      image: '/images/3CBZbRuQR478j9IB04Hzf7TJilc.png',
+      image: cdnUrl('/images/3CBZbRuQR478j9IB04Hzf7TJilc.png',
     },
     {
       name: 'Beiti Kebab',
       price: '124 RON',
       description: 'Carne tocată vită și berbec cu usturoi în lipie cu cașcaval și iaurt',
       descriptionEn: 'Minced beef and lamb meat with garlic in a pita wrap with yoghurt',
-      image: '/images/6l9oIhlBP20uF8Dsv2l0BlfzKgA.jpg',
+      image: cdnUrl('/images/6l9oIhlBP20uF8Dsv2l0BlfzKgA.jpg',
     },
     {
       name: 'Kafta cu tahini',
@@ -945,7 +947,7 @@ export const menuData = {
       price: '118 RON',
       description: 'Carne tocată vită și berbec, pătrunjel, condimente, fistic, pastă de susan, cartofi prăjiți, ceapă',
       descriptionEn: 'Minced beef and lamb meat, parsley, spices, pistachio, tahini, french fries, onion',
-      image: '/images/WMnzJ2xAQSHtACtSd0WlzpbkqM.png',
+      image: cdnUrl('/images/WMnzJ2xAQSHtACtSd0WlzpbkqM.png',
     },
   ],
   seafood: [
@@ -955,7 +957,7 @@ export const menuData = {
       price: '190 RON',
       description: 'Caracatiță, lămâie, ulei măsline, orez basmatic, pastă tomate',
       descriptionEn: 'Octopus, lemon, olive oil, basmati rice, tomato paste',
-      image: '/images/QoblSxxb6PXNS6vYIBbCrCCM.png',
+      image: cdnUrl('/images/QoblSxxb6PXNS6vYIBbCrCCM.png',
     },
     {
       name: 'Caracatiță cu sos curry și orez',
@@ -963,7 +965,7 @@ export const menuData = {
       price: '210 RON',
       description: 'Caracatiță, creveți, lămâie, ulei de măsline, orez basmati, sos curry',
       descriptionEn: 'Octopus, shrimps, lemon, olive oil, basmati rice, curry sauce',
-      image: '/images/RF1gl9DMy1YGA1NS4k6ZyGxs.png',
+      image: cdnUrl('/images/RF1gl9DMy1YGA1NS4k6ZyGxs.png',
     },
     {
       name: 'Caracatiță marinată',
@@ -971,7 +973,7 @@ export const menuData = {
       price: '185 RON',
       description: 'Caracatiță marinată cu ierburi și ulei de măsline',
       descriptionEn: 'Marinated octopus with herbs and olive oil',
-      image: '/images/nTF7ynUrvwcyFpApI23u7Nb0d80.png',
+      image: cdnUrl('/images/nTF7ynUrvwcyFpApI23u7Nb0d80.png',
     },
     {
       name: 'Caracatiță cu sos de lămâie',
@@ -979,7 +981,7 @@ export const menuData = {
       price: '185 RON',
       description: 'Caracatiță cu sos proaspăt de lămâie',
       descriptionEn: 'Octopus with fresh lemon sauce',
-      image: '/images/kQk1qsfWfnm2nCLVcyrYceQqdN8.png',
+      image: cdnUrl('/images/kQk1qsfWfnm2nCLVcyrYceQqdN8.png',
     },
     {
       name: 'Calamari pane cu cartofi prăjiți',
@@ -987,7 +989,7 @@ export const menuData = {
       price: '103 RON',
       description: 'Inele de calamari în crustă crocantă cu cartofi prăjiți',
       descriptionEn: 'Squid rings in crispy coating with fried potatoes',
-      image: '/images/8ySs9fxXUWYcyOniLOGofWpHtg.png',
+      image: cdnUrl('/images/8ySs9fxXUWYcyOniLOGofWpHtg.png',
     },
     {
       name: 'Calamari baby la grătar cu feta',
@@ -995,7 +997,7 @@ export const menuData = {
       price: '160 RON',
       description: 'Calamari mici la grătar cu brânză feta',
       descriptionEn: 'Small grilled squid with feta cheese',
-      image: '/images/TBi2Yn4gy4Gh0rFbcYrm1tRV13U.png',
+      image: cdnUrl('/images/TBi2Yn4gy4Gh0rFbcYrm1tRV13U.png',
     },
     {
       name: 'Calamari cu sos de lămâie',
@@ -1003,7 +1005,7 @@ export const menuData = {
       price: '93 RON',
       description: 'Calamari fragezi cu sos proaspăt de lămâie',
       descriptionEn: 'Tender squid with fresh lemon sauce',
-      image: '/images/Calamari cu Sos de Lamaie (3).jpg',
+      image: cdnUrl('/images/Calamari cu Sos de Lamaie (3).jpg',
     },
     {
       name: 'Shawarma cu pește',
@@ -1011,7 +1013,7 @@ export const menuData = {
       price: '130 RON',
       description: 'Pește marinat în stil shawarma',
       descriptionEn: 'Marinated fish in shawarma style',
-      image: '/images/90rbym5BVyhsKBIKIYUyKC0gpM.png',
+      image: cdnUrl('/images/90rbym5BVyhsKBIKIYUyKC0gpM.png',
     },
     {
       name: 'Mix de fructe de mare la grătar',
@@ -1019,7 +1021,7 @@ export const menuData = {
       price: '180 RON',
       description: 'Selecție de fructe de mare la grătar cu salată de rucolă',
       descriptionEn: 'Selection of grilled seafood with arugula salad',
-      image: '/images/vxgB7cavTeZis49hU9Ji4SgWw.png',
+      image: cdnUrl('/images/vxgB7cavTeZis49hU9Ji4SgWw.png',
     },
     {
       name: 'Creveți Zaitoone cu sos de rodie',
@@ -1027,7 +1029,7 @@ export const menuData = {
       price: '67 RON',
       description: 'Creveți aromați cu sos special de rodie',
       descriptionEn: 'Aromatic shrimp with special pomegranate sauce',
-      image: '/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
+      image: cdnUrl('/images/Bd1gJ5mfPkI8xvGcg87VfxbL0M.png',
     },
     {
       name: 'Creveți pane cu cartofi prăjiți',
@@ -1035,7 +1037,7 @@ export const menuData = {
       price: '87 RON',
       description: 'Creveți în crustă crocantă cu cartofi prăjiți',
       descriptionEn: 'Shrimp in crispy coating with fried potatoes',
-      image: '/images/g1DjGcXJiX9w7Wr7th9O9ctygY.png',
+      image: cdnUrl('/images/g1DjGcXJiX9w7Wr7th9O9ctygY.png',
     },
     {
       name: 'Creveți cu sos alb picant',
@@ -1043,7 +1045,7 @@ export const menuData = {
       price: '70 RON',
       description: 'Creveți în sos alb cremos picant',
       descriptionEn: 'Shrimp in creamy spicy white sauce',
-      image: '/images/tW8Fr5wIM0dwSRJ2XX3YHagE3pA.png',
+      image: cdnUrl('/images/tW8Fr5wIM0dwSRJ2XX3YHagE3pA.png',
     },
     {
       name: 'Lup de mare sălbatic',
@@ -1051,7 +1053,7 @@ export const menuData = {
       price: '640 RON',
       description: 'Lup de mare sălbatic cu piure de cartofi și sos picant de ulei de măsline',
       descriptionEn: 'Wild sea bass with mashed potatoes, spicy sauce with olive oil',
-      image: '/images/bj2LxPPIWifMkV60n7yS4GICbY.png',
+      image: cdnUrl('/images/bj2LxPPIWifMkV60n7yS4GICbY.png',
     },
     {
       name: 'Lup de mare',
@@ -1059,7 +1061,7 @@ export const menuData = {
       price: '154 RON',
       description: 'Lup de mare cu cartofi și sos picant de ulei de măsline',
       descriptionEn: 'Sea bass with mashed potatoes, spicy sauce with olive oil',
-      image: '/images/bj2LxPPIWifMkV60n7yS4GICbY.png',
+      image: cdnUrl('/images/bj2LxPPIWifMkV60n7yS4GICbY.png',
     },
     {
       name: 'Shawarma de creveți',
@@ -1067,7 +1069,7 @@ export const menuData = {
       price: '134 RON',
       description: 'Creveți, sos maioneză, salată, ardei kapia, cartofi chips',
       descriptionEn: 'Shrimp, mayonnaise sauce, lettuce, chips',
-      image: '/images/2EYBtQQ2Ain3xf1NKdL1izWe8.png',
+      image: cdnUrl('/images/2EYBtQQ2Ain3xf1NKdL1izWe8.png',
     },
     {
       name: 'Frigărui de creveți',
@@ -1075,7 +1077,7 @@ export const menuData = {
       price: '165 RON',
       description: 'Creveți, rucolă, lămâi, ulei de măsline, pastă tomate, maioneză, ghimbir',
       descriptionEn: 'Shrimps, mayonnaise, arugula, olive oil, lemon, ginger, tomato paste',
-      image: '/images/OULXyvtXjebvk2vj9Ry4LgbsSX8.png',
+      image: cdnUrl('/images/OULXyvtXjebvk2vj9Ry4LgbsSX8.png',
     },
     {
       name: 'Samkeh Harra',
@@ -1083,7 +1085,7 @@ export const menuData = {
       price: '93 RON',
       description: 'File de doradă cu sos picant de tahini',
       descriptionEn: 'Bream fillet with spicy tahini sauce',
-      image: '/images/mCzfE9Nry8XAhCgngTNW1hOpvE.png',
+      image: cdnUrl('/images/mCzfE9Nry8XAhCgngTNW1hOpvE.png',
     },
     {
       name: 'Doradă',
@@ -1091,7 +1093,7 @@ export const menuData = {
       price: '154 RON',
       description: 'Doradă cu piure de cartofi și sos picant de ulei de măsline',
       descriptionEn: 'Sea bream with potato puree and spicy olive oil sauce',
-      image: '/images/IMPSeW7zIvoP2sF3vW7FTNeRuE.png',
+      image: cdnUrl('/images/IMPSeW7zIvoP2sF3vW7FTNeRuE.png',
     },
   ],
   sides: [
@@ -1101,7 +1103,7 @@ export const menuData = {
       price: '36 RON',
       description: 'Orez aromat cu bucăți de pui, migdale, muguri de pin',
       descriptionEn: 'Aromatic rice with chicken pieces, almonds, pine nuts',
-      image: '/images/kzqOMinsx05T6ZnVWnam4nSZA.png',
+      image: cdnUrl('/images/kzqOMinsx05T6ZnVWnam4nSZA.png',
     },
     {
       name: 'Orez cu carne, migdale și stafide',
@@ -1109,7 +1111,7 @@ export const menuData = {
       price: '36 RON',
       description: 'Orez parfumat cu carne tocată, migdale, stafide',
       descriptionEn: 'Fragrant rice with ground meat, almonds, raisins',
-      image: '/images/rdD68ZGH3ZVkkdH8RuHLpwhP6Q.png',
+      image: cdnUrl('/images/rdD68ZGH3ZVkkdH8RuHLpwhP6Q.png',
     },
     {
       name: 'Orez basmati cu legume',
@@ -1117,7 +1119,7 @@ export const menuData = {
       price: '29 RON',
       description: 'Orez basmati cu legume proaspete',
       descriptionEn: 'Basmati rice with fresh vegetables',
-      image: '/images/XcdfNmFQrIbaFei98vDBLZyRew.png',
+      image: cdnUrl('/images/XcdfNmFQrIbaFei98vDBLZyRew.png',
     },
     {
       name: 'Orez basmati cu fidea',
@@ -1125,7 +1127,7 @@ export const menuData = {
       price: '29 RON',
       description: 'Orez basmati tradițional cu fidea prăjită',
       descriptionEn: 'Traditional basmati rice with roasted noodles',
-      image: '/images/zzDwwvrvqDlRdriSlO6XDJ0Ckg.png',
+      image: cdnUrl('/images/zzDwwvrvqDlRdriSlO6XDJ0Ckg.png',
     },
     {
       name: 'Orez basmati fiert',
@@ -1133,7 +1135,7 @@ export const menuData = {
       price: '29 RON',
       description: 'Orez basmati simplu, perfect gătit',
       descriptionEn: 'Plain boiled basmati rice, perfectly cooked',
-      image: '/images/ALBs3zQ81TIIncyFLcGkNOrGejw.png',
+      image: cdnUrl('/images/ALBs3zQ81TIIncyFLcGkNOrGejw.png',
     },
     {
       name: 'Piure de cartofi cu trufe',
@@ -1141,7 +1143,7 @@ export const menuData = {
       price: '40 RON',
       description: 'Piure cremos de cartofi cu trufe negre',
       descriptionEn: 'Creamy potato puree with black truffles',
-      image: '/images/jrkiO8mZE26LnqG2pJiHn7wWSFc.png',
+      image: cdnUrl('/images/jrkiO8mZE26LnqG2pJiHn7wWSFc.png',
     },
     {
       name: 'Piure de cartofi',
@@ -1149,7 +1151,7 @@ export const menuData = {
       price: '26 RON',
       description: 'Piure cremos de cartofi cu unt',
       descriptionEn: 'Creamy potato puree with butter',
-      image: '/images/EUpizplH9rUpSrDwG5gqNCSYmMs.png',
+      image: cdnUrl('/images/EUpizplH9rUpSrDwG5gqNCSYmMs.png',
     },
     {
       name: 'Cartofi prăjiți cu mentă și usturoi',
@@ -1157,7 +1159,7 @@ export const menuData = {
       price: '27 RON',
       description: 'Cartofi prăjiți asezonați cu mentă și usturoi',
       descriptionEn: 'Fried potatoes seasoned with mint and garlic',
-      image: '/images/LaCzpFIljOWqH5Ohq7oOi0VtE90.png',
+      image: cdnUrl('/images/LaCzpFIljOWqH5Ohq7oOi0VtE90.png',
     },
     {
       name: 'Cartofi prăjiți',
@@ -1165,7 +1167,7 @@ export const menuData = {
       price: '26 RON',
       description: 'Cartofi prăjiți crocanți',
       descriptionEn: 'Crispy fried potatoes',
-      image: '/images/kDdghZ9mQN1ADT2nRMNl6tgrkzY.png',
+      image: cdnUrl('/images/kDdghZ9mQN1ADT2nRMNl6tgrkzY.png',
     },
     {
       name: 'Chipsuri de cartofi',
@@ -1173,7 +1175,7 @@ export const menuData = {
       price: '50 RON',
       description: 'Chipsuri subțiri și crocante de cartofi',
       descriptionEn: 'Thin and crispy potato chips',
-      image: '/images/JnIGoeVdwK4rJKgEcBucNWVAPr8.png',
+      image: cdnUrl('/images/JnIGoeVdwK4rJKgEcBucNWVAPr8.png',
     },
   ],
   desserts: [
@@ -1183,7 +1185,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Sorbet răcoritor de cocos',
       descriptionEn: 'Refreshing coconut sorbet',
-      image: '/images/K013Yv8f7HPTLvbz7GlKXV9oP4.png',
+      image: cdnUrl('/images/K013Yv8f7HPTLvbz7GlKXV9oP4.png',
     },
     {
       name: 'Înghețată asortată',
@@ -1191,7 +1193,7 @@ export const menuData = {
       price: '62 RON',
       description: 'Selecție de înghețată artizanală',
       descriptionEn: 'Selection of artisanal ice cream',
-      image: '/images/aTE9I86Sl0MAJzLwWD9FEB7NiPw.png',
+      image: cdnUrl('/images/aTE9I86Sl0MAJzLwWD9FEB7NiPw.png',
     },
     {
       name: 'Baclava cu înghețată',
@@ -1199,7 +1201,7 @@ export const menuData = {
       price: '93 RON',
       description: 'Baclava tradițională servită cu înghețată de vanilie',
       descriptionEn: 'Traditional baklava served with vanilla ice cream',
-      image: '/images/o4E3exu1tDK3IzcTqZ8dvdXBhb4.png',
+      image: cdnUrl('/images/o4E3exu1tDK3IzcTqZ8dvdXBhb4.png',
     },
     {
       name: 'Ciocolată Dubai',
@@ -1207,7 +1209,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Pastă de fistic, fidea osmalie neagră, smântână lichidă, unt',
       descriptionEn: 'Pistachio paste, dark vermicelli, dark chocolate, cream, butter',
-      image: '/images/uIWASkZmxFz0neAh3YMwHA5DXw.png',
+      image: cdnUrl('/images/uIWASkZmxFz0neAh3YMwHA5DXw.png',
     },
     {
       name: 'Sufleu de ciocolată cu înghețată',
@@ -1215,7 +1217,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Sufleu cald de ciocolată servit cu înghețată',
       descriptionEn: 'Warm chocolate soufflé served with ice cream',
-      image: '/images/vsGXDmP4OmQQsuXa65B5tvCOT2Y.png',
+      image: cdnUrl('/images/vsGXDmP4OmQQsuXa65B5tvCOT2Y.png',
     },
     {
       name: 'Desertul casei',
@@ -1223,14 +1225,14 @@ export const menuData = {
       price: '57 RON',
       description: 'Cremă de lapte în crustă de migdale cu gem de smochine',
       descriptionEn: 'Milk cream wrapped in almond crust and fig jam',
-      image: '/images/iPyo7UzN80hXyq2K93IKi4GjNXQ.png',
+      image: cdnUrl('/images/iPyo7UzN80hXyq2K93IKi4GjNXQ.png',
     },
     {
       name: 'Osmalie',
       price: '57 RON',
       description: 'Fidea, cremă de lapte, miere, fistic',
       descriptionEn: 'Noodles, milk cream, honey, pistachio',
-      image: '/images/gxFKASu6mJXvSNBVBXjFm3tP18.png',
+      image: cdnUrl('/images/gxFKASu6mJXvSNBVBXjFm3tP18.png',
     },
     {
       name: 'Künefe la shish',
@@ -1238,14 +1240,14 @@ export const menuData = {
       price: '155 RON',
       description: 'Fidea caramelizată, brânză dulce, miere, fistic',
       descriptionEn: 'Caramelized noodles, sweet cheese, honey, pistachio',
-      image: '/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
+      image: cdnUrl('/images/QYJ0UQkrKsXWblBBY8VuJpEk.png',
     },
     {
       name: 'Künefe',
       price: '57 RON',
       description: 'Brânză dulce și fidea, miere, fistic',
       descriptionEn: 'Sweet cheese and noodles, honey, pistachio',
-      image: '/images/v4076ctNFNDfDFhCugSCiVopVng.png',
+      image: cdnUrl('/images/v4076ctNFNDfDFhCugSCiVopVng.png',
     },
     {
       name: 'Katayef cu nuci',
@@ -1253,7 +1255,7 @@ export const menuData = {
       price: '57 RON',
       description: 'Patiserie umplută cu nuci',
       descriptionEn: 'Pastry filled with walnuts',
-      image: '/images/APkKL6itkCxpAcp9pOFYTiRSAcs.png',
+      image: cdnUrl('/images/APkKL6itkCxpAcp9pOFYTiRSAcs.png',
     },
     {
       name: 'Katayef cu brânză',
@@ -1261,14 +1263,14 @@ export const menuData = {
       price: '57 RON',
       description: 'Patiserie umplută cu brânză dulce',
       descriptionEn: 'Pastry filled with sweet cheese',
-      image: '/images/rYeP9PuFvZlYovWxXAl9EyC8qPA.png',
+      image: cdnUrl('/images/rYeP9PuFvZlYovWxXAl9EyC8qPA.png',
     },
     {
       name: 'Kilimanjaro',
       price: '67 RON',
       description: 'Cremă de lapte, pepene galben, înghețată de vanilie, miere, fistic',
       descriptionEn: 'Milk cream, melon, vanilla ice cream, honey, pistachio',
-      image: '/images/ZNZGMii3WCHvZdZ0e3WKFnNPNZM.png',
+      image: cdnUrl('/images/ZNZGMii3WCHvZdZ0e3WKFnNPNZM.png',
     },
     {
       name: 'Salată de fructe',
@@ -1276,14 +1278,14 @@ export const menuData = {
       price: '57 RON',
       description: 'Afine, căpșuni, kiwi, ananas, pepene, suc de portocale',
       descriptionEn: 'Blueberries, strawberries, kiwi, pineapple, melon, orange juice',
-      image: '/images/ZXVPI7yK269NjgtkmbAqYh3Y7vQ.png',
+      image: cdnUrl('/images/ZXVPI7yK269NjgtkmbAqYh3Y7vQ.png',
     },
     {
       name: 'Ashta',
       price: '57 RON',
       description: 'Cremă de lapte, felii de banană, miere, fistic',
       descriptionEn: 'Milk cream, banana slices, honey, pistachio',
-      image: '/images/eelvySqrnoaY9g5sEJjmOKyNYI.png',
+      image: cdnUrl('/images/eelvySqrnoaY9g5sEJjmOKyNYI.png',
     },
     {
       name: 'Vată de zahăr cu ashta și înghețată',
@@ -1291,7 +1293,7 @@ export const menuData = {
       price: '105 RON',
       description: 'Ashta, vată de zahăr, fidea osmalie, înghețată de vanilie, miere',
       descriptionEn: 'Vermicelli osmalieh, cotton candy, ashta, honey, vanilla ice cream',
-      image: '/images/vata-zahar-inghetata.jpg',
+      image: cdnUrl('/images/vata-zahar-inghetata.jpg',
     },
     {
       name: 'Ashta specială cu avocado și fructe',
@@ -1299,7 +1301,7 @@ export const menuData = {
       price: '90 RON',
       description: 'Ashta, avocado, fructe',
       descriptionEn: 'Ashta, avocado, fruits',
-      image: '/images/ashta-speciala.jpg',
+      image: cdnUrl('/images/ashta-speciala.jpg',
     },
     {
       name: 'Baclava fără înghețată',
@@ -1307,7 +1309,7 @@ export const menuData = {
       price: '80 RON',
       description: 'Baclava tradițională fără înghețată',
       descriptionEn: 'Traditional baklava without ice cream',
-      image: '/images/prajitura-zaitoone.jpg',
+      image: cdnUrl('/images/prajitura-zaitoone.jpg',
     },
     {
       name: 'Mascarpone cu înghețată',
@@ -1315,14 +1317,14 @@ export const menuData = {
       price: '70 RON',
       description: 'Înghețată de vanilie, foi de plăcintă, mascarpone',
       descriptionEn: 'Vanilla ice cream, pie sheet, mascarpone',
-      image: '/images/mascarpone-inghetata.jpg',
+      image: cdnUrl('/images/mascarpone-inghetata.jpg',
     },
     {
       name: 'Mini Baclava',
       price: '57 RON',
       description: 'Muguri de pin, caju, fistic, făină, apă de trandafir',
       descriptionEn: 'Pine nuts, flour, pistachio, cashew nuts, rose water',
-      image: '/images/mini-baclava.jpg',
+      image: cdnUrl('/images/mini-baclava.jpg',
     },
     {
       name: 'Sorbet de lămâie',
@@ -1330,14 +1332,14 @@ export const menuData = {
       price: '57 RON',
       description: 'Sorbet răcoritor de lămâie',
       descriptionEn: 'Refreshing lemon sorbet',
-      image: '/images/sorbet-lamaie.jpg',
+      image: cdnUrl('/images/sorbet-lamaie.jpg',
     },
     {
       name: 'Tiramisu',
       price: '57 RON',
       description: 'Tiramisu tradițional cu mascarpone și cafea',
       descriptionEn: 'Traditional tiramisu with mascarpone and coffee',
-      image: '/images/tiramisu.jpg',
+      image: cdnUrl('/images/tiramisu.jpg',
     },
   ],
 };

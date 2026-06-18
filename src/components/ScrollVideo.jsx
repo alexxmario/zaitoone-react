@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { cdnUrl } from '../utils/cdn';
 
 const TOTAL_FRAMES = 146;
 const BLACK_INTRO_FRAMES = 24;
 const BATCH_SIZE = 15;
 
 const getFrameSrc = (index) =>
-  `/video/frames/frame_${String(index + 1).padStart(4, '0')}.jpg`;
+  cdnUrl(`/video/frames/frame_${String(index + 1).padStart(4, '0')}.jpg`);
 
 const ScrollVideo = ({
   overlayContent,

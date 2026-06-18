@@ -4,6 +4,7 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, ChefHat } from 'lucide-react';
 import ParticleSystem from '../components/ParticleSystem';
 import GradientOrbs from '../components/GradientOrbs';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
+import { cdnUrl } from '../utils/cdn';
 
 // Blog posts data
 export const blogPosts = [
@@ -11,7 +12,7 @@ export const blogPosts = [
     slug: 'secretele-bucatariei-libaneze',
     title: 'Secretele Bucătăriei Libaneze: O Călătorie prin Arome și Tradiții',
     excerpt: 'Bucătăria libaneză este mult mai mult decât simple preparate culinare — este o artă transmisă din generație în generație, o expresie a ospitalității și a dragostei pentru ingredientele proaspete.',
-    image: '/images/moutabal-cu-trufe.jpg',
+    image: cdnUrl('/images/moutabal-cu-trufe.jpg'),
     date: '10 Martie 2026',
     readTime: '5 min citire',
     author: 'Chef Ahmad',
@@ -38,7 +39,7 @@ export const blogPosts = [
         <div className="grid md:grid-cols-2 gap-6 my-10">
           <div className="reveal rounded-2xl overflow-hidden">
             <img
-              src="/images/sambusek-cu-branza.jpg"
+              src={cdnUrl('/images/sambusek-cu-branza.jpg')}
               alt="Sambusek cu brânză"
               className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
             />
@@ -48,7 +49,7 @@ export const blogPosts = [
           </div>
           <div className="reveal rounded-2xl overflow-hidden" style={{ transitionDelay: '0.1s' }}>
             <img
-              src="/images/salata-panache.jpg"
+              src={cdnUrl('/images/salata-panache.jpg')}
               alt="Salată Panache"
               className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
             />

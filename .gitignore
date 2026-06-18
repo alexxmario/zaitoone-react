@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Media backup / work-in-progress directories (not deployed)
+public/images/_originals_backup/
+public/images/de-modificat/
+public/images/de-modificat-2/
+public/video/about_original.mp4
+
+# Uncomment these lines after uploading all media to R2 and verifying the CDN works:
+# public/images/
+# public/video/
