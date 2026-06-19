@@ -100,6 +100,7 @@ export const menuData = {
       description: 'Roșii, castraveți, salată verde, ridichii, ceapă verde, ardei gras, lămâie, ulei de măsline, valerianella, mentă, sos de rodii, lipie',
       descriptionEn: 'Tomatoes, cucumber, lettuce, radish, spring onion, capsicum, lemon, olive oil, valerian, mint, pomegranate sauce, bread',
       image: cdnUrl('/images/FRvC5K47GtFAcejQ3kvwF3YltE.png'),
+      modelUrl: cdnUrl('/models/3d/fattoush.glb'),
     },
   ],
   coldAppetizers: [
@@ -109,6 +110,7 @@ export const menuData = {
       description: 'Vinete coapte cu ceapă, mentă, ardei gras, pătrunjel, sos de rodii, lămâie, nuci, rodie',
       descriptionEn: 'Smoked grilled eggplant mixed with onions, mint, mild pepper, lemon juice, nuts, pomegranate',
       image: cdnUrl('/images/tvGaal8qmReWLV8sr7X7RbGP9G0.jpg'),
+      modelUrl: cdnUrl('/models/3d/baba-ganoush.glb'),
     },
     {
       name: 'Murături asortate',
@@ -190,6 +192,7 @@ export const menuData = {
       description: 'Cremă proaspătă de iaurt cu usturoi și mentă',
       descriptionEn: 'Fresh yogurt cream with garlic and mint',
       image: cdnUrl('/images/RVlbDXsn7OOVQ2FUYZKh6cM0IA.png'),
+      modelUrl: cdnUrl('/models/3d/labneh-cu-usturoi-si-menta.glb'),
     },
     {
       name: 'Labneh',
@@ -286,6 +289,7 @@ export const menuData = {
       description: 'Pastă de năut cu tahini, lămâie, muguri de pin',
       descriptionEn: 'Chickpea paste with tahini, lemon, pine nuts',
       image: cdnUrl('/images/Humus cu Muguri Pin (2).jpg'),
+      modelUrl: cdnUrl('/models/3d/hummus-cu-muguri-de-pin.glb'),
     },
     {
       name: 'Hummus cu caracatiță',
@@ -438,6 +442,7 @@ export const menuData = {
       description: 'Mușchi de vită tăiat cubulețe cu ceapă și sos de rodie',
       descriptionEn: 'Diced beef loin with onion and pomegranate sauce',
       image: cdnUrl('/images/lwIyPOD04tAZcVEqbqSC8v9EyRU.png'),
+      modelUrl: cdnUrl('/models/3d/ras-asfour-de-vita.glb'),
     },
     {
       name: 'Ras Asfour de berbec (picant)',
@@ -582,6 +587,7 @@ export const menuData = {
       description: 'Cartofi tăiați cubulețe, prăjiți cu coriandru, usturoi, pastă de ardei iuți',
       descriptionEn: 'Diced fried potatoes with coriander, garlic, hot chili paste',
       image: cdnUrl('/images/cBujuzrfRcHgGOQVA3EJFkFjF2g.png'),
+      modelUrl: cdnUrl('/models/3d/batata-harra.glb'),
     },
     {
       name: 'Halloumi cu migdale',
@@ -733,6 +739,7 @@ export const menuData = {
       description: 'Antricot vită Wagyu, chips, ciuperci, ardei iute, usturoi, rozmarin, unt',
       descriptionEn: 'Wagyu beef entrecote, chips, chilli, garlic, butter, mushroom, rosemary',
       image: cdnUrl('/images/1pRUsbEFBydUZrCmQk1tJUGgBw.png'),
+      modelUrl: cdnUrl('/models/3d/antricot-de-vita-wagyu.glb'),
     },
     {
       name: 'Legume la grătar asortate',
@@ -786,6 +793,7 @@ export const menuData = {
       description: 'Kebab de pui, Kebab cu fistic, Kebab Adana, Kafta (400g)',
       descriptionEn: 'Chicken Kebab, Pistachio Kebab, Kebab Adana, Kafta (400g)',
       image: cdnUrl('/images/mix-kebab-new.png'),
+      modelUrl: cdnUrl('/models/3d/mix-kebab.glb'),
     },
     {
       name: 'Grătar mixt',
@@ -816,6 +824,7 @@ export const menuData = {
       description: 'Cotlete de miel, bulgur, legume asortate la grătar',
       descriptionEn: 'Lamb chops, bulgur wheat, grilled vegetables',
       image: cdnUrl('/images/ZdYTc75hF6hvN3RNih2V6FRXpSk.png'),
+      modelUrl: cdnUrl('/models/3d/cotlet-de-miel.glb'),
     },
     {
       name: 'Frigărui de berbec',
@@ -917,6 +926,7 @@ export const menuData = {
       description: 'Carne tocată vită și berbec cu usturoi și paprika',
       descriptionEn: 'Blended beef and lamb mince with garlic and paprika',
       image: cdnUrl('/images/QvomUuXnc85lVwjkHPvYSmwn0.png'),
+      modelUrl: cdnUrl('/models/3d/kebab-adana.glb'),
     },
     {
       name: 'Mușchi de vită cu fistic și sparanghel',
@@ -933,6 +943,7 @@ export const menuData = {
       description: 'Mușchi de vită cu sos de ciuperci și cartofi chips',
       descriptionEn: 'Beef loin with mushroom sauce and potato chips',
       image: cdnUrl('/images/3CBZbRuQR478j9IB04Hzf7TJilc.png'),
+      modelUrl: cdnUrl('/models/3d/muschi-de-vita-cu-ciuperci.glb'),
     },
     {
       name: 'Beiti Kebab',

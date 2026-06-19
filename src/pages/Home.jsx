@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, lazy, Suspense } from 'react';
 import { cdnUrl } from '../utils/cdn';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ScrollVideo from '../components/ScrollVideo';
 import ScrollPhotoScatter from '../components/ScrollPhotoScatter';
 import { initRevealOnScroll, animateCounter } from '../utils/animations';
+
+const Floating3DGallery = lazy(() => import('../components/3d/Floating3DGallery'));
 
 const signatureDishes = [
   {
@@ -45,6 +47,7 @@ const signatureDishes = [
   }
 ];
 
+
 const Home = () => {
   const statsRef = useRef(null);
   const hasAnimated = useRef(false);
@@ -55,7 +58,6 @@ const Home = () => {
   useEffect(() => {
     const cleanupReveal = initRevealOnScroll();
 
-    // Animated counters for stats
     const statsObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -72,7 +74,6 @@ const Home = () => {
       { threshold: 0.5 }
     );
 
-    // Stagger animation observer
     const staggerObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -93,7 +94,6 @@ const Home = () => {
 
     staggerElements.forEach((el) => staggerObserver.observe(el));
 
-    // Scroll-driven horizontal gallery
     let rafId;
     const handleGalleryScroll = () => {
       cancelAnimationFrame(rafId);
@@ -107,14 +107,11 @@ const Home = () => {
         const viewportHeight = window.innerHeight;
         const scrollableDistance = sectionHeight - viewportHeight;
 
-        // progress: 0 when sticky starts, 1 when sticky ends
         const progress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
 
-        // Total width to translate = track scroll width - viewport width
         const maxTranslate = track.scrollWidth - window.innerWidth;
         track.style.transform = `translateX(-${progress * maxTranslate}px)`;
 
-        // Update active slide indicator via DOM
         const itemWidth = 500;
         const newActive = Math.min(
           Math.round((progress * maxTranslate) / (itemWidth + 24)),
@@ -148,7 +145,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen atmospheric-bg">
-      {/* Film Grain Overlay */}
       <div className="film-grain" />
 
       {/* ═══════════════════════════════════════════════════════════════════
@@ -157,23 +153,15 @@ const Home = () => {
       <ScrollVideo
         enableLetterbox={true}
         letterboxHeight={12}
-
         overlayContent={
           <div className="text-center px-4 z-10">
-            {/* Elegant pre-title */}
             <p className="text-stone-400 text-xs tracking-[0.4em] uppercase mb-8 opacity-70">
               Award-Winning Lebanese Cuisine
             </p>
-
-            {/* Main title */}
             <h1 className="mb-6">
               <img src={cdnUrl('/zaitoone-logo.svg')} alt="Zaitoone" className="h-24 md:h-32 mx-auto" style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(32%) saturate(754%) hue-rotate(357deg) brightness(92%) contrast(88%)' }} />
             </h1>
-
-            {/* Subtle divider */}
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent mx-auto mb-6" />
-
-            {/* Tagline */}
             <p className="font-serif text-xl md:text-2xl text-white/90 tracking-wide">
               Bucharest
             </p>
@@ -188,7 +176,6 @@ const Home = () => {
       <section className="relative py-32 md:py-48 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-            {/* Left: Large Editorial Headline */}
             <div className="lg:col-span-7 reveal">
               <p className="font-script text-gold-400 text-3xl md:text-4xl mb-6">
                 Povestea noastră
@@ -203,8 +190,6 @@ const Home = () => {
                 contemporană
               </h2>
             </div>
-
-            {/* Right: Body Text */}
             <div className="lg:col-span-5 lg:pt-24 reveal">
               <div className="line-draw mb-8" />
               <p className="text-stone-400 text-lg leading-relaxed mb-6">
@@ -227,22 +212,27 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 3: Photo Scatter Showcase (Scroll-Controlled)
+          SECTION 3: Photo Scatter Showcase
       ═══════════════════════════════════════════════════════════════════ */}
       <ScrollPhotoScatter
         enableLetterbox={true}
         letterboxHeight={10}
       />
 
-      {/* Floating 3D Parallax Gallery - removed, component kept for later */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 3.5: 3D Floating Gallery — cinematic parallax with all models
+      ═══════════════════════════════════════════════════════════════════ */}
+      <Suspense fallback={null}>
+        <Floating3DGallery />
+      </Suspense>
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 4: Signature Dishes Showcase
       ═══════════════════════════════════════════════════════════════════ */}
       <div ref={horizontalSectionRef} className="relative" style={{ height: '300vh' }}>
         <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
-          {/* Section Header */}
           <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 w-full reveal">
             <div className="flex justify-between items-end">
               <div>
@@ -261,7 +251,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Horizontal Track */}
           <div
             ref={horizontalRef}
             className="flex gap-6 px-6 lg:px-8 pb-8 will-change-transform"
@@ -273,7 +262,6 @@ const Home = () => {
                 className="dish-card group flex-shrink-0"
                 style={{ width: '70vw', maxWidth: '500px' }}
               >
-                {/* Image Container */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-stone-900 mb-6">
                   <img
                     src={dish.image}
@@ -287,8 +275,6 @@ const Home = () => {
                     </span>
                   </div>
                 </div>
-
-                {/* Text Content */}
                 <div className="px-1">
                   <h3 className="font-serif text-2xl text-white mb-2 group-hover:text-gold-400 transition-colors">
                     {dish.name}
@@ -301,7 +287,6 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Slide Indicators */}
           <div className="flex justify-center gap-2 mt-4">
             {signatureDishes.map((_, index) => (
               <div
@@ -315,7 +300,6 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Link */}
           <div className="md:hidden text-center mt-6">
             <Link
               to="/menu"
@@ -328,11 +312,11 @@ const Home = () => {
         </div>
       </div>
 
+
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 5: Experience / Stats
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-48 overflow-hidden">
-        {/* Full-width atmospheric image */}
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80"
@@ -344,7 +328,6 @@ const Home = () => {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left: Statement */}
             <div className="reveal">
               <p className="font-script text-gold-400 text-3xl mb-6">
                 Experiența
@@ -360,7 +343,6 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Right: Refined Stats */}
             <div ref={statsRef} className="fade-up-stagger">
               <div className="grid grid-cols-2 gap-x-8 gap-y-12">
                 <div className="text-center lg:text-left">
@@ -368,39 +350,28 @@ const Home = () => {
                     <span className="counter" data-target="3">0</span>
                     <span className="text-gold-400">×</span>
                   </div>
-                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
-                    Premii Horeca
-                  </p>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">Premii Horeca</p>
                 </div>
-
                 <div className="text-center lg:text-left">
                   <div className="font-serif text-5xl md:text-6xl text-white mb-2">
                     <span className="counter" data-target="10">0</span>
                     <span className="text-gold-400">+</span>
                   </div>
-                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
-                    Ani de excelență
-                  </p>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">Ani de excelență</p>
                 </div>
-
                 <div className="text-center lg:text-left">
                   <div className="font-serif text-5xl md:text-6xl text-white mb-2">
                     <span className="counter" data-target="150">0</span>
                     <span className="text-gold-400">+</span>
                   </div>
-                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
-                    Preparate autentice
-                  </p>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">Preparate autentice</p>
                 </div>
-
                 <div className="text-center lg:text-left">
                   <div className="font-serif text-5xl md:text-6xl text-white mb-2">
                     <span className="counter" data-target="100">0</span>
                     <span className="text-gold-400">%</span>
                   </div>
-                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">
-                    Halal Certified
-                  </p>
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase">Halal Certified</p>
                 </div>
               </div>
             </div>
@@ -408,20 +379,18 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 6: Values / Philosophy
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
           <div className="text-center mb-16 reveal">
             <p className="font-script text-gold-400 text-2xl mb-3">Filosofie</p>
             <h2 className="font-serif text-3xl md:text-4xl text-white">
               Principiile noastre
             </h2>
           </div>
-
-          {/* Value Cards - Elegant, minimal */}
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5">
             <div className="value-card reveal text-center md:text-left">
               <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">01</p>
@@ -431,7 +400,6 @@ const Home = () => {
                 preparate cu aceeași dedicare ca și strămoșii noștri.
               </p>
             </div>
-
             <div className="value-card reveal text-center md:text-left">
               <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">02</p>
               <h3 className="font-serif text-2xl text-white mb-4">Calitate</h3>
@@ -440,7 +408,6 @@ const Home = () => {
                 asigurând cele mai înalte standarde în fiecare preparat.
               </p>
             </div>
-
             <div className="value-card reveal text-center md:text-left">
               <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">03</p>
               <h3 className="font-serif text-2xl text-white mb-4">Ospitalitate</h3>
@@ -453,11 +420,11 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 7: Catering Promo
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-40 overflow-hidden">
-        {/* Background photo */}
         <div className="absolute inset-0">
           <img
             src={cdnUrl('/catering/images/catering-11.jpg')}
@@ -469,7 +436,6 @@ const Home = () => {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Text */}
             <div className="reveal">
               <p className="font-script text-gold-400 text-3xl mb-4">Evenimente Speciale</p>
               <h2 className="font-serif text-5xl md:text-6xl text-white leading-none mb-6">
@@ -493,32 +459,26 @@ const Home = () => {
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-
-            {/* Right: Photo collage */}
             <div className="reveal hidden lg:block">
               <div className="relative h-[480px]">
-                {/* Back-left photo */}
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-2xl"
                   style={{ width: '220px', top: '30px', left: '0px', transform: 'rotate(-3deg)' }}
                 >
                   <img src={cdnUrl('/catering/images/catering-03.jpg')} alt="" className="w-full object-cover" />
                 </div>
-                {/* Center large photo */}
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-2xl"
                   style={{ width: '260px', top: '0px', left: '140px', transform: 'rotate(1deg)', zIndex: 2 }}
                 >
                   <img src={cdnUrl('/catering/images/catering-07.jpg')} alt="" className="w-full object-cover" />
                 </div>
-                {/* Front-right photo */}
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-2xl"
                   style={{ width: '220px', top: '80px', left: '300px', transform: 'rotate(3.5deg)', zIndex: 3 }}
                 >
                   <img src={cdnUrl('/catering/images/catering-13.jpg')} alt="" className="w-full object-cover" />
                 </div>
-                {/* Small accent bottom-left */}
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-xl"
                   style={{ width: '160px', bottom: '20px', left: '60px', transform: 'rotate(-1.5deg)', zIndex: 4 }}
@@ -531,11 +491,11 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 8: Reservation CTA
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-48 overflow-hidden">
-        {/* Subtle pattern background */}
         <div className="absolute inset-0 opacity-5">
           <div
             className="w-full h-full"
@@ -555,18 +515,15 @@ const Home = () => {
           <p className="font-script text-gold-400 text-3xl mb-6">
             Alătură-te
           </p>
-
           <h2 className="font-serif text-editorial-lg text-white mb-8">
             Rezervă-ți
             <br />
             <span className="text-gold-400">experiența</span>
           </h2>
-
           <p className="text-stone-400 text-lg max-w-xl mx-auto mb-12">
             Pornește într-o călătorie culinară prin Liban.
             Masa ta te așteaptă.
           </p>
-
           <Link
             to="/reservations"
             className="inline-flex items-center gap-3 px-10 py-5 bg-gold-500 text-stone-950 font-serif text-lg tracking-wide hover:bg-gold-400 transition-colors duration-300"
@@ -574,8 +531,6 @@ const Home = () => {
             Fă o rezervare
             <ArrowRight className="w-5 h-5" />
           </Link>
-
-          {/* Contact info */}
           <div className="mt-16 pt-8 border-t border-white/5">
             <p className="text-stone-600 text-sm tracking-wider">
               Sau sună-ne la{' '}

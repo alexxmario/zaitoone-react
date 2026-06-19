@@ -72,12 +72,11 @@ const ProductDetail = () => {
                 <Model3DViewer
                   modelUrl={item.modelUrl}
                   scale={item.scale * 1.5 || 6}
-                  position={item.position || [0, -1, 0]}
                   autoRotate={true}
                   enableZoom={true}
                   enablePan={false}
                   className="w-full h-full"
-                  cameraPosition={[0, 0, 4]}
+                  cameraDistance={4}
                 />
               </div>
 
@@ -213,12 +212,10 @@ const ProductDetail = () => {
                     <Model3DViewer
                       modelUrl={otherItem.modelUrl}
                       scale={otherItem.scale || 4}
-                      position={otherItem.position || [0, -1, 0]}
                       autoRotate={true}
                       enableZoom={false}
-                      enablePan={false}
                       className="w-full h-full"
-                      cameraPosition={[0, 0, 3]}
+                      cameraDistance={3.5}
                     />
                   </div>
                   <h3 className="font-serif text-xl text-white group-hover:text-gold-400 transition-colors mb-1">
