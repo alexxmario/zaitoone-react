@@ -1,4 +1,4 @@
-import { useEffect, useRef, lazy, Suspense } from 'react';
+import { useEffect, useRef, lazy, Suspense, Component } from 'react';
 import { cdnUrl } from '../utils/cdn';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -7,6 +7,12 @@ import ScrollPhotoScatter from '../components/ScrollPhotoScatter';
 import { initRevealOnScroll, animateCounter } from '../utils/animations';
 
 const Floating3DGallery = lazy(() => import('../components/3d/Floating3DGallery'));
+
+class ErrorBoundary extends Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() { return this.state.hasError ? null : this.props.children; }
+}
 
 const signatureDishes = [
   {
@@ -224,9 +230,11 @@ const Home = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 3.5: 3D Floating Gallery — cinematic parallax with all models
       ═══════════════════════════════════════════════════════════════════ */}
-      <Suspense fallback={null}>
-        <Floating3DGallery />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={null}>
+          <Floating3DGallery />
+        </Suspense>
+      </ErrorBoundary>
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 4: Signature Dishes Showcase
