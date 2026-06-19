@@ -230,11 +230,13 @@ const Home = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 3.5: 3D Floating Gallery — cinematic parallax with all models
       ═══════════════════════════════════════════════════════════════════ */}
-      <ErrorBoundary>
-        <Suspense fallback={null}>
-          <Floating3DGallery />
-        </Suspense>
-      </ErrorBoundary>
+      <div className="hidden lg:block">
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <Floating3DGallery />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 4: Signature Dishes Showcase
