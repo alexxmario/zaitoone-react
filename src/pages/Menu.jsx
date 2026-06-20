@@ -49,11 +49,11 @@ const ProductModal = ({ item, onClose }) => {
 
   return (
     <div
-      className="hidden md:flex fixed inset-0 z-[100] items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="flex fixed inset-0 z-[100] items-center justify-end md:justify-center p-0 md:p-4 bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="relative max-w-3xl w-full bg-stone-900 border border-gold-500/20 rounded-2xl overflow-hidden shadow-2xl"
+        className="relative max-w-3xl w-full h-full md:h-auto bg-stone-900 border-0 md:border border-gold-500/20 rounded-none md:rounded-2xl overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -94,9 +94,9 @@ const ProductModal = ({ item, onClose }) => {
           </div>
         ) : null}
 
-        <div className="p-8">
+        <div className="p-5 md:p-8">
           <div className="flex justify-between items-start mb-4">
-            <h3 className="font-serif text-2xl md:text-3xl text-white">{item.name}</h3>
+            <h3 className="font-serif text-xl md:text-3xl text-white">{item.name}</h3>
             <span className="text-gold-400 font-semibold text-xl whitespace-nowrap ml-4">{item.price}</span>
           </div>
           {item.nameEn && (
@@ -131,13 +131,6 @@ const Menu = () => {
     setMenuOpen(false);
   };
 
-  const cycleCategory = (direction) => {
-    const newIndex = direction === 'next'
-      ? (activeCategory + 1) % categories.length
-      : (activeCategory - 1 + categories.length) % categories.length;
-    scrollToCategory(newIndex);
-  };
-
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') setSelectedItem(null);
@@ -159,7 +152,7 @@ const Menu = () => {
       <ProductModal item={selectedItem} onClose={() => setSelectedItem(null)} />
 
       {/* Floating Category Menu Button */}
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50">
+      <div className="fixed left-4 md:left-6 top-1/2 -translate-y-1/2 z-50">
         {/* Menu Toggle Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -176,21 +169,20 @@ const Menu = () => {
           )}
         </button>
 
-        {/* Category Panel */}
+        {/* Category Panel - opens to the right, vertically centered */}
         <div
-          className={`absolute left-0 top-16 transition-all duration-300 ${
+          className={`absolute left-14 top-1/2 -translate-y-1/2 transition-all duration-300 ${
             menuOpen
               ? 'opacity-100 translate-x-0 pointer-events-auto'
               : 'opacity-0 -translate-x-4 pointer-events-none'
           }`}
         >
-          <div className="bg-stone-900/95 border border-gold-500/20 backdrop-blur-md rounded-xl p-3 min-w-[180px]">
-            <p className="text-gold-500/60 text-xs uppercase tracking-wider px-3 py-2">Categories</p>
+          <div className="bg-stone-900/95 border border-gold-500/20 backdrop-blur-md rounded-xl p-2">
             {categories.map((category, index) => (
               <button
                 key={category.id}
                 onClick={() => scrollToCategory(index)}
-                className={`w-full text-left px-3 py-2 rounded-lg transition-all text-sm ${
+                className={`w-full text-left px-3 py-1.5 rounded-lg transition-all text-xs whitespace-nowrap ${
                   activeCategory === index
                     ? 'bg-gold-500/20 text-gold-400'
                     : 'text-stone-300 hover:bg-white/5 hover:text-white'
@@ -199,22 +191,6 @@ const Menu = () => {
                 {category.title}
               </button>
             ))}
-          </div>
-
-          {/* Cycle Arrows */}
-          <div className="flex justify-center gap-2 mt-3">
-            <button
-              onClick={() => cycleCategory('prev')}
-              className="w-8 h-8 rounded-full bg-stone-900/90 border border-gold-500/20 flex items-center justify-center text-gold-400 hover:bg-stone-800/90 transition-all"
-            >
-              <span className="text-sm">&#8593;</span>
-            </button>
-            <button
-              onClick={() => cycleCategory('next')}
-              className="w-8 h-8 rounded-full bg-stone-900/90 border border-gold-500/20 flex items-center justify-center text-gold-400 hover:bg-stone-800/90 transition-all"
-            >
-              <span className="text-sm">&#8595;</span>
-            </button>
           </div>
         </div>
       </div>
