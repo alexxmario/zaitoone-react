@@ -1,29 +1,39 @@
-import { Suspense, useRef, useMemo } from 'react';
+import { Suspense, useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, Center } from '@react-three/drei';
+import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
+import * as THREE from 'three';
 
 
-function Model({ url, scale = 1, position = [0, 0, 0], autoRotate = false, rotateSpeed = 0.005 }) {
-  const meshRef = useRef();
+function Model({ url, scale = 1, autoRotate = false, rotateSpeed = 0.005 }) {
+  const groupRef = useRef();
   const { scene } = useGLTF(url);
 
   const clonedScene = useMemo(() => scene.clone(), [scene]);
 
+  // Center the model on its own bounding box center so it rotates around itself
+  useEffect(() => {
+    if (groupRef.current) {
+      const box = new THREE.Box3().setFromObject(groupRef.current);
+      const center = box.getCenter(new THREE.Vector3());
+      groupRef.current.children.forEach((child) => {
+        child.position.sub(center);
+      });
+    }
+  }, [clonedScene]);
+
   useFrame(() => {
-    if (autoRotate && meshRef.current) {
-      meshRef.current.rotation.y += rotateSpeed;
+    if (autoRotate && groupRef.current) {
+      groupRef.current.rotation.y += rotateSpeed;
     }
   });
 
   return (
-    <Center>
+    <group ref={groupRef}>
       <primitive
-        ref={meshRef}
         object={clonedScene}
         scale={scale}
-        position={position}
       />
-    </Center>
+    </group>
   );
 }
 
