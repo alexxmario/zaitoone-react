@@ -443,6 +443,7 @@ export const menuData = {
       descriptionEn: 'Diced beef loin with onion and pomegranate sauce',
       image: cdnUrl('/images/lwIyPOD04tAZcVEqbqSC8v9EyRU.png'),
       modelUrl: cdnUrl('/models/3d/ras-asfour-de-vita.glb'),
+      cameraDistance: 5,
     },
     {
       name: 'Ras Asfour de berbec (picant)',

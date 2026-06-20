@@ -5,30 +5,35 @@ import * as THREE from 'three';
 
 
 function Model({ url, scale = 1, autoRotate = false, rotateSpeed = 0.005 }) {
-  const groupRef = useRef();
+  const pivotRef = useRef();
   const { scene } = useGLTF(url);
 
-  // Clone and center the geometry at origin BEFORE scaling
-  const clonedScene = useMemo(() => {
-    const clone = scene.clone();
+  // Clone, compute bounding box center, and wrap in an offset group
+  // so the pivot (pivotRef) rotates around the model's true center
+  const { offsetGroup } = useMemo(() => {
+    const clone = scene.clone(true);
+    // Force world matrix update on all descendants
+    clone.updateMatrixWorld(true);
     const box = new THREE.Box3().setFromObject(clone);
     const center = box.getCenter(new THREE.Vector3());
-    clone.position.sub(center);
-    return clone;
+
+    // Create an inner group that holds the clone shifted by -center
+    const inner = new THREE.Group();
+    inner.add(clone);
+    clone.position.set(-center.x, -center.y, -center.z);
+
+    return { offsetGroup: inner };
   }, [scene]);
 
   useFrame(() => {
-    if (autoRotate && groupRef.current) {
-      groupRef.current.rotation.y += rotateSpeed;
+    if (autoRotate && pivotRef.current) {
+      pivotRef.current.rotation.y += rotateSpeed;
     }
   });
 
   return (
-    <group ref={groupRef}>
-      <primitive
-        object={clonedScene}
-        scale={scale}
-      />
+    <group ref={pivotRef} scale={scale}>
+      <primitive object={offsetGroup} />
     </group>
   );
 }
