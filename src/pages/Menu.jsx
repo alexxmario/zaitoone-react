@@ -78,7 +78,7 @@ const ProductModal = ({ item, onClose }) => {
                   scale={4}
                   autoRotate={false}
                   enableZoom={true}
-                  cameraDistance={3}
+                  cameraDistance={item.cameraDistance || 3}
                   className="w-full h-full"
                 />
               </Suspense>

@@ -501,9 +501,6 @@ export const menuData = {
       descriptionEn: 'Beef meat with onion and tomato marinated with special sauce, fries',
       fullDescription: 'Mușchiul de vită este marinat timp de ore întregi în amestecul nostru special de condimente libaneze, apoi gătit lent pe frigare verticală. Servit cu tahini, murături și legume proaspete.',
       image: cdnUrl('/images/9wHbKYDkXhVshqL638OVzkGL5i4.png'),
-      modelUrl: cdnUrl('/models/menu-items/PULLED PORK SANDWICH.glb'),
-      scale: 4,
-      position: [0, -1, 0],
       category: 'hotAppetizers',
     },
     {
@@ -515,9 +512,6 @@ export const menuData = {
       descriptionEn: 'Chicken breast marinated in special sauce, french fries',
       fullDescription: 'Pieptul de pui este marinat timp de 24 de ore într-un amestec secret de condimente libaneze, apoi gătit lent pe frigare verticală tradițională. Carnea este feliată la comandă și servită cu sos cremos de tahini, toum cu usturoi, legume proaspete și pâine caldă.',
       image: cdnUrl('/images/shaorma-pui-new.jpg'),
-      modelUrl: cdnUrl('/models/menu-items/tacchino-sandwich.glb'),
-      scale: 4,
-      position: [0, -0.9, 0],
       category: 'hotAppetizers',
     },
     {
@@ -740,6 +734,7 @@ export const menuData = {
       descriptionEn: 'Wagyu beef entrecote, chips, chilli, garlic, butter, mushroom, rosemary',
       image: cdnUrl('/images/1pRUsbEFBydUZrCmQk1tJUGgBw.png'),
       modelUrl: cdnUrl('/models/3d/antricot-de-vita-wagyu.glb'),
+      cameraDistance: 5,
     },
     {
       name: 'Legume la grătar asortate',
@@ -804,9 +799,6 @@ export const menuData = {
       descriptionEn: 'Diced beef fillet, chicken, kafta, lamb chop, french fries, garlic sauce',
       fullDescription: 'Experiența supremă a grătarului libanez. Acest platou generos include cuburi de mușchi de vită suculent, pui marinat, kafta tradițională și cotlet de miel, toate preparate pe grătar cu cărbuni. Însoțit de cartofi prăjiți și o gamă de sosuri tradiționale.',
       image: cdnUrl('/images/upkDONhpHXbWaIu7d75TDsqWXE.png'),
-      modelUrl: cdnUrl('/models/menu-items/limba-de-vita-cu-masline.glb'),
-      scale: 5,
-      position: [0, -0.8, 0],
       category: 'grill',
     },
     {
@@ -944,6 +936,7 @@ export const menuData = {
       descriptionEn: 'Beef loin with mushroom sauce and potato chips',
       image: cdnUrl('/images/3CBZbRuQR478j9IB04Hzf7TJilc.png'),
       modelUrl: cdnUrl('/models/3d/muschi-de-vita-cu-ciuperci.glb'),
+      cameraDistance: 5,
     },
     {
       name: 'Beiti Kebab',

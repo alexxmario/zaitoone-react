@@ -8,18 +8,14 @@ function Model({ url, scale = 1, autoRotate = false, rotateSpeed = 0.005 }) {
   const groupRef = useRef();
   const { scene } = useGLTF(url);
 
-  const clonedScene = useMemo(() => scene.clone(), [scene]);
-
-  // Center the model on its own bounding box center so it rotates around itself
-  useEffect(() => {
-    if (groupRef.current) {
-      const box = new THREE.Box3().setFromObject(groupRef.current);
-      const center = box.getCenter(new THREE.Vector3());
-      groupRef.current.children.forEach((child) => {
-        child.position.sub(center);
-      });
-    }
-  }, [clonedScene]);
+  // Clone and center the geometry at origin BEFORE scaling
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone();
+    const box = new THREE.Box3().setFromObject(clone);
+    const center = box.getCenter(new THREE.Vector3());
+    clone.position.sub(center);
+    return clone;
+  }, [scene]);
 
   useFrame(() => {
     if (autoRotate && groupRef.current) {
