@@ -1,18 +1,10 @@
-import { useEffect, useState, lazy, Suspense, Component } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, X } from 'lucide-react';
 import ParticleSystem from '../components/ParticleSystem';
 import GradientOrbs from '../components/GradientOrbs';
 import { initRevealOnScroll } from '../utils/animations';
 import { menuData, categories } from '../data/menuData';
-
-const Model3DViewer = lazy(() => import('../components/3d/Model3DViewer'));
-
-class ErrorBoundary3D extends Component {
-  state = { hasError: false };
-  static getDerivedStateFromError() { return { hasError: true }; }
-  render() { return this.state.hasError ? this.props.fallback || null : this.props.children; }
-}
 
 const MenuCard = ({ item, onSelect }) => {
   return (
@@ -63,28 +55,7 @@ const ProductModal = ({ item, onClose }) => {
           <X className="w-5 h-5" />
         </button>
 
-        {item.modelUrl ? (
-          <div className="w-full aspect-[4/3] overflow-hidden bg-stone-950">
-            <ErrorBoundary3D fallback={
-              item.image ? <img src={item.image} alt={item.name} className="w-full h-full object-cover" /> : null
-            }>
-              <Suspense fallback={
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
-                </div>
-              }>
-                <Model3DViewer
-                  modelUrl={item.modelUrl}
-                  scale={4}
-                  autoRotate={false}
-                  enableZoom={true}
-                  cameraDistance={item.cameraDistance || 3}
-                  className="w-full h-full"
-                />
-              </Suspense>
-            </ErrorBoundary3D>
-          </div>
-        ) : item.image ? (
+        {item.image ? (
           <div className="w-full aspect-[4/3] overflow-hidden bg-stone-950">
             <img
               src={item.image}
