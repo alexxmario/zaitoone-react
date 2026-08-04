@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MapPin, Phone, Clock, Instagram, Sparkles, Award, MapPinned } from 'lucide-react';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
+import TurnstileWidget from '../components/TurnstileWidget';
 
 const Reservations = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ const Reservations = () => {
 
   const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success, error
   const [errorMessage, setErrorMessage] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef(null);
 
   useEffect(() => {
     const cleanupReveal = initRevealOnScroll();
@@ -36,6 +39,17 @@ const Reservations = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setFormStatus('error');
+      setErrorMessage('Așteaptă finalizarea verificării anti-spam și încearcă din nou.');
+      setTimeout(() => {
+        setFormStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+      return;
+    }
+
     setFormStatus('submitting');
     setErrorMessage('');
 
@@ -43,9 +57,10 @@ const Reservations = () => {
       const response = await fetch('/api/send-reservation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, 'cf-turnstile-response': turnstileToken }),
       });
 
+      if (response.status === 403) throw new Error('Turnstile rejected');
       if (!response.ok) throw new Error('Server error');
 
       setFormStatus('success');
@@ -64,11 +79,19 @@ const Reservations = () => {
     } catch (error) {
       console.error('Resend error:', error);
       setFormStatus('error');
-      setErrorMessage('Nu s-a putut trimite rezervarea. Vă rugăm să ne sunați sau să încercați din nou.');
+      setErrorMessage(
+        error.message === 'Turnstile rejected'
+          ? 'Verificarea anti-spam a eșuat. Reîncarcă pagina și încearcă din nou.'
+          : 'Nu s-a putut trimite rezervarea. Vă rugăm să ne sunați sau să încercați din nou.'
+      );
       setTimeout(() => {
         setFormStatus('idle');
         setErrorMessage('');
       }, 5000);
+    } finally {
+      // Turnstile tokens are single-use: the one just submitted is spent
+      // whether or not the request succeeded, so issue a fresh challenge.
+      if (turnstileRef.current) turnstileRef.current.reset();
     }
   };
 
@@ -431,6 +454,8 @@ const Reservations = () => {
                       placeholder="Restricții alimentare sau ocazii speciale?"
                     />
                   </div>
+
+                  <TurnstileWidget ref={turnstileRef} onToken={setTurnstileToken} />
 
                   <button
                     type="submit"

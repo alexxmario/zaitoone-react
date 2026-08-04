@@ -4,7 +4,9 @@
 
 ### Model3DViewer
 
-A generic 3D model viewer component using React Three Fiber.
+A generic 3D model viewer component using React Three Fiber. This is the only
+3D component still in use — it renders the dish models on the product detail
+pages (`/menu/:slug`) and the model on the loading screen.
 
 #### Props
 
@@ -20,77 +22,24 @@ A generic 3D model viewer component using React Three Fiber.
 #### Example
 
 ```jsx
-import Model3DViewer from './components/3d/Model3DViewer';
+import Model3DViewer from '../components/3d/Model3DViewer';
 
 <Model3DViewer
-  modelUrl="/models/menu-items/hummus.glb"
+  modelUrl={cdnUrl('/models/3d/hummus-cu-muguri-de-pin.glb')}
   scale={2}
   autoRotate={true}
   className="w-full h-96"
 />
 ```
 
-### MenuItem3D
+## Where the models live
 
-A menu item card with 3D model preview.
+Dish models are in `public/models/3d/` and are wired to menu items through the
+`modelUrl` field in `src/data/menuData.js`. In production they are served from
+R2 via `cdnUrl()`; in development they come from `public/`.
 
-#### Props
-
-- `name` (string, required) - Name of the menu item
-- `description` (string, required) - Description of the item
-- `price` (string, required) - Price of the item
-- `modelUrl` (string, optional) - Path to 3D model
-- `imageUrl` (string, optional) - Fallback image if no 3D model
-- `scale` (number, default: 1) - Scale of the 3D model
-- `autoRotate` (boolean, default: true) - Auto-rotate the model
-
-#### Example
-
-```jsx
-import MenuItem3D from './components/3d/MenuItem3D';
-
-<MenuItem3D
-  name="Hummus"
-  description="Creamy chickpea dip with tahini and olive oil"
-  price="25 RON"
-  modelUrl="/models/menu-items/hummus.glb"
-  scale={1.5}
-  autoRotate={true}
-/>
-```
-
-## Using in Menu Page
-
-```jsx
-import MenuItem3D from '../components/3d/MenuItem3D';
-
-const Menu = () => {
-  return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <MenuItem3D
-        name="Hummus"
-        description="Creamy chickpea dip with tahini"
-        price="25 RON"
-        modelUrl="/models/menu-items/hummus.glb"
-      />
-
-      <MenuItem3D
-        name="Shawarma"
-        description="Marinated meat wrapped in pita"
-        price="45 RON"
-        modelUrl="/models/menu-items/shawarma.glb"
-      />
-
-      <MenuItem3D
-        name="Falafel"
-        description="Crispy chickpea fritters"
-        price="30 RON"
-        imageUrl="https://images.unsplash.com/photo-1..."
-      />
-    </div>
-  );
-};
-```
+`public/models/menu-items/` holds only `tacchino-sandwich.glb`, used by the
+loading screen.
 
 ## Performance Tips
 

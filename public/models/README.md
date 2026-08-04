@@ -1,16 +1,15 @@
-# 3D Models for Menu Items
-
-This folder contains 3D models for your menu items.
+# 3D Models
 
 ## Folder Structure
 
 ```
 public/models/
+├── 3d/                       # dish models shown on /menu/:slug
+│   ├── hummus-cu-muguri-de-pin.glb
+│   ├── fattoush.glb
+│   └── ...
 └── menu-items/
-    ├── hummus.glb
-    ├── shawarma.glb
-    ├── falafel.glb
-    └── baklava.glb
+    └── tacchino-sandwich.glb # loading screen only
 ```
 
 ## Supported Formats
@@ -20,8 +19,17 @@ public/models/
 
 ## How to Add 3D Models
 
-1. Place your `.glb` or `.gltf` files in the `public/models/menu-items/` folder
-2. Use them in your menu by referencing the path
+1. Place the `.glb` file in `public/models/3d/`
+2. Reference it from the menu item in `src/data/menuData.js`:
+
+```js
+modelUrl: cdnUrl('/models/3d/your-model.glb'),
+```
+
+3. Upload the same file to the R2 bucket — production serves models from the
+   CDN (`REACT_APP_CDN_URL`), not from `public/`.
+
+`Model3DViewer` then renders it on the product detail page.
 
 ## Where to Get 3D Models
 
@@ -30,21 +38,6 @@ Free 3D model resources:
 - [Poly Pizza](https://poly.pizza) - Free low-poly models
 - [TurboSquid Free](https://www.turbosquid.com/Search/3D-Models/free) - Free 3D models
 - [CGTrader Free](https://www.cgtrader.com/free-3d-models) - Free 3D models
-
-## Usage Example
-
-```jsx
-import MenuItem3D from '../components/3d/MenuItem3D';
-
-<MenuItem3D
-  name="Hummus"
-  description="Creamy chickpea dip with tahini and olive oil"
-  price="25 RON"
-  modelUrl="/models/menu-items/hummus.glb"
-  scale={1.5}
-  autoRotate={true}
-/>
-```
 
 ## Tips
 

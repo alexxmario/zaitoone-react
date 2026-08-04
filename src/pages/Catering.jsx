@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { UtensilsCrossed, Users, Calendar, MessageSquare } from 'lucide-react';
 import { cdnUrl } from '../utils/cdn';
 import { initRevealOnScroll, initParallaxScroll } from '../utils/animations';
+import TurnstileWidget from '../components/TurnstileWidget';
 
 const cateringPhotos = [
   '/catering/images/catering-01.jpg',
@@ -36,6 +37,8 @@ const Catering = () => {
 
   const [formStatus, setFormStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef(null);
 
   useEffect(() => {
     const cleanupReveal = initRevealOnScroll();
@@ -57,6 +60,17 @@ const Catering = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setFormStatus('error');
+      setErrorMessage('Așteaptă finalizarea verificării anti-spam și încearcă din nou.');
+      setTimeout(() => {
+        setFormStatus('idle');
+        setErrorMessage('');
+      }, 5000);
+      return;
+    }
+
     setFormStatus('submitting');
     setErrorMessage('');
 
@@ -64,9 +78,10 @@ const Catering = () => {
       const response = await fetch('/api/send-catering', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, 'cf-turnstile-response': turnstileToken }),
       });
 
+      if (response.status === 403) throw new Error('Turnstile rejected');
       if (!response.ok) throw new Error('Server error');
 
       setFormStatus('success');
@@ -85,11 +100,19 @@ const Catering = () => {
     } catch (error) {
       console.error('Resend error:', error);
       setFormStatus('error');
-      setErrorMessage('Nu s-a putut trimite cererea. Vă rugăm să ne sunați sau să încercați din nou.');
+      setErrorMessage(
+        error.message === 'Turnstile rejected'
+          ? 'Verificarea anti-spam a eșuat. Reîncarcă pagina și încearcă din nou.'
+          : 'Nu s-a putut trimite cererea. Vă rugăm să ne sunați sau să încercați din nou.'
+      );
       setTimeout(() => {
         setFormStatus('idle');
         setErrorMessage('');
       }, 5000);
+    } finally {
+      // Turnstile tokens are single-use: the one just submitted is spent
+      // whether or not the request succeeded, so issue a fresh challenge.
+      if (turnstileRef.current) turnstileRef.current.reset();
     }
   };
 
@@ -300,6 +323,8 @@ const Catering = () => {
                     placeholder="Descrie-ne viziunea ta: ce tip de preparate îți dorești, dacă ai preferințe speciale (vegetarian, halal, fără gluten), atmosfera pe care o vrei, bugetul orientativ, sau orice alt detaliu care ne-ar ajuta să creăm meniul perfect pentru tine..."
                   />
                 </div>
+
+                <TurnstileWidget ref={turnstileRef} onToken={setTurnstileToken} />
 
                 <button
                   type="submit"

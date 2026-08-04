@@ -1,10 +1,17 @@
 const { Resend } = require('resend');
+const { guardRequest } = require('./_turnstile');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Verify the Turnstile token before anything else, so rejected requests
+  // never reach Resend and never consume send quota.
+  if (!(await guardRequest(req, res))) {
+    return;
   }
 
   const { name, email, phone, eventType, guestsApprox, date, preferences } = req.body;
