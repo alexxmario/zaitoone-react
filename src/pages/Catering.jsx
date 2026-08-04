@@ -38,6 +38,7 @@ const Catering = () => {
   const [formStatus, setFormStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileError, setTurnstileError] = useState('');
   const turnstileRef = useRef(null);
 
   useEffect(() => {
@@ -63,7 +64,11 @@ const Catering = () => {
 
     if (!turnstileToken) {
       setFormStatus('error');
-      setErrorMessage('Așteaptă finalizarea verificării anti-spam și încearcă din nou.');
+      setErrorMessage(
+        turnstileError
+          ? 'Verificarea anti-spam nu s-a putut încărca. Sună-ne la +40 737 299 900 pentru a trimite cererea.'
+          : 'Așteaptă finalizarea verificării anti-spam și încearcă din nou.'
+      );
       setTimeout(() => {
         setFormStatus('idle');
         setErrorMessage('');
@@ -324,7 +329,11 @@ const Catering = () => {
                   />
                 </div>
 
-                <TurnstileWidget ref={turnstileRef} onToken={setTurnstileToken} />
+                <TurnstileWidget
+                  ref={turnstileRef}
+                  onToken={setTurnstileToken}
+                  onError={setTurnstileError}
+                />
 
                 <button
                   type="submit"
