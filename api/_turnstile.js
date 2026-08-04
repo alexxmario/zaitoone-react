@@ -26,7 +26,11 @@ function getClientIp(req) {
 // — missing secret, missing token, network failure, non-2xx, malformed body,
 // success:false — fails closed and resolves false.
 async function verifyTurnstile(token, remoteip) {
-  if (!process.env.TURNSTILE_SECRET) {
+  // Trimmed: pasting the key into a dashboard env var field very often picks up
+  // a trailing newline or space, which siteverify rejects as invalid-input-secret.
+  const secret = (process.env.TURNSTILE_SECRET || '').trim();
+
+  if (!secret) {
     console.error('Turnstile: TURNSTILE_SECRET is not set; rejecting request');
     return false;
   }
@@ -36,7 +40,7 @@ async function verifyTurnstile(token, remoteip) {
   }
 
   const body = new URLSearchParams({
-    secret: process.env.TURNSTILE_SECRET,
+    secret,
     response: token,
   });
 
@@ -59,7 +63,13 @@ async function verifyTurnstile(token, remoteip) {
   }
 
   if (result.success !== true) {
-    console.warn('Turnstile rejected token:', result['error-codes']);
+    // Secret length only — never the value. Distinguishes "wrong key pasted"
+    // from "right key, wrong widget" without exposing anything.
+    console.warn(
+      'Turnstile rejected token:',
+      result['error-codes'],
+      `(secret length ${secret.length}, token length ${token.length})`
+    );
     return false;
   }
 
