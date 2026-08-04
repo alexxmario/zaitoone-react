@@ -147,7 +147,7 @@ const TurnstileWidget = forwardRef(({ onToken, onError, className = '' }, ref) =
       }
       widgetIdRef.current = null;
     };
-  }, [emit]);
+  }, [emit, fail]);
 
   return (
     <div>
