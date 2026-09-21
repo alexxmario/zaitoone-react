@@ -4,6 +4,7 @@ const ParticleSystem = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 

@@ -93,9 +93,11 @@ const Home = () => {
     staggerElements.forEach((el) => staggerObserver.observe(el));
 
     let rafId;
+    let previousProgress = -1;
     const handleGalleryScroll = () => {
-      cancelAnimationFrame(rafId);
+      if (rafId != null) return;
       rafId = requestAnimationFrame(() => {
+        rafId = null;
         const section = horizontalSectionRef.current;
         const track = horizontalRef.current;
         if (!section || !track) return;
@@ -105,9 +107,11 @@ const Home = () => {
         const viewportHeight = window.innerHeight;
         const scrollableDistance = sectionHeight - viewportHeight;
 
-        const progress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
+        const progress = Math.max(0, Math.min(1, -rect.top / Math.max(1, scrollableDistance)));
 
-        const maxTranslate = track.scrollWidth - window.innerWidth;
+        if (progress === previousProgress) return;
+        previousProgress = progress;
+        const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
         track.style.transform = `translateX(-${progress * maxTranslate}px)`;
 
         const itemWidth = 500;
@@ -128,6 +132,9 @@ const Home = () => {
       });
     };
 
+    const onResize = () => { previousProgress = -1; handleGalleryScroll(); };
+    handleGalleryScroll();
+    window.addEventListener('resize', onResize);
     window.addEventListener('scroll', handleGalleryScroll, { passive: true });
 
     return () => {
@@ -136,6 +143,7 @@ const Home = () => {
         statsObserver.unobserve(currentStatsRef);
       }
       staggerElements.forEach((el) => staggerObserver.unobserve(el));
+      window.removeEventListener('resize', onResize);
       window.removeEventListener('scroll', handleGalleryScroll);
       cancelAnimationFrame(rafId);
     };
@@ -255,9 +263,11 @@ const Home = () => {
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-stone-900 mb-6">
                   <img
+                    decoding="async"
                     src={dish.image}
                     alt={dish.name}
                     className="dish-card-image w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
                   <div className="absolute top-4 left-4">
@@ -310,9 +320,11 @@ const Home = () => {
       <section className="relative py-32 md:py-48 overflow-hidden">
         <div className="absolute inset-0">
           <img
+            decoding="async"
             src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80"
             alt="Restaurant atmosphere"
             className="w-full h-full object-cover opacity-20"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/95 to-stone-950" />
         </div>
@@ -418,9 +430,11 @@ const Home = () => {
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <img
+            decoding="async"
             src={cdnUrl('/catering/images/catering-11.jpg')}
             alt="Catering Zaitoone"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/85 to-stone-950/50" />
         </div>
@@ -456,25 +470,25 @@ const Home = () => {
                   className="absolute overflow-hidden rounded-lg shadow-2xl"
                   style={{ width: '220px', top: '30px', left: '0px', transform: 'rotate(-3deg)' }}
                 >
-                  <img src={cdnUrl('/catering/images/catering-03.jpg')} alt="" className="w-full object-cover" />
+                  <img loading="lazy" decoding="async" src={cdnUrl('/catering/images/catering-03.jpg')} alt="" className="w-full object-cover" />
                 </div>
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-2xl"
                   style={{ width: '260px', top: '0px', left: '140px', transform: 'rotate(1deg)', zIndex: 2 }}
                 >
-                  <img src={cdnUrl('/catering/images/catering-07.jpg')} alt="" className="w-full object-cover" />
+                  <img loading="lazy" decoding="async" src={cdnUrl('/catering/images/catering-07.jpg')} alt="" className="w-full object-cover" />
                 </div>
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-2xl"
                   style={{ width: '220px', top: '80px', left: '300px', transform: 'rotate(3.5deg)', zIndex: 3 }}
                 >
-                  <img src={cdnUrl('/catering/images/catering-13.jpg')} alt="" className="w-full object-cover" />
+                  <img loading="lazy" decoding="async" src={cdnUrl('/catering/images/catering-13.jpg')} alt="" className="w-full object-cover" />
                 </div>
                 <div
                   className="absolute overflow-hidden rounded-lg shadow-xl"
                   style={{ width: '160px', bottom: '20px', left: '60px', transform: 'rotate(-1.5deg)', zIndex: 4 }}
                 >
-                  <img src={cdnUrl('/catering/images/catering-05.jpg')} alt="" className="w-full object-cover" />
+                  <img loading="lazy" decoding="async" src={cdnUrl('/catering/images/catering-05.jpg')} alt="" className="w-full object-cover" />
                 </div>
               </div>
             </div>

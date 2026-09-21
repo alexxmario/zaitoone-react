@@ -62,8 +62,10 @@ const ScrollPhotoScatter = ({
     if (!container) return;
 
     let rafId;
+    let previousProgress = -1;
 
     const update = () => {
+      rafId = null;
       const containerTop = container.offsetTop;
       const containerHeight = container.offsetHeight;
       const viewportHeight = window.innerHeight;
@@ -72,6 +74,9 @@ const ScrollPhotoScatter = ({
       const progress = Math.max(0, Math.min(1,
         (scrollY - containerTop) / (containerTop + containerHeight - viewportHeight - containerTop)
       ));
+
+      if (progress === previousProgress) return;
+      previousProgress = progress;
 
       // Text visibility
       const shouldShow = progress > 0.4;
@@ -110,8 +115,7 @@ const ScrollPhotoScatter = ({
     };
 
     const handleScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(update);
+      if (rafId == null) rafId = requestAnimationFrame(update);
     };
 
     update();
@@ -160,7 +164,7 @@ const ScrollPhotoScatter = ({
                 <div
                   key={index}
                   ref={el => photosRef.current[index] = el}
-                  className="absolute left-1/2 top-1/2 w-36 md:w-48 aspect-[4/5] -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out"
+                  className="absolute left-1/2 top-1/2 w-36 md:w-48 aspect-[4/5] -translate-x-1/2 -translate-y-1/2"
                   style={{
                     zIndex: config.z,
                     transform: `translate(${config.x * 0.6}%, ${config.y * 0.6}%) rotate(${config.rotate}deg) scale(${config.scale * 0.8})`,

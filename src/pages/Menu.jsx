@@ -16,6 +16,7 @@ const MenuCard = ({ item, onSelect }) => {
       {item.image && (
         <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
           <img
+            decoding="async"
             src={item.image}
             alt={item.name}
             className="w-full h-full object-cover"
@@ -58,6 +59,7 @@ const ProductModal = ({ item, onClose }) => {
         {item.image ? (
           <div className="w-full aspect-[4/3] overflow-hidden bg-stone-950">
             <img
+              decoding="async"
               src={item.image}
               alt={item.name}
               className="w-full h-full object-cover"

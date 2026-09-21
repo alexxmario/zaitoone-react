@@ -1,3 +1,4 @@
+import ViewportVideo from '../components/ViewportVideo';
 import { useEffect } from 'react';
 import { cdnUrl } from '../utils/cdn';
 import { Link } from 'react-router-dom';
@@ -60,15 +61,13 @@ const About = () => {
       {/* Cinematic Video Section */}
       <section className="relative h-[70vh] overflow-hidden">
         {/* Video Background */}
-        <video
-          autoPlay
+        <ViewportVideo
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={cdnUrl('/video/about.mp4')} type="video/mp4" />
-        </video>
+          src={cdnUrl('/video/about.mp4')}
+        />
 
         {/* Overlay Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-stone-950/60" />
@@ -292,6 +291,7 @@ const About = () => {
             <div className="reveal glass-card glow-border p-8 rounded-2xl">
               <div className="aspect-square rounded-xl overflow-hidden">
                 <img
+                  decoding="async"
                   src={cdnUrl('/visit.jpg')}
                   alt="Restaurant Interior"
                   className="w-full h-full object-cover"

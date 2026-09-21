@@ -3,7 +3,9 @@ import { cdnUrl } from '../utils/cdn';
 
 const TOTAL_FRAMES = 146;
 const BLACK_INTRO_FRAMES = 24;
-const BATCH_SIZE = 15;
+const BATCH_SIZE = 12;
+const MAX_CONCURRENT_LOADS = 3;
+const CACHE_RADIUS = 18;
 
 const getFrameSrc = (index) =>
   cdnUrl(`/video/frames/frame_${String(index + 1).padStart(4, '0')}.jpg`);
@@ -18,7 +20,8 @@ const ScrollVideo = ({
   const canvasRef = useRef(null);
   const imagesRef = useRef(new Array(TOTAL_FRAMES).fill(null));
   const currentFrameRef = useRef(0);
-  const loadingRef = useRef(new Set());
+  const requestFramesRef = useRef(() => {});
+  const redrawRef = useRef(() => {});
   const overlayRef = useRef(null);
   const topBarRef = useRef(null);
   const bottomBarRef = useRef(null);
@@ -27,58 +30,61 @@ const ScrollVideo = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [introVisible, setIntroVisible] = useState(true);
 
-  // Load a range of frames
-  const loadFrameRange = useCallback((start, end) => {
-    for (let i = start; i <= end && i < TOTAL_FRAMES; i++) {
-      if (imagesRef.current[i] || loadingRef.current.has(i)) continue;
-      loadingRef.current.add(i);
-      const img = new Image();
-      img.onload = () => {
-        imagesRef.current[i] = img;
-        loadingRef.current.delete(i);
-      };
-      img.onerror = () => {
-        loadingRef.current.delete(i);
-      };
-      img.src = getFrameSrc(i);
-    }
-  }, []);
+  // Prioritize the current frame and bound decoded memory and network concurrency.
+  const loadNearbyFrames = useCallback(() => requestFramesRef.current(), []);
 
-  // Preload first batch + black intro frames, then signal loaded
   useEffect(() => {
-    const cancelledRef = { current: false };
-    const loadedRef = { current: 0 };
-    const firstBatchEnd = Math.min(BATCH_SIZE, TOTAL_FRAMES) - 1;
-    const needed = firstBatchEnd + 1;
+    const loading = { cancelled: false, active: 0 };
+    const pending = new Set();
+    const failed = new Set();
+    const images = imagesRef.current;
 
-    const loadImage = (index) => {
-      loadingRef.current.add(index);
-      const img = new Image();
-      img.onload = () => {
-        if (cancelledRef.current) return;
-        imagesRef.current[index] = img;
-        loadingRef.current.delete(index);
-        loadedRef.current++;
-        if (loadedRef.current >= needed) setIsLoaded(true);
-      };
-      img.onerror = () => {
-        if (cancelledRef.current) return;
-        loadingRef.current.delete(index);
-        loadedRef.current++;
-        if (loadedRef.current >= needed) setIsLoaded(true);
-      };
-      img.src = getFrameSrc(index);
+    const pump = () => {
+      if (loading.cancelled) return;
+      const target = currentFrameRef.current;
+      for (let i = 0; i < TOTAL_FRAMES; i++) {
+        if (Math.abs(i - target) > CACHE_RADIUS) images[i] = null;
+      }
+      const wanted = [target];
+      for (let distance = 1; distance <= BATCH_SIZE; distance++) {
+        if (target + distance < TOTAL_FRAMES) wanted.push(target + distance);
+        if (target - distance >= 0) wanted.push(target - distance);
+      }
+      for (const index of wanted) {
+        if (loading.active >= MAX_CONCURRENT_LOADS) break;
+        if (images[index] || pending.has(index) || failed.has(index)) continue;
+        pending.add(index);
+        loading.active++;
+        const img = new Image();
+        img.decoding = 'async';
+        const finish = async (success) => {
+          if (success) {
+            try { await img.decode(); } catch { success = false; }
+          }
+          if (loading.cancelled) return;
+          loading.active--;
+          pending.delete(index);
+          if (success && Math.abs(index - currentFrameRef.current) <= CACHE_RADIUS) {
+            images[index] = img;
+            setIsLoaded(true);
+            redrawRef.current(currentFrameRef.current);
+          } else if (!success) {
+            failed.add(index);
+          }
+          pump();
+        };
+        img.onload = () => finish(true);
+        img.onerror = () => finish(false);
+        img.src = getFrameSrc(index);
+      }
     };
-
-    for (let i = 0; i <= firstBatchEnd; i++) {
-      loadImage(i);
-    }
-
-    const fallback = setTimeout(() => {
-      if (!cancelledRef.current && loadedRef.current > 0) setIsLoaded(true);
-    }, 3000);
-
-    return () => { cancelledRef.current = true; clearTimeout(fallback); };
+    requestFramesRef.current = pump;
+    pump();
+    return () => {
+      loading.cancelled = true;
+      requestFramesRef.current = () => {};
+      images.fill(null);
+    };
   }, []);
 
   // Draw a frame on the canvas (with nearest-loaded fallback)
@@ -111,13 +117,16 @@ const ScrollVideo = ({
   }, []);
 
 
+  useEffect(() => { redrawRef.current = drawFrame; }, [drawFrame]);
+
   // Resize canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const ratio = Math.min(1, 1280 / window.innerWidth);
+      canvas.width = Math.round(window.innerWidth * ratio);
+      canvas.height = Math.round(window.innerHeight * ratio);
       if (isLoaded) drawFrame(currentFrameRef.current);
     };
     resize();
@@ -134,12 +143,13 @@ const ScrollVideo = ({
     let introHidden = false;
 
     const update = () => {
+      rafId = null;
       const scrollY = window.scrollY;
       const containerTop = container.offsetTop;
       const containerHeight = container.offsetHeight;
 
       const progress = Math.max(0, Math.min(1,
-        (scrollY - containerTop) / containerHeight
+        (scrollY - containerTop) / Math.max(1, containerHeight - window.innerHeight)
       ));
 
       const rawFrame = progress * (TOTAL_FRAMES - 1) * scrollMultiplier;
@@ -150,9 +160,7 @@ const ScrollVideo = ({
         drawFrame(targetFrame);
 
         // Progressive loading: load frames around current position
-        const batchStart = Math.max(0, targetFrame - 5);
-        const batchEnd = Math.min(TOTAL_FRAMES - 1, targetFrame + BATCH_SIZE);
-        loadFrameRange(batchStart, batchEnd);
+        loadNearbyFrames();
       }
 
       // Smooth intro fade based on scroll — starts fading earlier and more gradually
@@ -193,17 +201,17 @@ const ScrollVideo = ({
     };
 
     const handleScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(update);
+      if (rafId == null) rafId = requestAnimationFrame(update);
     };
 
+    drawFrame(currentFrameRef.current);
     update();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(rafId);
     };
-  }, [isLoaded, scrollMultiplier, enableLetterbox, letterboxHeight, drawFrame, loadFrameRange]);
+  }, [isLoaded, scrollMultiplier, enableLetterbox, letterboxHeight, drawFrame, loadNearbyFrames]);
 
   return (
     <div

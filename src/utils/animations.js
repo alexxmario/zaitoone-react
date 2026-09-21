@@ -7,6 +7,7 @@ export const initRevealOnScroll = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
         }
       });
     },

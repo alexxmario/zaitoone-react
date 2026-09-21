@@ -1,3 +1,4 @@
+import ViewportVideo from '../components/ViewportVideo';
 import { useState, useEffect, useRef } from 'react';
 import { UtensilsCrossed, Users, Calendar, MessageSquare } from 'lucide-react';
 import { cdnUrl } from '../utils/cdn';
@@ -376,18 +377,16 @@ const Catering = () => {
             <h2 className="font-serif text-3xl md:text-4xl text-white">Din culisele unui eveniment</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4 reveal">
-            <video
+            <ViewportVideo
               src={cdnUrl('/catering/videos/catering-video-02.mp4')}
-              autoPlay
               muted
               loop
               playsInline
               className="w-full rounded-lg object-cover"
               style={{ maxHeight: '520px' }}
             />
-            <video
+            <ViewportVideo
               src={cdnUrl('/catering/videos/catering-video-01.mp4')}
-              autoPlay
               muted
               loop
               playsInline

@@ -15,6 +15,7 @@ const BlogCard = ({ post, index }) => (
     {/* Thumbnail */}
     <div className="relative h-56 overflow-hidden">
       <img
+        decoding="async"
         src={post.image}
         alt={post.title}
         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

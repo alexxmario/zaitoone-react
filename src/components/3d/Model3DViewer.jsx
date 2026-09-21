@@ -1,4 +1,4 @@
-import { Suspense, useRef, useMemo } from 'react';
+import { Suspense, useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -25,9 +25,9 @@ function Model({ url, scale = 1, autoRotate = false, rotateSpeed = 0.005 }) {
     return { offsetGroup: inner };
   }, [scene]);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (autoRotate && pivotRef.current) {
-      pivotRef.current.rotation.y += rotateSpeed;
+      pivotRef.current.rotation.y += rotateSpeed * Math.min(delta, 0.05) * 60;
     }
   });
 
@@ -55,6 +55,24 @@ const Model3DViewer = ({
   cameraDistance = 5,
   transparent = true,
 }) => {
+  const containerRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [pageVisible, setPageVisible] = useState(!document.hidden);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting);
+      if (entry.isIntersecting) setReady(true);
+    });
+    observer.observe(containerRef.current);
+    const onVisibility = () => setPageVisible(!document.hidden);
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, []);
+
   // Calculate camera position at 70° elevation
   const cameraPosition = useMemo(() => {
     const y = Math.cos(ELEVATION_55_DEG) * cameraDistance;
@@ -63,8 +81,10 @@ const Model3DViewer = ({
   }, [cameraDistance]);
 
   return (
-    <div className={className}>
-      <Canvas
+    <div ref={containerRef} className={className}>
+      {ready && <Canvas
+        dpr={[1, 1.5]}
+        frameloop={visible && pageVisible ? (autoRotate ? 'always' : 'demand') : 'never'}
         camera={{ position: cameraPosition, fov: 18 }}
         gl={{ alpha: true, antialias: true }}
         style={{ background: 'transparent' }}
@@ -94,7 +114,7 @@ const Model3DViewer = ({
 
           <Environment preset="night" environmentIntensity={0.5} />
         </Suspense>
-      </Canvas>
+      </Canvas>}
     </div>
   );
 };
